@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
-
+import FirebaseFirestore
 enum BuyerStatus: String, Codable {
   case requested = "requested"
   case arrivedAtLocation = "arrivedAtLocation"
@@ -25,7 +25,7 @@ struct Listing: Identifiable, Codable {
   var sellerId: String
   var buyerId: String?
   var price: Float
-  var expirationTime: Date
+  var expirationTime: Timestamp  // ideally want to convert to Date instead
   var availableLocationIds: [String]
   var buyerStatus: BuyerStatus?
   var sellerStatus: SellerStatus?

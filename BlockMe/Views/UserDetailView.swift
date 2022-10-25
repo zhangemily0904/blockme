@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseFirestoreSwift
 import FirebaseStorage
 
-struct UserView: View {
+struct UserDetailView: View {
     @ObservedObject var userRepository = UserRepository()
     var user: User
     @State var profileImage: UIImage? = nil

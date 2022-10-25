@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct AppView: View {
-    @ObservedObject var userRepository = UserRepository()
     var body: some View {
-      List{
-        ForEach(userRepository.users) { user in
-          UserView(user: user)
-        }
+      TabView {
+        UsersView()
+          .tabItem {
+            Image(systemName: "person.2")
+            Text("Users")
+          }
+        
+        MarketPlaceView()
+          .tabItem {
+            Image(systemName: "house")
+            Text("Marketplace")
+          }
       }
     }
 }
