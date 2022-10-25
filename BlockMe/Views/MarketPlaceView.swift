@@ -13,9 +13,11 @@ struct MarketPlaceView: View {
     var body: some View {
       VStack {
         Text("Blocks Marketplace").font(.title)
-        List {
-          ForEach(listingRepository.listings) { listing in
-            ListingDetailsView(listing: listing)
+        GeometryReader { geometry in
+          List {
+            ForEach(listingRepository.listings) { listing in
+              ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+            }
           }
         }
       }

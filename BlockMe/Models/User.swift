@@ -14,7 +14,7 @@ struct User: Identifiable, Codable {
   var lastName: String
   var venmoHandle: String
   var phoneNumber: String
-  var profileImageURL: String?   // temp nullable
+  var profileImageURL: String
   
   enum CodingKeys: String, CodingKey {
     case id

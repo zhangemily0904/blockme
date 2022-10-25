@@ -32,6 +32,7 @@
 		72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EC9290760AF00C980E1 /* MarketPlaceView.swift */; };
 		72391ECC2907614A00C980E1 /* ListingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391ECB2907614A00C980E1 /* ListingDetailsView.swift */; };
 		72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391ECD290765F300C980E1 /* UserViewModel.swift */; };
+		72391EF92908A6E800C980E1 /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EF82908A6E800C980E1 /* ListingUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		72391EC9290760AF00C980E1 /* MarketPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceView.swift; sourceTree = "<group>"; };
 		72391ECB2907614A00C980E1 /* ListingDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailsView.swift; sourceTree = "<group>"; };
 		72391ECD290765F300C980E1 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		72391EF82908A6E800C980E1 /* ListingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				72391EB22907213300C980E1 /* Review.swift */,
 				72391EB42907220F00C980E1 /* DiningLocation.swift */,
 				72391EB62907229F00C980E1 /* Listing.swift */,
+				72391EF82908A6E800C980E1 /* ListingUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
 				72391EB72907229F00C980E1 /* Listing.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
+				72391EF92908A6E800C980E1 /* ListingUser.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,
 				72391ECC2907614A00C980E1 /* ListingDetailsView.swift in Sources */,
