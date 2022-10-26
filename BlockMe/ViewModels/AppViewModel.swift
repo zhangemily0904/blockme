@@ -45,7 +45,13 @@ class AppViewModel: ObservableObject {
       
       // success
       self.signedIn = true
-      // create user document in firestore
+      // TODO create user document in firestore
+      if let result = result {
+        userId = result.user.id
+        
+        // use userId to create a user in firestore
+        // use images/julian-wan-WNoLnJo7tS8-unsplash.jpg for profileImageURL for now
+      }
     }
   }
   

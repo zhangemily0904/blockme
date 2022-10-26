@@ -36,6 +36,7 @@
 		72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EFC2909B06700C980E1 /* AppViewModel.swift */; };
 		72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EFE2909C3C300C980E1 /* ProfileView.swift */; };
 		72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F002909C7CF00C980E1 /* CreateAccountView.swift */; };
+		72391F032909CEB200C980E1 /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F022909CEB200C980E1 /* ListingUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		72391EFC2909B06700C980E1 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		72391EFE2909C3C300C980E1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		72391F002909C7CF00C980E1 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		72391F022909CEB200C980E1 /* ListingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +146,7 @@
 				72391EB22907213300C980E1 /* Review.swift */,
 				72391EB42907220F00C980E1 /* DiningLocation.swift */,
 				72391EB62907229F00C980E1 /* Listing.swift */,
-				72391EF82908A6E800C980E1 /* ListingUser.swift */,
+				72391F022909CEB200C980E1 /* ListingUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,8 +273,8 @@
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				72391EB72907229F00C980E1 /* Listing.swift in Sources */,
 				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
+				72391F032909CEB200C980E1 /* ListingUser.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
-				72391EF92908A6E800C980E1 /* ListingUser.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,
