@@ -10,6 +10,9 @@ import Foundation
 enum DiningLocation: String, Codable {
   case ABP = "Au Bon Pain at Skibo Cafe"
   case BackBarGrill = "Back Bar Grill"
-  case BuildPizza = "Build Pizza - Rohr Commons"
   case Burger412 = "Burger 412 Rohr Commons"
+  case Resnik = "Resnik"
+  case Tepper = "Tepper"
+  case LaPrimaWean = "La Prima Wean"
+  case LaPrimaGates = "La Prima Gates"
 }
