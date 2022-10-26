@@ -24,7 +24,9 @@ struct BlockMeApp: App {
   
   var body: some Scene {
       WindowGroup {
+          let appViewModel = AppViewModel()
           AppView()
+          .environmentObject(appViewModel)
       }
   }
 }

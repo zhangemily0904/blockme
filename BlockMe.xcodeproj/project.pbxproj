@@ -32,6 +32,9 @@
 		72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EC9290760AF00C980E1 /* MarketPlaceView.swift */; };
 		72391ECC2907614A00C980E1 /* ListingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391ECB2907614A00C980E1 /* ListingDetailsView.swift */; };
 		72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391ECD290765F300C980E1 /* UserViewModel.swift */; };
+		72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EFA2909A8CB00C980E1 /* LoginView.swift */; };
+		72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EFC2909B06700C980E1 /* AppViewModel.swift */; };
+		72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EFE2909C3C300C980E1 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		72391EC9290760AF00C980E1 /* MarketPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceView.swift; sourceTree = "<group>"; };
 		72391ECB2907614A00C980E1 /* ListingDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailsView.swift; sourceTree = "<group>"; };
 		72391ECD290765F300C980E1 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		72391EFA2909A8CB00C980E1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		72391EFC2909B06700C980E1 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		72391EFE2909C3C300C980E1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,8 @@
 				72391EC52907565200C980E1 /* UsersView.swift */,
 				72391EC9290760AF00C980E1 /* MarketPlaceView.swift */,
 				72391ECB2907614A00C980E1 /* ListingDetailsView.swift */,
+				72391EFA2909A8CB00C980E1 /* LoginView.swift */,
+				72391EFE2909C3C300C980E1 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				72391ECD290765F300C980E1 /* UserViewModel.swift */,
+				72391EFC2909B06700C980E1 /* AppViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -252,9 +261,12 @@
 				72391E8D2906136700C980E1 /* BlockMeApp.swift in Sources */,
 				72391EB9290730F100C980E1 /* UserRepository.swift in Sources */,
 				72391EB129071F3600C980E1 /* User.swift in Sources */,
+				72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */,
 				72391EC62907565200C980E1 /* UsersView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
+				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				72391EB72907229F00C980E1 /* Listing.swift in Sources */,
+				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,
