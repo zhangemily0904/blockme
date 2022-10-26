@@ -25,7 +25,7 @@ struct ListingDetailsView: View {
       VStack(alignment: .leading) {
         Text(listing.seller.firstName).bold()
         Text(String(format: "$%.2f", listing.price))
-        Text("Expires at \(listing.expirationTime.dateValue())")
+        Text("Expires at \(listing.expirationTime)")
       }
     }.onAppear {
       retrieveProfileImage()
