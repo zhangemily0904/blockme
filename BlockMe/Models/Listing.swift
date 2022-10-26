@@ -25,8 +25,8 @@ struct Listing: Identifiable, Codable {
   var seller: ListingUser
   var buyer: ListingUser?
   var price: Float
-  var expirationTime: Date  // ideally want to convert to Date instead
-  var completedTime: Date?  // ditto
+  var expirationTime: Date
+  var completedTime: Date?  
   var availableLocations: [DiningLocation]
   var buyerStatus: BuyerStatus?
   var sellerStatus: SellerStatus?
