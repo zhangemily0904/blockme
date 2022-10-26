@@ -22,21 +22,23 @@ enum SellerStatus: String, Codable {
 
 struct Listing: Identifiable, Codable {
   @DocumentID var id: String?
-  var sellerId: String
-  var buyerId: String?
+  var seller: ListingUser
+  var buyer: ListingUser?
   var price: Float
-  var expirationTime: Timestamp  // ideally want to convert to Date instead
-  var availableLocationIds: [String]
+  var expirationTime: Date
+  var completedTime: Date?  
+  var availableLocations: [DiningLocation]
   var buyerStatus: BuyerStatus?
   var sellerStatus: SellerStatus?
   
   enum CodingKeys: String, CodingKey {
     case id
-    case sellerId
-    case buyerId
+    case seller
+    case buyer
     case price
     case expirationTime
-    case availableLocationIds
+    case completedTime
+    case availableLocations
     case buyerStatus
     case sellerStatus
   }

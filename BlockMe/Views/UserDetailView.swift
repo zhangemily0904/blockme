@@ -37,20 +37,17 @@ struct UserDetailView: View {
     }
     
   func retrieveProfileImage() {
-    if let path = user.profileImageURL {
-      let storageRef = Storage.storage().reference()
-      let fileRef = storageRef.child(path)
-      
-      fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-        if error == nil && data != nil {
-          profileImage = UIImage(data: data!)
-          return
-        }
-        
-        print("Error fetching image of path \(path)")
+    let storageRef = Storage.storage().reference()
+    let fileRef = storageRef.child(user.profileImageURL)
+    
+    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+      if error == nil && data != nil {
+        profileImage = UIImage(data: data!)
+        return
       }
+      
+      print("Error fetching image of path \(user.profileImageURL)")
     }
-    print("User does not have profile picture.")
   }
   
 }

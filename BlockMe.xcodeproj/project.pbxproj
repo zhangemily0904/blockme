@@ -144,6 +144,7 @@
 				72391EB22907213300C980E1 /* Review.swift */,
 				72391EB42907220F00C980E1 /* DiningLocation.swift */,
 				72391EB62907229F00C980E1 /* Listing.swift */,
+				72391EF82908A6E800C980E1 /* ListingUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,6 +272,7 @@
 				72391EB72907229F00C980E1 /* Listing.swift in Sources */,
 				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
+				72391EF92908A6E800C980E1 /* ListingUser.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,
