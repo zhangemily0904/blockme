@@ -32,8 +32,6 @@ struct AppView: View {
                 Text("Profile")
               }
           }
-        } else if appViewModel.uploadPicture {
-          ChooseProfileImageView()
         } else {
           LoginView()
         }

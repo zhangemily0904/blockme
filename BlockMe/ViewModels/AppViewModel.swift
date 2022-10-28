@@ -12,7 +12,6 @@ import FirebaseFirestore
 
 class AppViewModel: ObservableObject {
   @Published var signedIn = false
-  @Published var uploadPicture = false
 
   let auth = Auth.auth()
   
@@ -52,24 +51,16 @@ class AppViewModel: ObservableObject {
     return true
   }
 
-  func validateEmail(email: String) -> Bool {
-    var valid = true
-    auth.fetchSignInMethods(forEmail: email) { forEmail, error in
-      if let error = error {
-        print("Email Error: \(error.localizedDescription)")
-        print(error._code)
-        valid = false
-      } else {
-        print("Email is good")
-      }
-    }
-    return valid
+  func isValidEmailAddr(email: String) -> Bool {
+    let emailValidationRegex = "^[\\p{L}0-9!#$%&'*+\\/=?^_`{|}~-][\\p{L}0-9.!#$%&'*+\\/=?^_`{|}~-]{0,63}@[\\p{L}0-9-]+(?:\\.[\\p{L}0-9-]{2,7})*$"  // 1
+
+    let emailValidationPredicate = NSPredicate(format: "SELF MATCHES %@", emailValidationRegex)  // 2
+
+    return emailValidationPredicate.evaluate(with: email)  // 3
   }
   
-  func validateFields(email: String, number: String) {
-    if validateEmail(email: email) && validatePhoneNumber(number: number) {
-      self.uploadPicture = true
-    }
+  func validateFields(email: String, number: String) -> Bool {
+    return isValidEmailAddr(email: email) && validatePhoneNumber(number: number)
   }
   
   func signUp(email: String, password: String, firstName: String, lastName: String, venmoHandle: String, phoneNumber: String) {

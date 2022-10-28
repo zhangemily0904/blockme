@@ -42,13 +42,7 @@ struct LoginView: View {
               appViewModel.signIn(email: email, password: password)
             }) {
               Text("Log In")
-                .bold()
-                .frame(width: 200, height: 40)
-                .foregroundColor(Color.white)
-                .background(
-                  RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color("BlockMe Red"))
-                )
-            }
+            }.buttonStyle(RedButton())
             
             Group{
               NavigationLink("Not a member? Register now", destination: CreateAccountView())

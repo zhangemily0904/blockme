@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct ChooseProfileImageView: View {
+  var email: String
+  var password: String
+  var firstName: String
+  var lastName: String
+  var phoneNumber: String
+  var venmoHandle: String
+  @State private var profileImageURL: String = "images/H3A43UxfupQGyiTAApGAdT1ccmB2.jpg"
+  
     var body: some View {
-       Text("Choose profile image")
-    }
-}
-
-struct ChooseProfileImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChooseProfileImageView()
+      VStack {
+        Text("\(firstName) \(lastName)")
+        Text(phoneNumber)
+        Text(venmoHandle)
+        Text(email)
+        Text(password)
+        
+        Button(action: {
+          print("CREATING ACCOUNT")
+        }) {
+          Text("Create Account")
+        }
+        .buttonStyle(RedButton())
+      }
     }
 }
