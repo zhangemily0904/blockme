@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct ChooseProfileImageView: View {
+  @EnvironmentObject var appViewModel: AppViewModel
   var email: String
   var password: String
   var firstName: String
@@ -38,7 +39,14 @@ struct ChooseProfileImageView: View {
           
           Spacer()
           
-          Button(action: {}) {
+          Button(action: {
+            guard let image = self.pickerResult.first else {
+              print("ERROR: No Profile Image Uploaded.")
+              return
+            }
+            
+            appViewModel.signUp(email: email, password: password, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImage: image)
+          }) {
             Text("Create Account")
           }
           .buttonStyle(RedButton())

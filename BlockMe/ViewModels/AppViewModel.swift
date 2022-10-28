@@ -78,10 +78,6 @@ class AppViewModel: ObservableObject {
         }
         return
       }
-      
-      // success
-      self.signedIn = true
-      
       // upload image to cloud and return the URL
       let profileImageURL = self.uploadImageToCloud(image: profileImage)
       
@@ -90,6 +86,7 @@ class AppViewModel: ObservableObject {
         let userId = result.user.uid
         let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: profileImageURL)
         self.addUser(user)
+        self.signedIn = true
       }
     }
   }
@@ -111,8 +108,9 @@ class AppViewModel: ObservableObject {
 
     do {
       let newUser = user
-      _ = try store.collection(path).addDocument(from: newUser)
+      _ = try store.collection(path).document(user.id!).setData(from: newUser)
     } catch {
+      // TODO implement error handling other than crashing the app
       fatalError("Unable to add user: \(error.localizedDescription).")
     }
   }

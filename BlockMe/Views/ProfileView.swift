@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-
+import FirebaseAuth
 struct ProfileView: View {
   @EnvironmentObject var appViewModel: AppViewModel
   
     var body: some View {
       VStack {
         Text("Profile").font(.title)
+        Text(appViewModel.auth.currentUser?.uid ?? "nope")
       }
     }
 }
