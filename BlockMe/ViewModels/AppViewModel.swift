@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
-
+import UIKit
 
 class AppViewModel: ObservableObject {
   @Published var signedIn = false
@@ -63,8 +63,10 @@ class AppViewModel: ObservableObject {
     return isValidEmailAddr(email: email) && validatePhoneNumber(number: number)
   }
   
-  func signUp(email: String, password: String, firstName: String, lastName: String, venmoHandle: String, phoneNumber: String) {
-    let profileImageURL = "images/H3A43UxfupQGyiTAApGAdT1ccmB2.jpg"
+  // signs a new user up by creating a new entry in the auth table.
+  // creates a corresponding entry in the users table
+  // uploads their profile image to cloud storage
+  func signUp(email: String, password: String, firstName: String, lastName: String, venmoHandle: String, phoneNumber: String, profileImage: UIImage) {
     auth.createUser(withEmail: email, password: password) { result, error in
       guard result != nil && error == nil else {
        
@@ -79,7 +81,11 @@ class AppViewModel: ObservableObject {
       
       // success
       self.signedIn = true
-      // TODO create user document in firestore
+      
+      // upload image to cloud and return the URL
+      let profileImageURL = self.uploadImageToCloud(image: profileImage)
+      
+      // store the user in the users table
       if let result = result {
         let userId = result.user.uid
         let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: profileImageURL)
@@ -87,6 +93,17 @@ class AppViewModel: ObservableObject {
       }
     }
   }
+  
+  func signOut() {
+    do {
+      try Auth.auth().signOut()
+      self.signedIn = false
+    } catch {
+      print("Sign out error")
+    }
+  }
+  
+  // PRIVATE HELPER FUNCTIONS //
   
   private func addUser(_ user: User) {
     let path: String = "users"
@@ -100,13 +117,7 @@ class AppViewModel: ObservableObject {
     }
   }
   
-  func signOut() {
-    do {
-      try Auth.auth().signOut()
-      self.signedIn = false
-    } catch {
-      print("Sign out error")
-    }
+  private func uploadImageToCloud(image: UIImage) -> String {
+    return "images/H3A43UxfupQGyiTAApGAdT1ccmB2.jpg"
   }
-  
 }

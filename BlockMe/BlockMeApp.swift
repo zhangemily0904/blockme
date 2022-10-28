@@ -21,12 +21,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct BlockMeApp: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-  
   var body: some Scene {
       WindowGroup {
           let appViewModel = AppViewModel()
           AppView()
           .environmentObject(appViewModel)
+          .preferredColorScheme(.light)
       }
   }
 }

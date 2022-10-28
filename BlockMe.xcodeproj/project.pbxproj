@@ -38,6 +38,7 @@
 		72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F002909C7CF00C980E1 /* CreateAccountView.swift */; };
 		72391F032909CEB200C980E1 /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F022909CEB200C980E1 /* ListingUser.swift */; };
 		72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F04290C48CE00C980E1 /* UIComponents.swift */; };
+		72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F06290C659300C980E1 /* PhotoPicker.swift */; };
 		9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		72391F002909C7CF00C980E1 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		72391F022909CEB200C980E1 /* ListingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingUser.swift; sourceTree = "<group>"; };
 		72391F04290C48CE00C980E1 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
+		72391F06290C659300C980E1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 			children = (
 				72391ECD290765F300C980E1 /* UserViewModel.swift */,
 				72391EFC2909B06700C980E1 /* AppViewModel.swift */,
+				72391F06290C659300C980E1 /* PhotoPicker.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
 				72391F032909CEB200C980E1 /* ListingUser.swift in Sources */,
 				72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */,
+				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
@@ -416,6 +420,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlockMe/Preview Content\"";
+				DEVELOPMENT_TEAM = AXGC7KB9JL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -444,6 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlockMe/Preview Content\"";
+				DEVELOPMENT_TEAM = AXGC7KB9JL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

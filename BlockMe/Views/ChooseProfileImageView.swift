@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ChooseProfileImageView: View {
   var email: String
@@ -14,22 +15,42 @@ struct ChooseProfileImageView: View {
   var lastName: String
   var phoneNumber: String
   var venmoHandle: String
-  @State private var profileImageURL: String = "images/H3A43UxfupQGyiTAApGAdT1ccmB2.jpg"
+  @State private var showSheet = false
+  @State var pickerResult: [UIImage] = []
   
     var body: some View {
-      VStack {
-        Text("\(firstName) \(lastName)")
-        Text(phoneNumber)
-        Text(venmoHandle)
-        Text(email)
-        Text(password)
+      ZStack {
+        Color("BlockMe Background").ignoresSafeArea()
         
-        Button(action: {
-          print("CREATING ACCOUNT")
-        }) {
-          Text("Create Account")
+        VStack {
+          Image(uiImage: self.pickerResult.first ?? UIImage())
+              .resizable()
+              .frame(width: 200, height: 200)
+              .background(Color.black.opacity(0.2))
+              .aspectRatio(contentMode: .fill)
+              .clipShape(Circle())
+          
+          Button(action: {
+            showSheet = true
+          }) {
+            Text("Choose Image")
+          }
+          
+          Spacer()
+          
+          Button(action: {}) {
+            Text("Create Account")
+          }
+          .buttonStyle(RedButton())
+          
+          Spacer()
         }
-        .buttonStyle(RedButton())
+        .edgesIgnoringSafeArea(.bottom)
+        .sheet(isPresented: $showSheet) {
+                PhotoPicker(pickerResult: $pickerResult,
+                            isPresented: $showSheet)
+              }
       }
+      
     }
 }
