@@ -13,42 +13,40 @@ struct LoginView: View {
   @State private var password: String = ""
   
     var body: some View {
-      NavigationView {
-        ZStack {
-          Color("BlockMe Background").ignoresSafeArea()
+      ZStack {
+        Color("BlockMe Background").ignoresSafeArea()
+        
+        VStack {
+          Group {
+            Text("Image goes here").font(.title)
+          }.frame(maxHeight: .infinity, alignment: .top)
           
-          VStack {
-            Group {
-              Text("Image goes here").font(.title)
-            }.frame(maxHeight: .infinity, alignment: .top)
-            
-            Text("Hello Again!").font(.title)
-            TextField("Email", text: $email)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-                              .padding()
-                              .autocapitalization(.none)
-                              .disableAutocorrection(true)
-            SecureField("Password", text: $password)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-                              .padding()
-                              .autocapitalization(.none)
-                              .disableAutocorrection(true)
-            
-            // should make this button a reusable component
-            Button(action: {
-              guard !email.isEmpty && !password.isEmpty else {
-                return
-              }
-              appViewModel.signIn(email: email, password: password)
-            }) {
-              Text("Log In")
-            }.buttonStyle(RedButton())
-            
-            Group{
-              NavigationLink("Not a member? Register now", destination: CreateAccountView())
-            }.frame(maxHeight: .infinity, alignment: .bottom)
-            
-          }
+          Text("Hello Again!").font(.title)
+          TextField("Email", text: $email)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+          SecureField("Password", text: $password)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+          
+          // should make this button a reusable component
+          Button(action: {
+            guard !email.isEmpty && !password.isEmpty else {
+              return
+            }
+            appViewModel.signIn(email: email, password: password)
+          }) {
+            Text("Log In")
+          }.buttonStyle(RedButton())
+          
+          Group{
+            NavigationLink("Not a member? Register now", destination: CreateAccountView())
+          }.frame(maxHeight: .infinity, alignment: .bottom)
+          
         }
       }
     }
