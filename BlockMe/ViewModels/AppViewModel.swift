@@ -8,12 +8,14 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 import UIKit
 
 class AppViewModel: ObservableObject {
   @Published var signedIn = false
 
   let auth = Auth.auth()
+  let storage = Storage.storage().reference()
   
   var isSignedIn: Bool {
     auth.currentUser != nil
@@ -33,7 +35,6 @@ class AppViewModel: ObservableObject {
       
       // success
       self.signedIn = true
-      
     }
   }
   
@@ -74,19 +75,26 @@ class AppViewModel: ObservableObject {
         print("error creating an account!")
         if let error = error {
           print("Error: \(error.localizedDescription).")
-
         }
         return
       }
-      // upload image to cloud and return the URL
-      let profileImageURL = self.uploadImageToCloud(image: profileImage)
       
-      // store the user in the users table
       if let result = result {
         let userId = result.user.uid
-        let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: profileImageURL)
-        self.addUser(user)
-        self.signedIn = true
+        // upload image to cloud and return the URL
+        self.uploadImageToCloud(uid: userId, image: profileImage) { (path, error) in
+          guard let path = path else {
+            if let error = error {
+              print("Unable to upload profile photo: \(error.localizedDescription).")
+            }
+            return
+          }
+          
+          // create user in users collection
+          let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: path)
+          self.addUser(user)
+          self.signedIn = true
+        }
       }
     }
   }
@@ -115,7 +123,24 @@ class AppViewModel: ObservableObject {
     }
   }
   
-  private func uploadImageToCloud(image: UIImage) -> String {
-    return "images/H3A43UxfupQGyiTAApGAdT1ccmB2.jpg"
+  private func uploadImageToCloud(uid: String, image: UIImage, completion: @escaping (String?, Error?) -> Void) {
+    let path = "images/\(uid).jpeg"
+    let storageRef = self.storage.child(path)
+    let data = image.jpegData(compressionQuality: 0.1)
+    
+    guard let data = data else {
+      print("Unable to convert image to jpeg format")
+      completion(nil, nil)
+      return
+    }
+    let metadata = StorageMetadata()
+    metadata.contentType = "images/jpeg"
+    storageRef.putData(data, metadata: metadata) { (metadata, error)  in
+      guard error == nil else {
+        completion(nil, error)
+        return
+      }
+      completion(path, error)
+    }
   }
 }
