@@ -17,7 +17,9 @@ struct ChooseProfileImageView: View {
   var phoneNumber: String
   var venmoHandle: String
   @State private var showSheet = false
-  @State var pickerResult: [UIImage] = []
+  @State private var showErrorAlert = false
+  @State private var error: String = ""
+  @State private var pickerResult: [UIImage] = []
   
     var body: some View {
       ZStack {
@@ -41,11 +43,17 @@ struct ChooseProfileImageView: View {
           
           Button(action: {
             guard let image = self.pickerResult.first else {
-              print("ERROR: No Profile Image Uploaded.")
+              error = "No profile image selected."
+              showErrorAlert = true
               return
             }
             
-            appViewModel.signUp(email: email, password: password, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImage: image)
+            appViewModel.signUp(email: email, password: password, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImage: image) { errorMsg in
+              if let errorMsg = errorMsg {
+                error = errorMsg
+                showErrorAlert = true
+              }
+            }
           }) {
             Text("Create Account")
           }
@@ -58,6 +66,11 @@ struct ChooseProfileImageView: View {
                 PhotoPicker(pickerResult: $pickerResult,
                             isPresented: $showSheet)
               }
+        .alert(error, isPresented: $showErrorAlert) {
+          Button("Ok", role: .cancel) {
+            showErrorAlert = false
+          }
+        }
       }
       
     }

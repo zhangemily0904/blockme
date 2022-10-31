@@ -67,15 +67,10 @@ class AppViewModel: ObservableObject {
   // signs a new user up by creating a new entry in the auth table.
   // creates a corresponding entry in the users table
   // uploads their profile image to cloud storage
-  func signUp(email: String, password: String, firstName: String, lastName: String, venmoHandle: String, phoneNumber: String, profileImage: UIImage) {
+  func signUp(email: String, password: String, firstName: String, lastName: String, venmoHandle: String, phoneNumber: String, profileImage: UIImage, completion: @escaping (String?) -> Void) {
     auth.createUser(withEmail: email, password: password) { result, error in
-      guard result != nil && error == nil else {
-       
-        // TODO handle specific errors
-        print("error creating an account!")
-        if let error = error {
-          print("Error: \(error.localizedDescription).")
-        }
+      guard error == nil else {
+        completion(error!.localizedDescription)
         return
       }
       
@@ -85,15 +80,22 @@ class AppViewModel: ObservableObject {
         self.uploadImageToCloud(uid: userId, image: profileImage) { (path, error) in
           guard let path = path else {
             if let error = error {
-              print("Unable to upload profile photo: \(error.localizedDescription).")
+              completion(error.localizedDescription)
+            } else {
+              completion("Unable to upload profile picture.")
             }
             return
           }
           
           // create user in users collection
           let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: path)
-          self.addUser(user)
-          self.signedIn = true
+          self.addUser(user) { error in
+            guard error == nil else {
+              completion(error!.localizedDescription)
+              return
+            }
+            self.signedIn = true
+          }
         }
       }
     }
@@ -110,16 +112,17 @@ class AppViewModel: ObservableObject {
   
   // PRIVATE HELPER FUNCTIONS //
   
-  private func addUser(_ user: User) {
+  private func addUser(_ user: User, completion: @escaping (Error?) -> Void) {
     let path: String = "users"
     let store = Firestore.firestore()
 
     do {
       let newUser = user
       _ = try store.collection(path).document(user.id!).setData(from: newUser)
+      completion(nil)
     } catch {
-      // TODO implement error handling other than crashing the app
-      fatalError("Unable to add user: \(error.localizedDescription).")
+      print("Unable to add user: \(error.localizedDescription).")
+      completion(error)
     }
   }
   
@@ -129,7 +132,6 @@ class AppViewModel: ObservableObject {
     let data = image.jpegData(compressionQuality: 0.1)
     
     guard let data = data else {
-      print("Unable to convert image to jpeg format")
       completion(nil, nil)
       return
     }
