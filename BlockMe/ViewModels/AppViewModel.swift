@@ -25,16 +25,16 @@ class AppViewModel: ObservableObject {
     signedIn = isSignedIn
   }
   
-  func signIn(email: String, password: String) {
+  func signIn(email: String, password: String, completion: @escaping (Error?) -> Void) {
     auth.signIn(withEmail: email, password: password) { result, error in
       guard result != nil && error == nil else {
-        // TODO handle specific errors
-        print("error signing in!")
+        completion(error)
         return
       }
       
       // success
       self.signedIn = true
+      completion(error)
     }
   }
   

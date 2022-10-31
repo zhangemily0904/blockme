@@ -11,7 +11,7 @@ struct LoginView: View {
   @EnvironmentObject var appViewModel: AppViewModel
   @State private var email: String = ""
   @State private var password: String = ""
-  
+  @State private var errorMsg: String? = nil
     var body: some View {
       ZStack {
         Color("BlockMe Background").ignoresSafeArea()
@@ -33,12 +33,19 @@ struct LoginView: View {
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
           
-          // should make this button a reusable component
+          if let msg = errorMsg {
+            Text(msg).foregroundColor(Color.red)
+          }
+         
           Button(action: {
             guard !email.isEmpty && !password.isEmpty else {
               return
             }
-            appViewModel.signIn(email: email, password: password)
+            appViewModel.signIn(email: email, password: password) { error in
+              if let error = error {
+                errorMsg = error.localizedDescription
+              }
+            }
           }) {
             Text("Log In")
           }.buttonStyle(RedButton())
