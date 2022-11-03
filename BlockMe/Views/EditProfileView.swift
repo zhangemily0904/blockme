@@ -11,6 +11,7 @@ struct EditProfileView: View {
   @Environment(\.presentationMode) private var presentationMode // used so we can use update button to backward navigate
   @EnvironmentObject var appViewModel: AppViewModel
   @ObservedObject var userViewModel: UserViewModel
+  @State private var showErrorAlert = false
   @State private var venmoHandle = ""
   @State private var phoneNumber = ""
   
@@ -45,7 +46,7 @@ struct EditProfileView: View {
               
               let newUser = User(firstName: user.firstName, lastName: user.lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: user.profileImageURL)
               guard userViewModel.update(user: newUser) else {
-                print("error updating user")
+                showErrorAlert = true
                 return
               }
               presentationMode.wrappedValue.dismiss()
@@ -53,6 +54,11 @@ struct EditProfileView: View {
               Text("Update")
             }.buttonStyle(RedButton())
           }.frame(maxHeight: .infinity, alignment: .bottom)
+        }
+        .alert("There was an error updating your information. Please try again later.", isPresented: $showErrorAlert) {
+          Button("Ok", role: .cancel) {
+            showErrorAlert = false
+          }
         }
       }
       
