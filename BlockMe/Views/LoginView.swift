@@ -39,6 +39,7 @@ struct LoginView: View {
          
           Button(action: {
             guard !email.isEmpty && !password.isEmpty else {
+              errorMsg = "Email or password cannot be empty."
               return
             }
             appViewModel.signIn(email: email, password: password) { error in
