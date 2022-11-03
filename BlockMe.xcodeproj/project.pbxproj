@@ -39,6 +39,7 @@
 		72391F032909CEB200C980E1 /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F022909CEB200C980E1 /* ListingUser.swift */; };
 		72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F04290C48CE00C980E1 /* UIComponents.swift */; };
 		72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F06290C659300C980E1 /* PhotoPicker.swift */; };
+		7273FD972913411600B57B55 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD962913411600B57B55 /* OrdersView.swift */; };
 		9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		72391F022909CEB200C980E1 /* ListingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingUser.swift; sourceTree = "<group>"; };
 		72391F04290C48CE00C980E1 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		72391F06290C659300C980E1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		7273FD962913411600B57B55 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 				72391F002909C7CF00C980E1 /* CreateAccountView.swift */,
 				9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */,
 				72391F04290C48CE00C980E1 /* UIComponents.swift */,
+				7273FD962913411600B57B55 /* OrdersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */,
 				72391EB72907229F00C980E1 /* Listing.swift in Sources */,
+				7273FD972913411600B57B55 /* OrdersView.swift in Sources */,
 				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
 				72391F032909CEB200C980E1 /* ListingUser.swift in Sources */,
 				72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */,

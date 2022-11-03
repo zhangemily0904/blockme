@@ -6,18 +6,15 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 import Combine
 
 class UserViewModel: ObservableObject, Identifiable {
-  @Published var user: User
-  private var cancellables: Set<AnyCancellable> = []
-  var id = ""
+//  @Published var user: User
+  private let path: String = "users"
+  private let store = Firestore.firestore()
   
-  init(user: User) {
-    self.user = user
-    $user
-      .compactMap { $0.id }
-      .assign(to: \.id, on: self)
-      .store(in: &cancellables)
-  }
+  init() {}
+  
 }
