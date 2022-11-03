@@ -19,11 +19,6 @@ struct UsersView: View {
             UserDetailView(user: user)
           }
         }
-        Button(action: {
-          appViewModel.signOut()
-        }) {
-          Text("Sign Out").bold()
-        }
       }
     }
 }

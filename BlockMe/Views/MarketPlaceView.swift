@@ -11,12 +11,15 @@ struct MarketPlaceView: View {
   @ObservedObject var listingRepository: ListingRepository = ListingRepository()
   
     var body: some View {
-      VStack {
-        Text("Blocks Marketplace").font(.title)
-        GeometryReader { geometry in
-          List {
-            ForEach(listingRepository.listings) { listing in
-              ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+      ZStack {
+        Color("BlockMe Background").ignoresSafeArea()
+        VStack {
+          Text("Blocks Marketplace").font(.title)
+          GeometryReader { geometry in
+            List {
+              ForEach(listingRepository.listings) { listing in
+                ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+              }
             }
           }
         }

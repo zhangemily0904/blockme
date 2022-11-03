@@ -11,9 +11,18 @@ struct ProfileView: View {
   @EnvironmentObject var appViewModel: AppViewModel
   
     var body: some View {
-      VStack {
-        Text("Profile").font(.title)
-        Text(appViewModel.auth.currentUser?.uid ?? "nope")
+      ZStack {
+        Color("BlockMe Background").ignoresSafeArea()
+        
+        VStack {
+          Text("Profile").font(.title)
+          Text(appViewModel.auth.currentUser?.uid ?? "nope")
+          Button(action: {
+            appViewModel.signOut()
+          }) {
+            Text("Sign Out").bold()
+          }
+        }
       }
     }
 }

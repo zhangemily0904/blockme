@@ -14,18 +14,17 @@ struct AppView: View {
       NavigationView {
         if appViewModel.signedIn {
           TabView {
-            UsersView()
-              .tabItem {
-                Image(systemName: "person.2")
-                Text("Users")
-              }
-            
             MarketPlaceView()
               .tabItem {
                 Image(systemName: "house")
                 Text("Marketplace")
               }
             
+            OrdersView()
+              .tabItem {
+                Image(systemName: "bag.fill")
+                Text("Orders")
+              }
             ProfileView()
               .tabItem {
                 Image(systemName: "person")
