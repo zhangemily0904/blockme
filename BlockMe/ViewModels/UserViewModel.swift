@@ -63,4 +63,14 @@ class UserViewModel: ObservableObject, Identifiable {
     }
   }
   
+  func update(user: User) -> Bool {
+    do {
+      try store.collection(path).document(self.id).setData(from: user)
+      return true
+    } catch {
+      print("Unable to update user: \(error.localizedDescription).")
+      return false
+    }
+  }
+  
 }
