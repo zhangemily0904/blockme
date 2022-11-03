@@ -13,12 +13,17 @@ import UIKit
 
 class AppViewModel: ObservableObject {
   @Published var signedIn = false
-
+  @Published var userViewModel: UserViewModel? = nil
+  
   let auth = Auth.auth()
   let storage = Storage.storage().reference()
   
   var isSignedIn: Bool {
     auth.currentUser != nil
+  }
+  
+  var currentUserId: String? {
+    auth.currentUser?.uid
   }
   
   init() {
