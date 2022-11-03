@@ -54,7 +54,6 @@ class UserViewModel: ObservableObject, Identifiable {
 
     fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
       if error == nil && data != nil {
-        print("got image")
         self.profileImage = UIImage(data: data!)
         return
       }

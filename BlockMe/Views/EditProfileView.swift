@@ -14,6 +14,7 @@ struct EditProfileView: View {
   @State private var showErrorAlert = false
   @State private var venmoHandle = ""
   @State private var phoneNumber = ""
+  @State private var alertMsg = ""
   
     var body: some View {
       ZStack {
@@ -40,12 +41,17 @@ struct EditProfileView: View {
           Group{
             Button(action: {
               guard let user = userViewModel.user else {
-                // somehow user isn't loaded
+                return
+              }
+              guard FormValidator.validatePhoneNumber(number: phoneNumber) && !venmoHandle.isEmpty else {
+                alertMsg = "Venmo handle cannot be empty and phone number must be 10 digits long."
+                showErrorAlert = true
                 return
               }
               
               let newUser = User(firstName: user.firstName, lastName: user.lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: user.profileImageURL)
               guard userViewModel.update(user: newUser) else {
+                alertMsg = "There was an error updating your information. Please try again later."
                 showErrorAlert = true
                 return
               }
@@ -55,7 +61,11 @@ struct EditProfileView: View {
             }.buttonStyle(RedButton())
           }.frame(maxHeight: .infinity, alignment: .bottom)
         }
-        .alert("There was an error updating your information. Please try again later.", isPresented: $showErrorAlert) {
+        .onAppear {
+          venmoHandle = userViewModel.user?.venmoHandle ?? ""
+          phoneNumber = userViewModel.user?.phoneNumber ?? ""
+        }
+        .alert(alertMsg, isPresented: $showErrorAlert) {
           Button("Ok", role: .cancel) {
             showErrorAlert = false
           }

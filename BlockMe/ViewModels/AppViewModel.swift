@@ -43,32 +43,6 @@ class AppViewModel: ObservableObject {
     }
   }
   
-  func validatePhoneNumber(number: String) -> Bool {
-    let num = Int(number) ?? -1
-    if num == -1 {
-      print("Phone Number Error: not characters are numbers")
-      return false
-    }
-    if number.count != 10 {
-      print("Phone Number Error: invalid length, has to be 10 digits")
-      return false
-    }
-    print("Phone number is good")
-    return true
-  }
-
-  func isValidEmailAddr(email: String) -> Bool {
-    let emailValidationRegex = "^[\\p{L}0-9!#$%&'*+\\/=?^_`{|}~-][\\p{L}0-9.!#$%&'*+\\/=?^_`{|}~-]{0,63}@[\\p{L}0-9-]+(?:\\.[\\p{L}0-9-]{2,7})*$"  // 1
-
-    let emailValidationPredicate = NSPredicate(format: "SELF MATCHES %@", emailValidationRegex)  // 2
-
-    return emailValidationPredicate.evaluate(with: email)  // 3
-  }
-  
-  func validateFields(email: String, number: String) -> Bool {
-    return isValidEmailAddr(email: email) && validatePhoneNumber(number: number)
-  }
-  
   // signs a new user up by creating a new entry in the auth table.
   // creates a corresponding entry in the users table
   // uploads their profile image to cloud storage

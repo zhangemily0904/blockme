@@ -41,6 +41,7 @@
 		72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F06290C659300C980E1 /* PhotoPicker.swift */; };
 		7273FD972913411600B57B55 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD962913411600B57B55 /* OrdersView.swift */; };
 		7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9829136BB400B57B55 /* EditProfileView.swift */; };
+		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
 		9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		72391F06290C659300C980E1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		7273FD962913411600B57B55 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		7273FD9829136BB400B57B55 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +173,7 @@
 				72391ECD290765F300C980E1 /* UserViewModel.swift */,
 				72391EFC2909B06700C980E1 /* AppViewModel.swift */,
 				72391F06290C659300C980E1 /* PhotoPicker.swift */,
+				7273FD9A291376B200B57B55 /* FormValidator.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */,
 				72391E8F2906136700C980E1 /* AppView.swift in Sources */,
 				72391EB32907213300C980E1 /* Review.swift in Sources */,
 				72391E8D2906136700C980E1 /* BlockMeApp.swift in Sources */,
