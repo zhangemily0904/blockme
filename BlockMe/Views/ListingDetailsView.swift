@@ -28,21 +28,9 @@ struct ListingDetailsView: View {
         Text("Expires at \(listing.expirationTime)")
       }
     }.onAppear {
-      retrieveProfileImage()
-    }
-  }
-  
-  func retrieveProfileImage() {
-    let storageRef = Storage.storage().reference()
-    let fileRef = storageRef.child(listing.seller.profileImageURL)
-    
-    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-      if error == nil && data != nil {
-        profileImage = UIImage(data: data!)
-        return
+      StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) { image in
+        profileImage = image
       }
-      
-      print("Error fetching image of path \(listing.seller.profileImageURL)")
     }
   }
 }

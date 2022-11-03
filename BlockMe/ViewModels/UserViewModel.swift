@@ -31,7 +31,6 @@ class UserViewModel: ObservableObject, Identifiable {
           print("Error getting user info: \(error.localizedDescription)")
           return
         }
-        print("getting user info for \(self.id)")
         
         guard let dc = documentSnapshot else {
           print("failed to get document")
@@ -39,27 +38,16 @@ class UserViewModel: ObservableObject, Identifiable {
         }
         
         self.user = try? dc.data(as: User.self)
-        self.retrieveProfileImage()
+        
+        guard let user = self.user else {
+          print("Failed to parse user info.")
+          return
+        }
+        
+        StorageViewModel.retrieveProfileImage(imagePath: user.profileImageURL) { image in
+          self.profileImage = image
+        }
       }
-  }
-  
-  func retrieveProfileImage(){
-    guard let user = self.user else {
-      print("Can't retrieve image of a nil user.")
-      return
-    }
-    
-    let storageRef = Storage.storage().reference()
-    let fileRef = storageRef.child(user.profileImageURL)
-
-    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-      if error == nil && data != nil {
-        self.profileImage = UIImage(data: data!)
-        return
-      }
-      
-      print("Error fetching image of path \(user.profileImageURL) \(error!.localizedDescription)")
-    }
   }
   
   func update(user: User) -> Bool {

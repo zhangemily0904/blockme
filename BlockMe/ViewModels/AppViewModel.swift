@@ -56,7 +56,7 @@ class AppViewModel: ObservableObject {
       if let result = result {
         let userId = result.user.uid
         // upload image to cloud and return the URL
-        self.uploadImageToCloud(uid: userId, image: profileImage) { (path, error) in
+        StorageViewModel.uploadImageToCloud(uid: userId, image: profileImage) { (path, error) in
           guard let path = path else {
             if let error = error {
               completion(error.localizedDescription)
@@ -102,26 +102,6 @@ class AppViewModel: ObservableObject {
     } catch {
       print("Unable to add user: \(error.localizedDescription).")
       completion(error)
-    }
-  }
-  
-  private func uploadImageToCloud(uid: String, image: UIImage, completion: @escaping (String?, Error?) -> Void) {
-    let path = "images/\(uid).jpeg"
-    let storageRef = self.storage.child(path)
-    let data = image.jpegData(compressionQuality: 0.1)
-    
-    guard let data = data else {
-      completion(nil, nil)
-      return
-    }
-    let metadata = StorageMetadata()
-    metadata.contentType = "images/jpeg"
-    storageRef.putData(data, metadata: metadata) { (metadata, error)  in
-      guard error == nil else {
-        completion(nil, error)
-        return
-      }
-      completion(path, error)
     }
   }
 }
