@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct UsersView: View {
-    @ObservedObject var userRepository = UserRepository()
+  @EnvironmentObject var appViewModel: AppViewModel
+  @ObservedObject var userRepository = UserRepository()
+  
     var body: some View {
       VStack {
         Text("Users").font(.title)
@@ -16,6 +18,11 @@ struct UsersView: View {
           ForEach(userRepository.users) { user in
             UserDetailView(user: user)
           }
+        }
+        Button(action: {
+          appViewModel.signOut()
+        }) {
+          Text("Sign Out").bold()
         }
       }
     }

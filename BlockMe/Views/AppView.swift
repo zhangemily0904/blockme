@@ -8,19 +8,33 @@
 import SwiftUI
 
 struct AppView: View {
+  @EnvironmentObject var appViewModel: AppViewModel
+  
     var body: some View {
-      TabView {
-        UsersView()
-          .tabItem {
-            Image(systemName: "person.2")
-            Text("Users")
+      NavigationView {
+        if appViewModel.signedIn {
+          TabView {
+            UsersView()
+              .tabItem {
+                Image(systemName: "person.2")
+                Text("Users")
+              }
+            
+            MarketPlaceView()
+              .tabItem {
+                Image(systemName: "house")
+                Text("Marketplace")
+              }
+            
+            ProfileView()
+              .tabItem {
+                Image(systemName: "person")
+                Text("Profile")
+              }
           }
-        
-        MarketPlaceView()
-          .tabItem {
-            Image(systemName: "house")
-            Text("Marketplace")
-          }
+        } else {
+          LoginView()
+        }
       }
     }
 }
