@@ -40,6 +40,9 @@
 		72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F04290C48CE00C980E1 /* UIComponents.swift */; };
 		72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F06290C659300C980E1 /* PhotoPicker.swift */; };
 		7273FD972913411600B57B55 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD962913411600B57B55 /* OrdersView.swift */; };
+		7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9829136BB400B57B55 /* EditProfileView.swift */; };
+		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
+		7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9C291457B000B57B55 /* StorageViewModel.swift */; };
 		9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		72391F04290C48CE00C980E1 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		72391F06290C659300C980E1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		7273FD962913411600B57B55 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		7273FD9829136BB400B57B55 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		7273FD9C291457B000B57B55 /* StorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
 		9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +152,7 @@
 				9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */,
 				72391F04290C48CE00C980E1 /* UIComponents.swift */,
 				7273FD962913411600B57B55 /* OrdersView.swift */,
+				7273FD9829136BB400B57B55 /* EditProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +175,8 @@
 				72391ECD290765F300C980E1 /* UserViewModel.swift */,
 				72391EFC2909B06700C980E1 /* AppViewModel.swift */,
 				72391F06290C659300C980E1 /* PhotoPicker.swift */,
+				7273FD9A291376B200B57B55 /* FormValidator.swift */,
+				7273FD9C291457B000B57B55 /* StorageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -274,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */,
 				72391E8F2906136700C980E1 /* AppView.swift in Sources */,
 				72391EB32907213300C980E1 /* Review.swift in Sources */,
 				72391E8D2906136700C980E1 /* BlockMeApp.swift in Sources */,
@@ -282,6 +292,7 @@
 				72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */,
 				72391EC62907565200C980E1 /* UsersView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
+				7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */,
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */,
 				72391EB72907229F00C980E1 /* Listing.swift in Sources */,
@@ -292,6 +303,7 @@
 				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
+				7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,
 				72391ECC2907614A00C980E1 /* ListingDetailsView.swift in Sources */,

@@ -71,7 +71,7 @@ struct CreateAccountView: View {
       guard !firstName.isEmpty && !lastName.isEmpty && !venmoHandle.isEmpty && !phoneNumber.isEmpty else {
         return false
       }
-      return appViewModel.validateFields(email: email, number: phoneNumber)
+    return FormValidator.isValidEmailAddr(email: email) && FormValidator.validatePhoneNumber(number: phoneNumber)
     }
 }
 
