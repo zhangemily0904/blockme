@@ -21,7 +21,7 @@ struct CreateAccountView: View {
       ZStack{
         Color("BlockMe Background").ignoresSafeArea()
         VStack{
-          Text("Sign Up").font(.medLarge).padding(.top, 50).padding(.bottom, 5)
+          Text("Sign Up").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
           Text("Create an account. It's free").font(.regMed).padding(.bottom, 10)
           TextField("First Name", text: $firstName)
             .textFieldStyle(InputField())
