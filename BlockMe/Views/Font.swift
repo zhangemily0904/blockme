@@ -29,7 +29,7 @@ extension Font {
 struct PingFangSC {
   static let familyRoot   = "PingFangSC"
   
-  static let semibold     = "\(familyRoot)-SemiBold"
+  static let semibold     = "\(familyRoot)-Semibold"
   static let medium       = "\(familyRoot)-Medium"
   static let regular      = "\(familyRoot)-Regular"
   static let light        = "\(familyRoot)-Light"
