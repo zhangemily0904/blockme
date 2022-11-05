@@ -21,7 +21,7 @@ struct LoginView: View {
             Text("Image goes here").font(.title)
           }.frame(maxHeight: .infinity, alignment: .top)
           
-          Text("Hello Again!").font(.title)
+          Text("Hello Again!").font(.mediumSmallFont)
           TextField("Email", text: $email)
             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
