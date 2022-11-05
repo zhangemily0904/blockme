@@ -32,7 +32,7 @@ struct AppView: View {
               }
           }
         } else {
-          LoginView()
+          SplashView()
         }
       }
     }
