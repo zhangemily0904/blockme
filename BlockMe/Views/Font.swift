@@ -10,15 +10,15 @@ import SwiftUI
 
 
 extension Font {
-  static let logo = Font.custom(PingFangSC.semibold, size: 36)
   
-  static let semiLarge = Font.custom(PingFangSC.semibold, size: 32)
+  static let semiLarge = Font.custom(PingFangSC.semibold, size: 36)
   static let semiMed = Font.custom(PingFangSC.semibold, size: 16)
   static let semiSmall = Font.custom(PingFangSC.semibold, size: 14)
   
-  static let medLarge = Font.custom(PingFangSC.medium, size: 20)
-  static let medMed = Font.custom(PingFangSC.medium, size: 16)
-  static let medSmall = Font.custom(PingFangSC.medium, size: 12)
+  static let medLarge = Font.custom(PingFangSC.medium, size: 32)
+  static let medMed = Font.custom(PingFangSC.medium, size: 20)
+  static let medSmall = Font.custom(PingFangSC.medium, size: 16)
+  static let medTiny = Font.custom(PingFangSC.medium, size: 12)
   
   static let regLarge = Font.custom(PingFangSC.regular, size: 20)
   static let regMed = Font.custom(PingFangSC.regular, size: 16)
