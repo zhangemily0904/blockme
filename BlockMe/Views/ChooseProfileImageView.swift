@@ -26,6 +26,12 @@ struct ChooseProfileImageView: View {
         Color("BlockMe Background").ignoresSafeArea()
         
         VStack {
+          Group {
+            Text("Hello \(firstName)").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
+            Text("You are almost there. Upload a profile photo").font(.regMed).frame(maxWidth: 352)}.frame(alignment: .top)
+          
+          Spacer()
+          
           Image(uiImage: self.pickerResult.first ?? UIImage())
               .resizable()
               .frame(width: 200, height: 200)

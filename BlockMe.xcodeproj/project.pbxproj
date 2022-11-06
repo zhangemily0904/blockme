@@ -44,6 +44,8 @@
 		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
 		7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9C291457B000B57B55 /* StorageViewModel.swift */; };
 		9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */; };
+		CB5509452915EE510073243D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5509442915EE510073243D /* Font.swift */; };
+		CB550947291609550073243D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550946291609550073243D /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		7273FD9C291457B000B57B55 /* StorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
 		9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfileImageView.swift; sourceTree = "<group>"; };
+		CB5509442915EE510073243D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		CB550946291609550073243D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +154,11 @@
 				72391EFE2909C3C300C980E1 /* ProfileView.swift */,
 				72391F002909C7CF00C980E1 /* CreateAccountView.swift */,
 				9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */,
-				72391F04290C48CE00C980E1 /* UIComponents.swift */,
 				7273FD962913411600B57B55 /* OrdersView.swift */,
 				7273FD9829136BB400B57B55 /* EditProfileView.swift */,
+				CB550946291609550073243D /* SplashView.swift */,
+				72391F04290C48CE00C980E1 /* UIComponents.swift */,
+				CB5509442915EE510073243D /* Font.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				72391EB129071F3600C980E1 /* User.swift in Sources */,
 				72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */,
 				72391EC62907565200C980E1 /* UsersView.swift in Sources */,
+				CB550947291609550073243D /* SplashView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
 				7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */,
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
@@ -303,6 +310,7 @@
 				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
+				CB5509452915EE510073243D /* Font.swift in Sources */,
 				7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,

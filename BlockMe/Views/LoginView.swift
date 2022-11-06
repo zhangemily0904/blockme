@@ -18,20 +18,19 @@ struct LoginView: View {
         
         VStack {
           Group {
-            Text("Image goes here").font(.title)
-          }.frame(maxHeight: .infinity, alignment: .top)
+            Image("welcome")
+              .resizable()
+              .frame(width: 201.0, height: 250.0)
+          }
           
-          Text("Hello Again!").font(.title)
+          Text("Hello Again!").font(.medLarge)
           TextField("Email", text: $email)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                            .autocapitalization(.none)
-                            .disableAutocorrection(true)
+            .textFieldStyle(InputField())
           SecureField("Password", text: $password)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                            .autocapitalization(.none)
-                            .disableAutocorrection(true)
+            .textFieldStyle(InputField())
+          
+          // TODO: password recovery
+          Text("Forgot Password?").font(.regSmall).frame(width: 352, alignment: .trailing)
           
           if let msg = errorMsg {
             Text(msg).foregroundColor(Color.red)
@@ -48,11 +47,11 @@ struct LoginView: View {
               }
             }
           }) {
-            Text("Log In")
-          }.buttonStyle(RedButton())
+            Text("Log In").font(.semiMed)
+          }.buttonStyle(RedButton()).padding(.top, 70)
           
           Group{
-            NavigationLink("Not a member? Register now", destination: CreateAccountView())
+            NavigationLink("Not a member? Register now", destination: CreateAccountView()).font(.regSmall).foregroundColor(Color.black)
           }.frame(maxHeight: .infinity, alignment: .bottom)
           
         }
