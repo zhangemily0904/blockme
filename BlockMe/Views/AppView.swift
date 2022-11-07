@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppView: View {
   @EnvironmentObject var appViewModel: AppViewModel
-  
+
     var body: some View {
       NavigationView {
         if appViewModel.signedIn {
@@ -25,12 +25,14 @@ struct AppView: View {
                 Image(systemName: "bag.fill")
                 Text("Orders")
               }
+            
             ProfileView()
               .tabItem {
                 Image(systemName: "person")
                 Text("Profile")
               }
           }
+//          .disabled(appViewModel.tabsDisabled)
         } else {
           SplashView()
         }

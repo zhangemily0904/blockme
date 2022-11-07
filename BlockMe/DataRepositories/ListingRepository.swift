@@ -49,4 +49,18 @@ class ListingRepository: ObservableObject {
 
     }
   }
+  
+  func update(listing: Listing) -> Bool {
+    do {
+      guard let id = listing.id else{
+        print("error retrieving listing id")
+        return false
+      }
+      try store.collection(path).document(id).setData(from: listing)
+      return true
+    } catch {
+      print("Unable to update listing: \(error.localizedDescription).")
+      return false
+    }
+  }
 }

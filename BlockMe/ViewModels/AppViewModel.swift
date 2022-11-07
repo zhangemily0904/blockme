@@ -14,6 +14,7 @@ import UIKit
 class AppViewModel: ObservableObject {
   @Published var signedIn = false
   @Published var userViewModel: UserViewModel? = nil
+  @Published var tabsDisabled = false
   
   let auth = Auth.auth()
   let storage = Storage.storage().reference()

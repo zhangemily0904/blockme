@@ -36,7 +36,6 @@ struct WhiteButton: ButtonStyle {
     configuration.label
       .bold()
       .frame(width: 200, height: 40)
-    
       .background(
         RoundedRectangle(cornerRadius: 10, style: .continuous)
           .stroke(.black)

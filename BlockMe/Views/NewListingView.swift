@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewListingFormView: View {
+struct NewListingView: View {
   typealias LocationSelection = (DiningLocation, Bool)
   @Binding var show: Bool
   @State var expirationTime: Date = Date.now
@@ -27,6 +27,7 @@ struct NewListingFormView: View {
   var body: some View {
     ZStack {
       if show {
+        
         // semi-transparent background and popup window
         Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
 
@@ -42,7 +43,7 @@ struct NewListingFormView: View {
             .padding()
             .autocapitalization(.none)
             .disableAutocorrection(true)
-          Menu {
+          Menu { //TODO: make menu stay open after first selection
             ForEach(0..<locations.count) { i in
               HStack {
                 Button(action: {
@@ -52,11 +53,9 @@ struct NewListingFormView: View {
                       if locations[i].1 {
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundColor(.green)
-                                .animation(.easeIn)
                       } else {
                           Image(systemName: "circle")
                               .foregroundColor(.primary)
-                              .animation(.easeOut)
                       }
                       Text(locations[i].0.rawValue)
                     }
@@ -66,6 +65,8 @@ struct NewListingFormView: View {
           } label: {
             Label("Locations", systemImage: "plus")
           }
+          
+          //TODO: checks if fields are filled
           Button(action:{
             guard let seller = appViewModel.userViewModel?.user else {
               // TODO: Replace with alert
@@ -83,12 +84,15 @@ struct NewListingFormView: View {
             
             let newListing = Listing(seller: listingSeller, price: price, expirationTime: expirationTime, availableLocations: availableLocations)
             listingRepository.add(listing: newListing)
+            
+            show = false
           }){
             Text("Sell")
           }.buttonStyle(RedButton())
       
           Button("Cancel", role: .cancel) {
             show = false
+            appViewModel.tabsDisabled.toggle()
           }.buttonStyle(WhiteButton())
         }
         
