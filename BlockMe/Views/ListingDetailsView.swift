@@ -15,7 +15,8 @@ struct ListingDetailsView: View {
   @State var profileImage: UIImage? = nil
   
   var body: some View {
-    HStack {
+    
+    HStack() {
       if let profileImage = profileImage {
         Image(uiImage: profileImage)
           .resizable()
@@ -28,7 +29,7 @@ struct ListingDetailsView: View {
         Text("Expires at \(listing.expirationTime)")
       }
     }
-    .background(.white)
+    .background(Color("BlockMe Yellow"))
     .frame(width: 332, height: 121)
     .onAppear {
       StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) { image in

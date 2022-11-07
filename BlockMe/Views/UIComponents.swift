@@ -30,5 +30,16 @@ struct InputField: TextFieldStyle {
       }
       .autocapitalization(.none)
       .disableAutocorrection(true)
+
+struct WhiteButton: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .bold()
+      .frame(width: 200, height: 40)
+    
+      .background(
+        RoundedRectangle(cornerRadius: 10, style: .continuous)
+          .stroke(.black)
+      )
   }
 }

@@ -17,16 +17,18 @@ struct MarketPlaceView: View {
      
       NavigationView {
         ZStack {
-          Color("BlockMe Background").ignoresSafeArea()
-          VStack() {
+          Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
+            currentTime = Date.now
+          }
+          VStack {
             Text("Blocks Marketplace").font(.title)
             GeometryReader { geometry in
-                let currentListings = listingRepository.listings.filter {
-                  $0.buyer == nil && $0.expirationTime > currentTime
-                }
-                ForEach(currentListings) { listing in
-                  ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
-                }
+              let currentListings = listingRepository.listings.filter {
+                $0.buyer == nil && $0.expirationTime > currentTime
+              }
+              ForEach(currentListings) { listing in
+                ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+              }
               
             }
             
@@ -46,12 +48,9 @@ struct MarketPlaceView: View {
                 .buttonStyle(PlainButtonStyle())
               }
             }
-            NewListingFormView(show: $showListingForm, listingRepository: listingRepository)
-            
-          }.onReceive(timer) { time in
-            currentTime = Date.now
           }
-          
+          NewListingFormView(show: $showListingForm, listingRepository: listingRepository)
+
         }
       }
         

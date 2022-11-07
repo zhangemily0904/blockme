@@ -28,6 +28,8 @@ struct NewListingFormView: View {
     ZStack {
       if show {
         // semi-transparent background and popup window
+        Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
+
         VStack(alignment: .center, spacing: 0) {
           Text(title)
             .font(Font.system(size: 23, weight: .semibold))
@@ -84,9 +86,13 @@ struct NewListingFormView: View {
           }){
             Text("Sell")
           }.buttonStyle(RedButton())
+      
+          Button("Cancel", role: .cancel) {
+            show = false
+          }.buttonStyle(WhiteButton())
         }
         
-        .frame(maxWidth: 347, maxHeight: .infinity)
+        .frame(width: 347, height: 585)
         .background(Color.white)
         .cornerRadius(16)
   
