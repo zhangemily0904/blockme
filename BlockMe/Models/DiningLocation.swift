@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DiningLocation: String, Codable {
+enum DiningLocation: String, CaseIterable, Codable {
   case ABP = "Au Bon Pain at Skibo Cafe"
   case BackBarGrill = "Back Bar Grill"
   case Burger412 = "Burger 412 Rohr Commons"

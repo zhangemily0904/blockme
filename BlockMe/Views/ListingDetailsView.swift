@@ -27,7 +27,10 @@ struct ListingDetailsView: View {
         Text(String(format: "$%.2f", listing.price))
         Text("Expires at \(listing.expirationTime)")
       }
-    }.onAppear {
+    }
+    .background(.white)
+    .frame(width: 332, height: 121)
+    .onAppear {
       StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) { image in
         profileImage = image
       }

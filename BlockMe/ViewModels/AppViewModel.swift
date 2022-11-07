@@ -28,6 +28,10 @@ class AppViewModel: ObservableObject {
   
   init() {
     signedIn = isSignedIn
+    
+    if signedIn {
+      self.loadUser()
+    }
   }
   
   func signIn(email: String, password: String, completion: @escaping (Error?) -> Void) {
@@ -39,6 +43,7 @@ class AppViewModel: ObservableObject {
       
       // success
       self.signedIn = true
+      self.loadUser()
       completion(error)
     }
   }
@@ -74,6 +79,7 @@ class AppViewModel: ObservableObject {
               return
             }
             self.signedIn = true
+            self.loadUser()
           }
         }
       }
@@ -103,5 +109,13 @@ class AppViewModel: ObservableObject {
       print("Unable to add user: \(error.localizedDescription).")
       completion(error)
     }
+  }
+  
+  private func loadUser() {
+    guard let uid = self.currentUserId else {
+      print("error getting signed in user info.")
+      return
+    }
+    userViewModel = UserViewModel(id: uid)
   }
 }

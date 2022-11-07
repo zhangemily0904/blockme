@@ -59,5 +59,4 @@ class UserViewModel: ObservableObject, Identifiable {
       return false
     }
   }
-  
 }
