@@ -11,29 +11,28 @@ struct PurchaseListingView: View {
   typealias LocationSelection = (DiningLocation, Bool)
   @Binding var show: Bool
   @Binding var listing: Listing?
+  @Binding var profileImage: UIImage?
   @State var showErrorAlert = false
   @State private var alertMsg = ""
-  @State var profileImage: UIImage? = nil
+  
 
   @State var selectedLocation: DiningLocation? = nil
   @ObservedObject var listingRepository: ListingRepository
   @EnvironmentObject var appViewModel: AppViewModel
-  var viewWidth:CGFloat = 347
-
   
   var body: some View {
     ZStack {
       if show {
         // semi-transparent background and popup window
         Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
-
+        
         VStack(alignment: .center, spacing: 0) {
           
           if let listing = listing {
             if let profileImage = profileImage {
               Image(uiImage: profileImage)
                 .resizable()
-                .frame(width: viewWidth / 5, height: viewWidth / 5) // dynamically scale size of profile image
+                .frame(width: 100, height: 100)
                 .clipShape(Circle())
             }
             Text("Seller:\(listing.seller.firstName)")
@@ -47,8 +46,8 @@ struct PurchaseListingView: View {
                   }) {
                     HStack{
                       if listing.availableLocations[i].rawValue == selectedLocation?.rawValue ?? "" {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.green)
+                        Image(systemName: "checkmark")
+                          .foregroundColor(.green)
                       }
                       Text(listing.availableLocations[i].rawValue)
                     }
@@ -106,16 +105,7 @@ struct PurchaseListingView: View {
         .background(Color.white)
         .cornerRadius(16)
         
-  
-      }
-    }
-    .onAppear {
-      if let listing = listing {
-        StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) { image in
-          profileImage = image
-        }
-      
-      
+        
       }
     }
   }

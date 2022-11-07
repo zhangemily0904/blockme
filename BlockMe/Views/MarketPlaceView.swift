@@ -14,6 +14,8 @@ struct MarketPlaceView: View {
   @State var showNewListingView = false
   @State var showPurchaseView = false
   @State var selectedListing: Listing? = nil
+  @State var selectedListingProfile: UIImage? = nil
+
   let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
  
 
@@ -36,6 +38,7 @@ struct MarketPlaceView: View {
                   Button(action:{
                     showPurchaseView.toggle()
                     selectedListing = listing
+                    StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
                   }){
                     ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
                   }
@@ -62,7 +65,7 @@ struct MarketPlaceView: View {
             }
           }
           
-          PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, listingRepository: listingRepository)
+          PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
           NewListingView(show: $showNewListingView, listingRepository: listingRepository)
         }
         
