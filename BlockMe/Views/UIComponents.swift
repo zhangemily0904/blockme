@@ -25,12 +25,14 @@ struct InputField: TextFieldStyle {
       .padding()
       .frame(width: 352, height: 64)
       .overlay {
-          RoundedRectangle(cornerRadius: 16, style: .continuous)
+        RoundedRectangle(cornerRadius: 16, style: .continuous)
           .stroke(Color.black, lineWidth: 2)
       }
       .autocapitalization(.none)
       .disableAutocorrection(true)
-
+  }
+}
+  
 struct WhiteButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
