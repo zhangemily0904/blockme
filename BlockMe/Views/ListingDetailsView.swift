@@ -26,6 +26,7 @@ struct ListingDetailsView: View {
       VStack(alignment: .leading) {
         Text(listing.seller.firstName).bold()
         Text(String(format: "$%.2f", listing.price))
+        // TODO: show time left instead
         Text("Expires at \(listing.expirationTime)")
         ForEach(0..<listing.availableLocations.count) { i in
           Text(listing.availableLocations[i].rawValue)

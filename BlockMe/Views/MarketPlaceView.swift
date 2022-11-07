@@ -33,7 +33,7 @@ struct MarketPlaceView: View {
               let currentListings = listingRepository.listings.filter {
                 $0.buyer == nil && $0.expirationTime > currentTime
               }
-              VStack(alignment: .center) { //TODO: the alignment center thingy no work
+              VStack(alignment: .center, spacing: 0) { //TODO: the alignment center thingy no work
                 ForEach(currentListings) { listing in
                   Button(action:{
                     showPurchaseView.toggle()
@@ -64,7 +64,6 @@ struct MarketPlaceView: View {
               }
             }
           }
-          
           PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
           NewListingView(show: $showNewListingView, listingRepository: listingRepository)
         }

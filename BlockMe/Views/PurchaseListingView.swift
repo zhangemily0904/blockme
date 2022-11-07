@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct PurchaseListingView: View {
-  typealias LocationSelection = (DiningLocation, Bool)
   @Binding var show: Bool
-  @Binding var listing: Listing?
+  @Binding var listing: Listing? 
   @Binding var profileImage: UIImage?
   @State var showErrorAlert = false
   @State private var alertMsg = ""
+  @State var expand = false
   
-
   @State var selectedLocation: DiningLocation? = nil
   @ObservedObject var listingRepository: ListingRepository
   @EnvironmentObject var appViewModel: AppViewModel
+  
+  func getFormattedDate(date: Date) -> String{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM d, y, HH:mm"
+    return dateFormatter.string(from: date)
+  }
   
   var body: some View {
     ZStack {
@@ -35,32 +40,45 @@ struct PurchaseListingView: View {
                 .frame(width: 100, height: 100)
                 .clipShape(Circle())
             }
-            Text("Seller:\(listing.seller.firstName)")
+            Text("Seller: \(listing.seller.firstName)")
             Text("Price: \(String(listing.price))")
-            Text("Expiration Date: \(DateFormatter().string(from: listing.expirationTime))")
-            Menu {
-              ForEach(0..<listing.availableLocations.count) { i in
-                HStack {
-                  Button(action: {
-                    selectedLocation = listing.availableLocations[i]
-                  }) {
-                    HStack{
-                      if listing.availableLocations[i].rawValue == selectedLocation?.rawValue ?? "" {
-                        Image(systemName: "checkmark")
-                          .foregroundColor(.green)
+            Text("Expiration Date: \(getFormattedDate(date: listing.expirationTime))")
+            
+            // dropdown
+            VStack(alignment: .leading, spacing: 20){
+              HStack {
+                Text("Locations")
+                  .fontWeight(.bold)
+                Image(systemName: "chevron.down")
+              }.onTapGesture{
+                self.expand.toggle()
+              }
+              if expand {
+                ForEach(0..<listing.availableLocations.count) { i in
+                  HStack {
+                    Button(action: {
+                      selectedLocation = listing.availableLocations[i]
+                    }) {
+                      HStack{
+                        if selectedLocation == listing.availableLocations[i] {
+                          Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                        }
+                        Text(listing.availableLocations[i].rawValue)
+                          .foregroundColor(.black)
                       }
-                      Text(listing.availableLocations[i].rawValue)
                     }
                   }
-                  .buttonStyle(BorderlessButtonStyle())
                 }
-                
               }
-            } label: {
-              Label(title: {Text("\(selectedLocation?.rawValue ?? "Locations")")},
-                    icon: {Image(systemName: "plus")})
             }
-            
+            .frame(width: 289)
+            .padding()
+            .background(
+              RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(.black)
+            )
+          
           }
           NavigationLink(destination: TransactionView()) {
             Text("Buy")
@@ -72,9 +90,9 @@ struct PurchaseListingView: View {
               )
           }
           .simultaneousGesture(TapGesture().onEnded{
-            show = false
-            //TODO: set buyer and seller status
             if var listing = listing {
+              show = false
+              //TODO: set buyer and seller status
               guard let user = appViewModel.userViewModel?.user else {
                 // TODO: Replace with alert
                 print("error getting user information")
@@ -89,6 +107,7 @@ struct PurchaseListingView: View {
                 return
               }
             }
+            
           })
           .alert(alertMsg, isPresented: $showErrorAlert) {
             Button("Ok", role: .cancel) {
@@ -104,8 +123,6 @@ struct PurchaseListingView: View {
         .frame(width: 347, height: 585)
         .background(Color.white)
         .cornerRadius(16)
-        
-        
       }
     }
   }

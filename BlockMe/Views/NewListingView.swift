@@ -15,7 +15,8 @@ struct NewListingView: View {
   @State var locations: [LocationSelection] = []
   @ObservedObject var listingRepository: ListingRepository
   @EnvironmentObject var appViewModel: AppViewModel
-  
+  @State var expand = false
+
   var title: String = "Start selling blocks it's easy and free"
   
   let formatter: NumberFormatter = {
@@ -43,29 +44,43 @@ struct NewListingView: View {
             .padding()
             .autocapitalization(.none)
             .disableAutocorrection(true)
-          Menu { //TODO: make menu stay open after first selection
-            ForEach(0..<locations.count) { i in
+          VStack(alignment: .leading, spacing: 20){
               HStack {
-                Button(action: {
-                  locations[i].1 = locations[i].1 ? false : true
-                }) {
-                    HStack{
-                      if locations[i].1 {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(.green)
-                      } else {
-                          Image(systemName: "circle")
-                              .foregroundColor(.primary)
+                Text("Locations")
+                  .fontWeight(.bold)
+                Image(systemName: "chevron.down")
+              }.onTapGesture{
+                self.expand.toggle()
+              }
+              if expand {
+                ForEach(0..<locations.count) { i in
+                  HStack {
+                    Button(action: {
+                      locations[i].1 = locations[i].1 ? false : true
+                    }) {
+                      HStack{
+                        if locations[i].1 {
+                          Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                        } else {
+                          Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                        }
+                        Text(locations[i].0.rawValue)
+                          .foregroundColor(.black)
                       }
-                      Text(locations[i].0.rawValue)
                     }
-                }.buttonStyle(BorderlessButtonStyle())
+                  }
+                }
               }
             }
-          } label: {
-            Label("Locations", systemImage: "plus")
-          }
-          
+            .frame(width: 289)
+            .padding()
+            .background(
+              RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(.black)
+            )
+
           //TODO: checks if fields are filled
           Button(action:{
             guard let seller = appViewModel.userViewModel?.user else {
@@ -81,8 +96,8 @@ struct NewListingView: View {
                 availableLocations.append(location.0)
               }
             }
-            
-            let newListing = Listing(seller: listingSeller, price: price, expirationTime: expirationTime, availableLocations: availableLocations)
+            // nil fields not showing up in firebase
+            let newListing = Listing(seller: listingSeller, buyer: nil, price: price, expirationTime: expirationTime, completedTime: nil, availableLocations: availableLocations, buyerStatus: nil, sellerStatus: nil)
             listingRepository.add(listing: newListing)
             
             show = false
@@ -108,3 +123,4 @@ struct NewListingView: View {
     }
   }
 }
+
