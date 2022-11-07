@@ -117,7 +117,7 @@ struct PurchaseListingView: View {
           Button("Cancel", role: .cancel) {
             show = false
             appViewModel.tabsDisabled.toggle()
-          }.buttonStyle(WhiteButton())
+          }.buttonStyle(SmallWhiteButton())
         }
         
         .frame(width: 347, height: 585)
