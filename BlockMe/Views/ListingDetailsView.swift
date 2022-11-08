@@ -15,7 +15,8 @@ struct ListingDetailsView: View {
   @State var profileImage: UIImage? = nil
   
   var body: some View {
-    HStack {
+    
+    HStack() {
       if let profileImage = profileImage {
         Image(uiImage: profileImage)
           .resizable()
@@ -25,9 +26,17 @@ struct ListingDetailsView: View {
       VStack(alignment: .leading) {
         Text(listing.seller.firstName).bold()
         Text(String(format: "$%.2f", listing.price))
+        // TODO: show time left instead
         Text("Expires at \(listing.expirationTime)")
+        ForEach(0..<listing.availableLocations.count) { i in
+          Text(listing.availableLocations[i].rawValue)
+        }
       }
-    }.onAppear {
+    }
+    .background(Color("BlockMe Yellow"))
+    .frame(width: 332, height: 121)
+    .foregroundColor(.black)
+    .onAppear {
       StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) { image in
         profileImage = image
       }

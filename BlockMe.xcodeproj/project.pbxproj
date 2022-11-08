@@ -36,16 +36,19 @@
 		72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EFC2909B06700C980E1 /* AppViewModel.swift */; };
 		72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EFE2909C3C300C980E1 /* ProfileView.swift */; };
 		72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F002909C7CF00C980E1 /* CreateAccountView.swift */; };
-		72391F032909CEB200C980E1 /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F022909CEB200C980E1 /* ListingUser.swift */; };
 		72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F04290C48CE00C980E1 /* UIComponents.swift */; };
 		72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F06290C659300C980E1 /* PhotoPicker.swift */; };
 		7273FD972913411600B57B55 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD962913411600B57B55 /* OrdersView.swift */; };
 		7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9829136BB400B57B55 /* EditProfileView.swift */; };
 		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
 		7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9C291457B000B57B55 /* StorageViewModel.swift */; };
+		9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A229180FFF00A5ACB5 /* NewListingView.swift */; };
+		9F3843A52918AA6A00A5ACB5 /* PurchaseListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */; };
+		9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A82918DA2800A5ACB5 /* TransactionView.swift */; };
 		9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */; };
 		CB5509452915EE510073243D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5509442915EE510073243D /* Font.swift */; };
 		CB550947291609550073243D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550946291609550073243D /* SplashView.swift */; };
+		9FFC5CB92915964900BF992A /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC5CB82915964900BF992A /* ListingUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,16 +73,19 @@
 		72391EFC2909B06700C980E1 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		72391EFE2909C3C300C980E1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		72391F002909C7CF00C980E1 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
-		72391F022909CEB200C980E1 /* ListingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingUser.swift; sourceTree = "<group>"; };
 		72391F04290C48CE00C980E1 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		72391F06290C659300C980E1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		7273FD962913411600B57B55 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		7273FD9829136BB400B57B55 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		7273FD9C291457B000B57B55 /* StorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
+		9F3843A229180FFF00A5ACB5 /* NewListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingView.swift; sourceTree = "<group>"; };
+		9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListingView.swift; sourceTree = "<group>"; };
+		9F3843A82918DA2800A5ACB5 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfileImageView.swift; sourceTree = "<group>"; };
 		CB5509442915EE510073243D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CB550946291609550073243D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		9FFC5CB82915964900BF992A /* ListingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,9 @@
 				CB550946291609550073243D /* SplashView.swift */,
 				72391F04290C48CE00C980E1 /* UIComponents.swift */,
 				CB5509442915EE510073243D /* Font.swift */,
+				9F3843A229180FFF00A5ACB5 /* NewListingView.swift */,
+				9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */,
+				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,7 +179,7 @@
 				72391EB22907213300C980E1 /* Review.swift */,
 				72391EB42907220F00C980E1 /* DiningLocation.swift */,
 				72391EB62907229F00C980E1 /* Listing.swift */,
-				72391F022909CEB200C980E1 /* ListingUser.swift */,
+				9FFC5CB82915964900BF992A /* ListingUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,26 +303,29 @@
 				72391EB32907213300C980E1 /* Review.swift in Sources */,
 				72391E8D2906136700C980E1 /* BlockMeApp.swift in Sources */,
 				72391EB9290730F100C980E1 /* UserRepository.swift in Sources */,
+				9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */,
 				72391EB129071F3600C980E1 /* User.swift in Sources */,
 				72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */,
 				72391EC62907565200C980E1 /* UsersView.swift in Sources */,
 				CB550947291609550073243D /* SplashView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
 				7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */,
+				9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */,
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */,
 				72391EB72907229F00C980E1 /* Listing.swift in Sources */,
 				7273FD972913411600B57B55 /* OrdersView.swift in Sources */,
 				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
-				72391F032909CEB200C980E1 /* ListingUser.swift in Sources */,
 				72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */,
 				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
+				9FFC5CB92915964900BF992A /* ListingUser.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				CB5509452915EE510073243D /* Font.swift in Sources */,
 				7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,
+				9F3843A52918AA6A00A5ACB5 /* PurchaseListingView.swift in Sources */,
 				72391ECC2907614A00C980E1 /* ListingDetailsView.swift in Sources */,
 				72391EBD290736E900C980E1 /* UserDetailView.swift in Sources */,
 			);

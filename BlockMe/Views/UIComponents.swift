@@ -25,10 +25,34 @@ struct InputField: TextFieldStyle {
       .padding()
       .frame(width: 352, height: 64)
       .overlay {
-          RoundedRectangle(cornerRadius: 16, style: .continuous)
+        RoundedRectangle(cornerRadius: 16, style: .continuous)
           .stroke(Color.black, lineWidth: 2)
       }
       .autocapitalization(.none)
       .disableAutocorrection(true)
+  }
+}
+  
+struct SmallWhiteButton: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .bold()
+      .frame(width: 200, height: 40)
+      .background(
+        RoundedRectangle(cornerRadius: 16, style: .continuous)
+          .stroke(.black)
+      )
+  }
+}
+
+struct SmallRedButton: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .bold()
+      .frame(width: 200, height: 40)
+      .foregroundColor(Color.white)
+      .background(
+        RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color("BlockMe Red"))
+      )
   }
 }
