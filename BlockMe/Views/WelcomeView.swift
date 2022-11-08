@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    
+  
   var body: some View {
     ZStack{
       Color("BlockMe Background").ignoresSafeArea()
@@ -33,7 +33,7 @@ struct WelcomeView: View {
       }
     }
   }
-    
+
 }
 
 struct WelcomeView_Previews: PreviewProvider {

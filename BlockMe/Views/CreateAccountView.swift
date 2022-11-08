@@ -4,7 +4,6 @@
 //
 //  Created by Brian Chou on 10/26/22.
 //
-
 import SwiftUI
 import iPhoneNumberField
 
@@ -70,7 +69,7 @@ struct CreateAccountView: View {
 }
 
 struct CreateAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateAccountView()
-    }
+  static var previews: some View {
+    CreateAccountView()
+  }
 }
