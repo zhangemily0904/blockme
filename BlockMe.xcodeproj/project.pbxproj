@@ -118,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		721EF535291B045000950DE4 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
+				721EF533291AF18900950DE4 /* TransactionPendingView.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
 		72391E802906136700C980E1 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +170,7 @@
 		72391E9A2906137800C980E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				721EF535291B045000950DE4 /* Transaction */,
 				72391E8E2906136700C980E1 /* AppView.swift */,
 				72391EBC290736E900C980E1 /* UserDetailView.swift */,
 				72391EC52907565200C980E1 /* UsersView.swift */,
@@ -177,9 +187,7 @@
 				CB5509442915EE510073243D /* Font.swift */,
 				9F3843A229180FFF00A5ACB5 /* NewListingView.swift */,
 				9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */,
-				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
 				CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */,
-				721EF533291AF18900950DE4 /* TransactionPendingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

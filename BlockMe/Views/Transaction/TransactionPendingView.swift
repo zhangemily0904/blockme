@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TransactionPendingView: View {
-  @ObservedObject var listingRepository: ListingRepository = ListingRepository()
+  @ObservedObject var listingRepository: ListingRepository
   @ObservedObject var listingViewModel: ListingViewModel
   var isSeller: Bool
   @State var showErrorAlert = false
