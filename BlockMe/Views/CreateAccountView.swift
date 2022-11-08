@@ -4,8 +4,8 @@
 //
 //  Created by Brian Chou on 10/26/22.
 //
-
 import SwiftUI
+import iPhoneNumberField
 
 struct CreateAccountView: View {
   @EnvironmentObject var appViewModel: AppViewModel
@@ -24,21 +24,27 @@ struct CreateAccountView: View {
           Text("Sign Up").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
           Text("Create an account. It's free").font(.regMed).padding(.bottom, 10)
           TextField("First Name", text: $firstName)
-            .textFieldStyle(InputField())
+            .textFieldStyle(CapitalizationInputField())
           TextField("Last Name", text: $lastName)
-            .textFieldStyle(InputField())
+            .textFieldStyle(CapitalizationInputField())
           TextField("Email", text: $email)
             .textFieldStyle(InputField())
           SecureField("Password", text: $password)
             .textFieldStyle(InputField())
-          TextField("Venmo Handle", text: $venmoHandle)
+          TextField("Venmo Handle", value: $venmoHandle, formatter: VenmoFormatter())
             .textFieldStyle(InputField())
-          TextField("Phone Number", text: $phoneNumber)
-            .textFieldStyle(InputField())
+          iPhoneNumberField("Phone Number", text: $phoneNumber)
+            .flagHidden(false)
+            .flagSelectable(true)
+            .padding()
+            .frame(width: 352, height: 64)
+            .overlay {
+              RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.black, lineWidth: 2)
+            }
           
-          NavigationLink(destination: ChooseProfileImageView(email: email, password: password, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, venmoHandle: venmoHandle)) {
-            Text("Continue")
-              .bold()
+          NavigationLink(destination: ChooseProfileImageView(email: email, password: password, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, venmoHandle: "@\(venmoHandle)")) {
+            Text("Continue").font(.medSmall)
               .frame(width: 352, height: 57)
               .foregroundColor(Color.white)
               .background(
@@ -58,12 +64,12 @@ struct CreateAccountView: View {
       guard !firstName.isEmpty && !lastName.isEmpty && !venmoHandle.isEmpty && !phoneNumber.isEmpty else {
         return false
       }
-    return FormValidator.isValidEmailAddr(email: email) && FormValidator.validatePhoneNumber(number: phoneNumber)
+    return FormValidator.validateFields(email: email, number: phoneNumber)
     }
 }
 
 struct CreateAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateAccountView()
-    }
+  static var previews: some View {
+    CreateAccountView()
+  }
 }

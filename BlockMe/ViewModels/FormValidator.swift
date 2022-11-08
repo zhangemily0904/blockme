@@ -8,18 +8,9 @@
 import Foundation
 
 class FormValidator {
-  static func validatePhoneNumber(number: String) -> Bool {
-    let num = Int(number) ?? -1
-    if num == -1 {
-      print("Phone Number Error: not characters are numbers")
-      return false
-    }
-    if number.count != 10 {
-      print("Phone Number Error: invalid length, has to be 10 digits")
-      return false
-    }
-    print("Phone number is good")
-    return true
+  static func isValidPhoneNumber(number: String) -> Bool {
+    let phonePattern = #"^\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}$"#
+    return number.range(of: phonePattern, options: .regularExpression) != nil
   }
 
   static func isValidEmailAddr(email: String) -> Bool {
@@ -29,6 +20,6 @@ class FormValidator {
   }
   
   static func validateFields(email: String, number: String) -> Bool {
-    return isValidEmailAddr(email: email) && validatePhoneNumber(number: number)
+    return isValidEmailAddr(email: email) && isValidPhoneNumber(number: number)
   }
 }

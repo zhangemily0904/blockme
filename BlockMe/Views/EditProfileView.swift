@@ -43,7 +43,7 @@ struct EditProfileView: View {
               guard let user = userViewModel.user else {
                 return
               }
-              guard FormValidator.validatePhoneNumber(number: phoneNumber) && !venmoHandle.isEmpty else {
+              guard FormValidator.isValidPhoneNumber(number: phoneNumber) && !venmoHandle.isEmpty else {
                 alertMsg = "Venmo handle cannot be empty and phone number must be 10 digits long."
                 showErrorAlert = true
                 return
