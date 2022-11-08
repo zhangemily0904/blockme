@@ -40,6 +40,7 @@
 		72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F002909C7CF00C980E1 /* CreateAccountView.swift */; };
 		72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F04290C48CE00C980E1 /* UIComponents.swift */; };
 		72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F06290C659300C980E1 /* PhotoPicker.swift */; };
+		724BFFFE291B05C400448B0D /* TransactionMeetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724BFFFD291B05C400448B0D /* TransactionMeetUpView.swift */; };
 		7273FD972913411600B57B55 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD962913411600B57B55 /* OrdersView.swift */; };
 		7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9829136BB400B57B55 /* EditProfileView.swift */; };
 		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
@@ -82,6 +83,7 @@
 		72391F002909C7CF00C980E1 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		72391F04290C48CE00C980E1 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		72391F06290C659300C980E1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		724BFFFD291B05C400448B0D /* TransactionMeetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMeetUpView.swift; sourceTree = "<group>"; };
 		7273FD962913411600B57B55 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		7273FD9829136BB400B57B55 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
 				721EF533291AF18900950DE4 /* TransactionPendingView.swift */,
+				724BFFFD291B05C400448B0D /* TransactionMeetUpView.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				CBCC7137291ADBE400C30C35 /* VenmoFormatter.swift in Sources */,
 				CB5509452915EE510073243D /* Font.swift in Sources */,
+				724BFFFE291B05C400448B0D /* TransactionMeetUpView.swift in Sources */,
 				7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,

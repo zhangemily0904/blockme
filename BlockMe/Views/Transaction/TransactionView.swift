@@ -26,7 +26,7 @@ struct TransactionView: View {
             TransactionPendingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
           }
           else if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == SellerStatus.acceptedTransaction {
-//            TransactionMeetUpView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+            TransactionMeetUpView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
           }
         }
       }
