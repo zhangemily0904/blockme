@@ -63,4 +63,11 @@ class ListingRepository: ObservableObject {
       return false
     }
   }
+  
+  func getCurrentListingForUser(uid: String) -> Listing? {
+    let l = self.listings.filter {
+      $0.seller.id == uid && $0.expirationTime > Date.now && $0.buyer == nil
+    }
+    return l.first
+  }
 }

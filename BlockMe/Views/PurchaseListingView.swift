@@ -92,14 +92,22 @@ struct PurchaseListingView: View {
           .simultaneousGesture(TapGesture().onEnded{
             if var listing = listing {
               show = false
-              //TODO: set buyer and seller status
               guard let user = appViewModel.userViewModel?.user else {
-                // TODO: Replace with alert
-                print("error getting user information")
+                alertMsg = "error getting user information"
+                showErrorAlert = true
                 return
               }
-              let buyer = ListingUser(firstName: user.firstName, lastName: user.lastName, venmoHandle: user.venmoHandle, phoneNumber: user.phoneNumber, profileImageURL: user.profileImageURL)
+              
+              guard selectedLocation != nil else {
+                alertMsg = "Must choose location to purchase the block."
+                showErrorAlert = true
+                return
+              }
+              
+              let buyer = ListingUser(id: user.id, firstName: user.firstName, lastName: user.lastName, venmoHandle: user.venmoHandle, phoneNumber: user.phoneNumber, profileImageURL: user.profileImageURL)
               listing.buyer = buyer
+              listing.selectedLocation = selectedLocation
+              listing.buyerStatus = BuyerStatus.requested
               
               guard listingRepository.update(listing:listing) else {
                 alertMsg = "There was an error updating the listing. Please try again later."
@@ -117,6 +125,7 @@ struct PurchaseListingView: View {
           Button("Cancel", role: .cancel) {
             show = false
             appViewModel.tabsDisabled.toggle()
+            self.restoreFormToDefaults()
           }.buttonStyle(SmallWhiteButton())
         }
         
@@ -125,5 +134,10 @@ struct PurchaseListingView: View {
         .cornerRadius(16)
       }
     }
+  }
+  
+  private func restoreFormToDefaults() {
+    selectedLocation = nil
+    expand = false
   }
 }
