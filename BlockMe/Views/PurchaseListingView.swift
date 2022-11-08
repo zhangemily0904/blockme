@@ -80,18 +80,9 @@ struct PurchaseListingView: View {
             )
           
           }
-          NavigationLink(destination: TransactionView()) {
-            Text("Buy")
-              .bold()
-              .frame(width: 200, height: 40)
-              .foregroundColor(Color.white)
-              .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color("BlockMe Red"))
-              )
-          }
-          .simultaneousGesture(TapGesture().onEnded{
+          
+          Button(action: {
             if var listing = listing {
-              show = false
               guard let user = appViewModel.userViewModel?.user else {
                 alertMsg = "error getting user information"
                 showErrorAlert = true
@@ -115,13 +106,17 @@ struct PurchaseListingView: View {
                 return
               }
             }
-            
-          })
-          .alert(alertMsg, isPresented: $showErrorAlert) {
-            Button("Ok", role: .cancel) {
-              showErrorAlert = false
-            }
+            show = false
+          }) {
+            Text("buy")
+              .bold()
+              .frame(width: 200, height: 40)
+              .foregroundColor(Color.white)
+              .background(
+                RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color("BlockMe Red"))
+              )
           }
+
           Button("Cancel", role: .cancel) {
             show = false
             appViewModel.tabsDisabled.toggle()
@@ -132,6 +127,10 @@ struct PurchaseListingView: View {
         .frame(width: 347, height: 585)
         .background(Color.white)
         .cornerRadius(16)
+      }
+    }.alert(alertMsg, isPresented: $showErrorAlert) {
+      Button("Ok", role: .cancel) {
+        showErrorAlert = false
       }
     }
   }
