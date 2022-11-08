@@ -39,5 +39,4 @@ class VenmoFormatter: Formatter {
       obj?.pointee = venmoValue as AnyObject
       return true
   }
-
 }

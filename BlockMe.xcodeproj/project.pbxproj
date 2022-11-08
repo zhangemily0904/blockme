@@ -198,6 +198,7 @@
 				72391EFC2909B06700C980E1 /* AppViewModel.swift */,
 				72391F06290C659300C980E1 /* PhotoPicker.swift */,
 				7273FD9A291376B200B57B55 /* FormValidator.swift */,
+				CBCC712B291A1A0000C30C35 /* VenmoFormatter.swift */,
 				7273FD9C291457B000B57B55 /* StorageViewModel.swift */,
 				CBCC7136291ADBE400C30C35 /* VenmoFormatter.swift */,
 			);

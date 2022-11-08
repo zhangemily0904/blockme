@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
-
+  
   var body: some View {
     ZStack{
       Color("BlockMe Background").ignoresSafeArea()
