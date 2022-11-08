@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		721EF532291AE62D00950DE4 /* ListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EF531291AE62D00950DE4 /* ListingViewModel.swift */; };
+		721EF534291AF18900950DE4 /* TransactionPendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EF533291AF18900950DE4 /* TransactionPendingView.swift */; };
 		72391E8D2906136700C980E1 /* BlockMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391E8C2906136700C980E1 /* BlockMeApp.swift */; };
 		72391E8F2906136700C980E1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391E8E2906136700C980E1 /* AppView.swift */; };
 		72391E912906136900C980E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72391E902906136900C980E1 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		721EF531291AE62D00950DE4 /* ListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
+		721EF533291AF18900950DE4 /* TransactionPendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPendingView.swift; sourceTree = "<group>"; };
 		72391E892906136700C980E1 /* BlockMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72391E8C2906136700C980E1 /* BlockMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMeApp.swift; sourceTree = "<group>"; };
 		72391E8E2906136700C980E1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */,
 				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
 				CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */,
+				721EF533291AF18900950DE4 /* TransactionPendingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				CB550947291609550073243D /* SplashView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
 				7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */,
+				721EF534291AF18900950DE4 /* TransactionPendingView.swift in Sources */,
 				9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */,
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */,

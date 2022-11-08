@@ -88,4 +88,13 @@ class ListingRepository: ObservableObject {
     }
     return l.first
   }
+  
+  func cancelTransactionForListing(listing: Listing) -> Bool {
+    var listing = listing
+    listing.buyer = nil
+    listing.buyerStatus = nil
+    listing.sellerStatus = nil
+    listing.completedTime = nil
+    return self.update(listing: listing)
+  }
 }

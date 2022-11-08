@@ -17,8 +17,13 @@ struct TransactionView: View {
   }
   
     var body: some View {
-      VStack {
+      ZStack {
+        Color("BlockMe Background").ignoresSafeArea()
         
+        if let listing = listingViewModel.listing {
+          if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == nil { TransactionPendingView(listingViewModel: self.listingViewModel, isSeller: self.isSeller) }
+        }
       }
     }
+  
 }
