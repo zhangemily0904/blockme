@@ -11,7 +11,9 @@ struct LoginView: View {
   @EnvironmentObject var appViewModel: AppViewModel
   @State private var email: String = ""
   @State private var password: String = ""
-  @State private var errorMsg: String? = nil
+  @State private var showErrorAlert = false
+  @State private var alertMsg = ""
+
     var body: some View {
       ZStack {
         Color("BlockMe Background").ignoresSafeArea()
@@ -32,18 +34,17 @@ struct LoginView: View {
           // TODO: password recovery
           Text("Forgot Password?").font(.regSmall).frame(width: 352, alignment: .trailing)
           
-          if let msg = errorMsg {
-            Text(msg).foregroundColor(Color.red)
-          }
          
           Button(action: {
             guard !email.isEmpty && !password.isEmpty else {
-              errorMsg = "Email or password cannot be empty."
+              alertMsg = "Email or password cannot be empty."
+              showErrorAlert = true
               return
             }
             appViewModel.signIn(email: email, password: password) { error in
               if let error = error {
-                errorMsg = error.localizedDescription
+                alertMsg = error.localizedDescription
+                showErrorAlert = true
               }
             }
           }) {
@@ -54,6 +55,11 @@ struct LoginView: View {
             NavigationLink("Not a member? Register now", destination: CreateAccountView()).font(.regSmall).foregroundColor(Color.black)
           }.frame(maxHeight: .infinity, alignment: .bottom)
           
+        }
+        .alert(alertMsg, isPresented: $showErrorAlert) {
+          Button("Ok", role: .cancel) {
+            showErrorAlert = false
+          }
         }
       }
     }
