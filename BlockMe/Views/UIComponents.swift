@@ -19,20 +19,6 @@ struct RedButton: ButtonStyle {
   }
 }
 
-struct InputField: TextFieldStyle {
-  func _body(configuration: TextField<Self._Label>) -> some View {
-    configuration
-      .padding()
-      .frame(width: 352, height: 64)
-      .overlay {
-        RoundedRectangle(cornerRadius: 16, style: .continuous)
-          .stroke(Color.black, lineWidth: 2)
-      }
-      .autocapitalization(.none)
-      .disableAutocorrection(true)
-  }
-}
-  
 struct SmallWhiteButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
@@ -54,5 +40,33 @@ struct SmallRedButton: ButtonStyle {
       .background(
         RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color("BlockMe Red"))
       )
+  }
+}
+
+struct InputField: TextFieldStyle {
+  func _body(configuration: TextField<Self._Label>) -> some View {
+    configuration
+      .padding()
+      .frame(width: 352, height: 64)
+      .overlay {
+        RoundedRectangle(cornerRadius: 16, style: .continuous)
+          .stroke(Color.black, lineWidth: 2)
+      }
+      .autocapitalization(.none)
+      .disableAutocorrection(true)
+  }
+}
+
+struct CapitalizationInputField: TextFieldStyle {
+  func _body(configuration: TextField<Self._Label>) -> some View {
+    configuration
+      .padding()
+      .frame(width: 352, height: 64)
+      .overlay {
+        RoundedRectangle(cornerRadius: 16, style: .continuous)
+          .stroke(Color.black, lineWidth: 2)
+      }
+      .autocapitalization(.words)
+      .disableAutocorrection(true)
   }
 }
