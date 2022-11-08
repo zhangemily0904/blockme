@@ -20,35 +20,38 @@ struct MarketPlaceView: View {
  
 
     var body: some View {
-     
-      NavigationView {
-        ZStack {
-          Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
-            currentTime = Date.now
-          }
-          VStack {
-            Text("Blocks Marketplace").font(.title)
-            // TODO: need to center the listings
-            GeometryReader { geometry in
-              let currentListings = listingRepository.listings.filter {
-                $0.buyer == nil && $0.expirationTime > currentTime
-              }
-              VStack(alignment: .center, spacing: 0) { //TODO: the alignment center thingy no work
-                ForEach(currentListings) { listing in
-                  Button(action:{
-                    showPurchaseView.toggle()
-                    selectedListing = listing
-                    StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
-                  }){
-                    ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
-                  }
+      ZStack {
+        Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
+          currentTime = Date.now
+        }
+        VStack {
+          Text("Blocks Marketplace").font(.title)
+          // TODO: need to center the listings
+          GeometryReader { geometry in
+            let currentListings = listingRepository.listings.filter {
+              $0.buyer == nil && $0.expirationTime > currentTime
+            }
+            VStack(alignment: .center, spacing: 0) { //TODO: the alignment center thingy no work
+              ForEach(currentListings) { listing in
+                Button(action:{
+                    guard appViewModel.currentUserId != listing.seller.id else {
+                      print("Can't purchase your own block.")
+                      return
+                    }
+                  showPurchaseView.toggle()
+                  selectedListing = listing
+                  StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
+                }){
+                  ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
                 }
               }
             }
-      
-            HStack {
-              Spacer()
-              ZStack {
+          }
+    
+          HStack {
+            Spacer()
+            ZStack {
+              if listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) == nil {
                 Button(action:{
                   showNewListingView.toggle()
                   appViewModel.tabsDisabled.toggle()
@@ -64,10 +67,9 @@ struct MarketPlaceView: View {
               }
             }
           }
-          PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
-          NewListingView(show: $showNewListingView, listingRepository: listingRepository)
         }
-        
+        PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
+        NewListingView(show: $showNewListingView, listingRepository: listingRepository)
       }
     }
 }

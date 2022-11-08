@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TransactionView: View {
+  var listingId: String
+  var isSeller: Bool
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct TransactionView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionView()
+      VStack {
+        Text("transaction home")
+        Text("Listing ID: \(listingId)")
+        Text(isSeller ? "Seller" : "Buyer")
+      }
     }
 }

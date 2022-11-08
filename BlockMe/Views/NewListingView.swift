@@ -16,7 +16,8 @@ struct NewListingView: View {
   @ObservedObject var listingRepository: ListingRepository
   @EnvironmentObject var appViewModel: AppViewModel
   @State var expand = false
-
+  @State var showErrorAlert: Bool = false
+  @State var error: String = ""
   var title: String = "Start selling blocks it's easy and free"
   
   let formatter: NumberFormatter = {
@@ -81,14 +82,13 @@ struct NewListingView: View {
                 .stroke(.black)
             )
 
-          //TODO: checks if fields are filled
           Button(action:{
             guard let seller = appViewModel.userViewModel?.user else {
-              // TODO: Replace with alert
-              print("error getting user information")
+              error = "error getting user information"
+              showErrorAlert = true
               return
             }
-            let listingSeller = ListingUser(firstName: seller.firstName, lastName: seller.lastName, venmoHandle: seller.venmoHandle, phoneNumber: seller.phoneNumber, profileImageURL: seller.profileImageURL)
+            let listingSeller = ListingUser(id: seller.id, firstName: seller.firstName, lastName: seller.lastName, venmoHandle: seller.venmoHandle, phoneNumber: seller.phoneNumber, profileImageURL: seller.profileImageURL)
             
             var availableLocations: [DiningLocation] = []
             for location in locations{
@@ -96,6 +96,19 @@ struct NewListingView: View {
                 availableLocations.append(location.0)
               }
             }
+            
+            guard availableLocations.count > 0 else {
+              error = "Must provide at least 1 available location."
+              showErrorAlert = true
+              return
+            }
+            
+            guard expirationTime > Date.now else {
+              error = "Expiration time must be in the future."
+              showErrorAlert = true
+              return
+            }
+            
             // nil fields not showing up in firebase
             let newListing = Listing(seller: listingSeller, buyer: nil, price: price, expirationTime: expirationTime, completedTime: nil, availableLocations: availableLocations, buyerStatus: nil, sellerStatus: nil)
             listingRepository.add(listing: newListing)
@@ -108,6 +121,7 @@ struct NewListingView: View {
           Button("Cancel", role: .cancel) {
             show = false
             appViewModel.tabsDisabled.toggle()
+            self.restoreFormToDefaults()
           }.buttonStyle(SmallWhiteButton())
         }
         
@@ -121,6 +135,21 @@ struct NewListingView: View {
         locations.append((location, false))
       }
     }
+    .alert(error, isPresented: $showErrorAlert) {
+      Button("Ok", role: .cancel) {
+        showErrorAlert = false
+      }
+    }
+  }
+  
+  private func restoreFormToDefaults() {
+    expirationTime = Date.now
+    price = 0.0
+    locations = []
+    for location in DiningLocation.allCases {
+      locations.append((location, false))
+    }
+    expand = false
   }
 }
 

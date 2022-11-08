@@ -28,6 +28,7 @@ struct Listing: Identifiable, Codable {
   var expirationTime: Date
   var completedTime: Date?  
   var availableLocations: [DiningLocation]
+  var selectedLocation: DiningLocation?
   var buyerStatus: BuyerStatus?
   var sellerStatus: SellerStatus?
   
@@ -39,6 +40,7 @@ struct Listing: Identifiable, Codable {
     case expirationTime
     case completedTime
     case availableLocations
+    case selectedLocation
     case buyerStatus
     case sellerStatus
   }

@@ -63,4 +63,29 @@ class ListingRepository: ObservableObject {
       return false
     }
   }
+  
+  // returns an active listing by the logged in user if it exists
+  func getCurrentListingForSeller(uid: String) -> Listing? {
+    let l = self.listings.filter {
+      $0.seller.id == uid && $0.expirationTime > Date.now && $0.buyer == nil
+    }
+    return l.first
+  }
+  
+  // returns a listing that the logged in user is in the process of selling
+  func getPendingListingForSeller(uid: String) -> Listing? {
+    let l = self.listings.filter {
+      $0.seller.id == uid && $0.buyer != nil && $0.completedTime == nil
+    }
+    return l.first
+  }
+  
+  // returns a listing that the logged in user is in the process of purchasing
+  // assuming that cancelled transactions will set buyer to null (rollback)
+  func getPendingListingForBuyer(uid: String) -> Listing? {
+    let l = self.listings.filter {
+      $0.buyer?.id == uid && $0.completedTime == nil
+    }
+    return l.first
+  }
 }
