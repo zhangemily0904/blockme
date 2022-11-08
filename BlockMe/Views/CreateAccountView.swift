@@ -65,9 +65,7 @@ struct CreateAccountView: View {
       guard !firstName.isEmpty && !lastName.isEmpty && !venmoHandle.isEmpty && !phoneNumber.isEmpty else {
         return false
       }
-    let phonePattern = #"^\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}$"#
-    let validPhone = phoneNumber.range(of: phonePattern, options: .regularExpression) != nil
-    return FormValidator.isValidEmailAddr(email: email) && validPhone
+    return FormValidator.validateFields(email: email, number: phoneNumber)
     }
 }
 
