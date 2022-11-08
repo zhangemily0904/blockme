@@ -61,7 +61,7 @@ struct ChooseProfileImageView: View {
               }
             }
           }) {
-            Text("Create Account")
+            Text("Create Account").font(.medSmall)
           }
           .buttonStyle(RedButton())
           

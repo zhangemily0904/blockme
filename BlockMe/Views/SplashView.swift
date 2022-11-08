@@ -13,7 +13,7 @@ struct SplashView: View {
     var body: some View {
       ZStack {
             if self.isActive {
-                LoginView()
+                WelcomeView()
             } else {
                 Color("BlockMe Red").ignoresSafeArea()
                 VStack {
