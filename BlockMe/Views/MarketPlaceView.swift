@@ -51,7 +51,7 @@ struct MarketPlaceView: View {
           HStack {
             Spacer()
             ZStack {
-              if listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) == nil {
+              if appViewModel.currentUserId != nil && listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) == nil {
                 Button(action:{
                   showNewListingView.toggle()
                   appViewModel.tabsDisabled.toggle()
