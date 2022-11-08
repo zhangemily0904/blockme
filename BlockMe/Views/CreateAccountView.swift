@@ -45,8 +45,7 @@ struct CreateAccountView: View {
             }
           
           NavigationLink(destination: ChooseProfileImageView(email: email, password: password, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, venmoHandle: "@\(venmoHandle)")) {
-            Text("Continue")
-              .bold()
+            Text("Continue").font(.medSmall)
               .frame(width: 352, height: 57)
               .foregroundColor(Color.white)
               .background(

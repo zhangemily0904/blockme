@@ -47,7 +47,7 @@ struct LoginView: View {
               }
             }
           }) {
-            Text("Log In").font(.semiMed)
+            Text("Log In").font(.medSmall)
           }.buttonStyle(RedButton()).padding(.top, 70)
           
           Group{

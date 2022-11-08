@@ -10,7 +10,6 @@ import SwiftUI
 struct RedButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .bold()
       .frame(width: 352, height: 57)
       .foregroundColor(Color.white)
       .background(

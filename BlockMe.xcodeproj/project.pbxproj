@@ -51,6 +51,7 @@
 		CB550947291609550073243D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550946291609550073243D /* SplashView.swift */; };
 		CBCC712A291A19AE00C30C35 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = CBCC7129291A19AE00C30C35 /* iPhoneNumberField */; };
 		CBCC712C291A1A0000C30C35 /* VenmoFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC712B291A1A0000C30C35 /* VenmoFormatter.swift */; };
+		CBCC712E291A1CD100C30C35 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC712D291A1CD100C30C35 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		CB5509442915EE510073243D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CB550946291609550073243D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		CBCC712B291A1A0000C30C35 /* VenmoFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenmoFormatter.swift; sourceTree = "<group>"; };
+		CBCC712D291A1CD100C30C35 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */,
 				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
 				CBCC712B291A1A0000C30C35 /* VenmoFormatter.swift */,
+				CBCC712D291A1CD100C30C35 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				7273FD972913411600B57B55 /* OrdersView.swift in Sources */,
 				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
 				72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */,
+				CBCC712E291A1CD100C30C35 /* WelcomeView.swift in Sources */,
 				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
 				9FFC5CB92915964900BF992A /* ListingUser.swift in Sources */,
