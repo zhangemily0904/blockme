@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		721EF532291AE62D00950DE4 /* ListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EF531291AE62D00950DE4 /* ListingViewModel.swift */; };
 		72391E8D2906136700C980E1 /* BlockMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391E8C2906136700C980E1 /* BlockMeApp.swift */; };
 		72391E8F2906136700C980E1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391E8E2906136700C980E1 /* AppView.swift */; };
 		72391E912906136900C980E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72391E902906136900C980E1 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		721EF531291AE62D00950DE4 /* ListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
 		72391E892906136700C980E1 /* BlockMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72391E8C2906136700C980E1 /* BlockMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMeApp.swift; sourceTree = "<group>"; };
 		72391E8E2906136700C980E1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -198,9 +200,9 @@
 				72391EFC2909B06700C980E1 /* AppViewModel.swift */,
 				72391F06290C659300C980E1 /* PhotoPicker.swift */,
 				7273FD9A291376B200B57B55 /* FormValidator.swift */,
-				CBCC712B291A1A0000C30C35 /* VenmoFormatter.swift */,
 				7273FD9C291457B000B57B55 /* StorageViewModel.swift */,
 				CBCC7136291ADBE400C30C35 /* VenmoFormatter.swift */,
+				721EF531291AE62D00950DE4 /* ListingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -317,6 +319,7 @@
 				9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */,
 				72391EB129071F3600C980E1 /* User.swift in Sources */,
 				72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */,
+				721EF532291AE62D00950DE4 /* ListingViewModel.swift in Sources */,
 				72391EC62907565200C980E1 /* UsersView.swift in Sources */,
 				CB550947291609550073243D /* SplashView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,

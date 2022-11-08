@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct TransactionView: View {
-  var listingId: String
+  @ObservedObject var listingViewModel: ListingViewModel
   var isSeller: Bool
+  
+  init(listingId: String, isSeller: Bool) {
+    listingViewModel = ListingViewModel(id: listingId)
+    self.isSeller = isSeller
+  }
+  
     var body: some View {
       VStack {
-        Text("transaction home")
-        Text("Listing ID: \(listingId)")
-        Text(isSeller ? "Seller" : "Buyer")
+        
       }
     }
 }
