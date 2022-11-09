@@ -58,6 +58,7 @@
 		CBCC7135291ADB5600C30C35 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = CBCC7134291ADB5600C30C35 /* iPhoneNumberField */; };
 		CBCC7137291ADBE400C30C35 /* VenmoFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC7136291ADBE400C30C35 /* VenmoFormatter.swift */; };
 		CBCC7139291ADCAC00C30C35 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */; };
+		CBCC713C291B661F00C30C35 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = CBCC713B291B661F00C30C35 /* WrappingHStack */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,7 @@
 				72391EC2290743BF00C980E1 /* FirebaseStorage in Frameworks */,
 				CBCC7135291ADB5600C30C35 /* iPhoneNumberField in Frameworks */,
 				72391EA42906168100C980E1 /* FirebaseAnalytics in Frameworks */,
+				CBCC713C291B661F00C30C35 /* WrappingHStack in Frameworks */,
 				72391EA62906168100C980E1 /* FirebaseAuth in Frameworks */,
 				72391EAE2906168100C980E1 /* FirebaseFirestoreSwift in Frameworks */,
 				72391EA82906168100C980E1 /* FirebaseDatabase in Frameworks */,
@@ -273,6 +275,7 @@
 				72391EBF290743BF00C980E1 /* FirebaseAppCheck */,
 				72391EC1290743BF00C980E1 /* FirebaseStorage */,
 				CBCC7134291ADB5600C30C35 /* iPhoneNumberField */,
+				CBCC713B291B661F00C30C35 /* WrappingHStack */,
 			);
 			productName = BlockMe;
 			productReference = 72391E892906136700C980E1 /* BlockMe.app */;
@@ -306,6 +309,7 @@
 				72391E9F290615F900C980E1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				72391EA22906168100C980E1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+				CBCC713A291B661E00C30C35 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 72391E8A2906136700C980E1 /* Products */;
 			projectDirPath = "";
@@ -598,6 +602,14 @@
 				kind = branch;
 			};
 		};
+		CBCC713A291B661E00C30C35 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -650,6 +662,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
 			productName = iPhoneNumberField;
+		};
+		CBCC713B291B661F00C30C35 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBCC713A291B661E00C30C35 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
