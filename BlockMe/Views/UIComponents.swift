@@ -67,3 +67,17 @@ struct CapitalizationInputField: TextFieldStyle {
       .disableAutocorrection(true)
   }
 }
+
+extension Capsule {
+  static let UC = AnyView(Capsule().fill(Color("UC Green")).frame(width: 140, height: 22).overlay(Text("\(DiningLocation.UC.rawValue)").font(.regSmall)).padding(3).padding(.bottom, 6))
+  static let Resnik = AnyView(Capsule().fill(Color("Resnik Purple")).frame(width: 70, height: 22).overlay(Text("\(DiningLocation.Resnik.rawValue)").font(.regSmall)).padding(3).padding(.bottom, 6))
+  static let Tepper = AnyView(Capsule().fill(Color("Tepper Lilic")).frame(width: 70, height: 22).overlay(Text("\(DiningLocation.Tepper.rawValue)").font(.regSmall)).padding(3).padding(.bottom, 6))
+  static let LaPrimaWean = AnyView(Capsule().fill(Color("La Prima(W) Pink")).frame(width: 140, height: 22).overlay(Text("\(DiningLocation.LaPrimaWean.rawValue)").font(.regSmall)).padding(3).padding(.bottom, 6))
+  static let LaPrimaGates = AnyView(Capsule().fill(Color("La Prima(G) Pink")).frame(width: 140, height: 22).overlay(Text("\(DiningLocation.LaPrimaGates.rawValue)").font(.regSmall)).padding(3).padding(.bottom, 6))
+}
+
+extension Circle {
+  static let availableCircle = AnyView(Circle().fill(Color("Expiration Green")).frame(width: 8, height: 8))
+  static let limitCircle = AnyView(Circle().fill(Color("Expiration Yellow")).frame(width: 8, height: 8))
+  static let unavailableCircle = AnyView(Circle().fill(Color("Expiration Red")).frame(width: 8, height: 8))
+}
