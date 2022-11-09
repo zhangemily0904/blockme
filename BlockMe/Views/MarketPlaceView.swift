@@ -58,14 +58,10 @@ struct MarketPlaceView: View {
                   showNewListingView.toggle()
                   appViewModel.tabsDisabled.toggle()
                 }) {
-                  Text("+") //TODO: switch this with a image of the plus icon
-                    .frame(width: 70, height: 70)
-                    .foregroundColor(Color.black)
-                    .background(Color("BlockMe Red"))
-                    .clipShape(Circle())
-                    .padding()
-                }
-                .buttonStyle(PlainButtonStyle())
+                  Image("add-button")
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                }.offset(x: -25, y: -30)
               }
             }
           }
