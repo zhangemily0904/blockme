@@ -11,6 +11,7 @@ struct MarketPlaceView: View {
   @EnvironmentObject var appViewModel: AppViewModel
   @ObservedObject var listingRepository: ListingRepository = ListingRepository()
   @State var currentTime = Date.now
+  @State var calendar = Calendar.current
   @State var showNewListingView = false
   @State var showPurchaseView = false
   @State var selectedListing: Listing? = nil
@@ -23,15 +24,16 @@ struct MarketPlaceView: View {
       ZStack {
         Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
           currentTime = Date.now
+          calendar = Calendar.current
         }
         VStack {
-          Text("Blocks Marketplace").font(.title)
-          // TODO: need to center the listings
+          Text("Marketplace").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
+
           GeometryReader { geometry in
             let currentListings = listingRepository.listings.filter {
               $0.buyer == nil && $0.expirationTime > currentTime
             }
-            VStack(alignment: .center, spacing: 0) { //TODO: the alignment center thingy no work
+            VStack() {
               ForEach(currentListings) { listing in
                 Button(action:{
                     guard appViewModel.currentUserId != listing.seller.id else {
@@ -42,10 +44,10 @@ struct MarketPlaceView: View {
                   selectedListing = listing
                   StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
                 }){
-                  ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+                  ListingDetailsView(listing: listing, viewWidth: 432)
                 }
               }
-            }
+            }.frame(width: geometry.size.width, alignment: .center)
           }
     
           HStack {
