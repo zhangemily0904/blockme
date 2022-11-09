@@ -17,19 +17,32 @@ struct TransactionView: View {
     self.isSeller = isSeller
   }
   
-    var body: some View {
-      ZStack {
-        Color("BlockMe Background").ignoresSafeArea()
-        
-        if let listing = listingViewModel.listing {
-          if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == nil {
-            TransactionPendingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+  var body: some View {
+    ZStack {
+      Color("BlockMe Background").ignoresSafeArea()
+      
+      if let listing = listingViewModel.listing {
+        if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == nil {
+          TransactionPendingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+        }
+        else if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == SellerStatus.acceptedTransaction {
+          TransactionMeetUpView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+        }
+        else if listing.buyerStatus == BuyerStatus.arrivedAtLocation && listing.sellerStatus == SellerStatus.acceptedTransaction {
+          if self.isSeller {
+            TransactionHasArrivedView()
+          } else {
+            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller")
           }
-          else if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == SellerStatus.acceptedTransaction {
-            TransactionMeetUpView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+        }
+        else if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == SellerStatus.arrivedAtLocation {
+          if self.isSeller {
+            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer")
+          } else {
+            TransactionHasArrivedView()
           }
         }
       }
     }
-  
+  }
 }

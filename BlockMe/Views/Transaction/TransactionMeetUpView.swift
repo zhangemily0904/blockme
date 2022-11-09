@@ -57,6 +57,10 @@ struct TransactionMeetUpView: View {
           Text("Cancel")
         }.buttonStyle(SmallWhiteButton())
       }
+    }.alert(alertMsg, isPresented: $showErrorAlert) {
+      Button("Ok", role: .cancel) {
+        showErrorAlert = false
+      }
     }
   }
 }
