@@ -32,19 +32,20 @@ struct NewListingView: View {
         
         // semi-transparent background and popup window
         Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
-
         VStack(alignment: .center, spacing: 0) {
-          Text(title)
-            .font(Font.system(size: 23, weight: .semibold))
+          Text(title).font(.medMed).frame(width: 296)
           DatePicker("Expiration Time", selection: $expirationTime, displayedComponents: .hourAndMinute)
             .padding()
             .autocapitalization(.none)
             .disableAutocorrection(true)
+            .font(.medSmall)
+            .frame(width: 296)
           TextField("Price", value: $price, formatter: formatter)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
             .autocapitalization(.none)
             .disableAutocorrection(true)
+            .frame(width: 296)
           VStack(alignment: .leading, spacing: 20){
               HStack {
                 Text("Locations")
