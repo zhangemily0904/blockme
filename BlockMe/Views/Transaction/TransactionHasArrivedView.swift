@@ -11,7 +11,8 @@ struct TransactionHasArrivedView: View {
   @ObservedObject var listingRepository: ListingRepository
   @ObservedObject var listingViewModel: ListingViewModel
   var arrived: String
-  @State var showErrorAlert = false
+  @State var showErrorAlert = false // alert for errors
+  @State var showAlert = false // alert for confirming cancel / decline order
   @State private var alertMsg = ""
   
     var body: some View {
@@ -47,16 +48,28 @@ struct TransactionHasArrivedView: View {
           }.buttonStyle(RedButton())
           
           Button(action: {
-            if !listingRepository.cancelTransactionForListing(listing: listing) {
-              alertMsg = "Error cancelling this order. Please try again."
-              showErrorAlert = true
-            }
+            showAlert = true
+            alertMsg = "Are you sure you want to cancel this order?"
           }) {
             Text("Cancel")
           }.buttonStyle(SmallWhiteButton())
         }
       }.alert(alertMsg, isPresented: $showErrorAlert) {
         Button("Ok", role: .cancel) {
+          showErrorAlert = false
+        }
+      }
+      .alert(alertMsg, isPresented: $showAlert) {
+        Button("Yes", role: .destructive) {
+          showErrorAlert = false
+          if var listing = listingViewModel.listing {
+            if !listingRepository.cancelTransactionForListing(listing: listing) {
+              alertMsg = "Error cancelling this order. Please try again."
+              showErrorAlert = true
+            }
+          }
+        }
+        Button("No", role: .cancel) {
           showErrorAlert = false
         }
       }

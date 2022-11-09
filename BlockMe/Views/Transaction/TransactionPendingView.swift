@@ -11,7 +11,8 @@ struct TransactionPendingView: View {
   @ObservedObject var listingRepository: ListingRepository
   @ObservedObject var listingViewModel: ListingViewModel
   var isSeller: Bool
-  @State var showErrorAlert = false
+  @State var showErrorAlert = false // alert for errors
+  @State var showAlert = false // alert for confirming cancel / decline order
   @State private var alertMsg = ""
   
   
@@ -25,6 +26,20 @@ struct TransactionPendingView: View {
       }
     }.alert(alertMsg, isPresented: $showErrorAlert) {
       Button("Ok", role: .cancel) {
+        showErrorAlert = false
+      }
+    }
+    .alert(alertMsg, isPresented: $showAlert) {
+      Button("Yes", role: .destructive) {
+        showErrorAlert = false
+        if var listing = listingViewModel.listing {
+          if !listingRepository.cancelTransactionForListing(listing: listing) {
+            alertMsg = "Error cancelling this order. Please try again."
+            showErrorAlert = true
+          }
+        }
+      }
+      Button("No", role: .cancel) {
         showErrorAlert = false
       }
     }
@@ -57,10 +72,8 @@ struct TransactionPendingView: View {
         }.buttonStyle(RedButton())
         
         Button(action: {
-          if !listingRepository.cancelTransactionForListing(listing: listing) {
-            alertMsg = "Error cancelling this order. Please try again."
-            showErrorAlert = true
-          }
+          alertMsg = "Are you sure you want to decline this order?"
+          showAlert = true
         }) {
           Text("Decline")
         }.buttonStyle(SmallWhiteButton())
@@ -75,10 +88,8 @@ struct TransactionPendingView: View {
         Text("PLACEHOLDER: Image goes here").bold()
         
         Button(action: {
-          if !listingRepository.cancelTransactionForListing(listing: listing) {
-            alertMsg = "Error cancelling this order. Please try again."
-            showErrorAlert = true
-          }
+          showAlert = true
+          alertMsg = "Are you sure you want to cancel this order?"
         }) {
           Text("Cancel")
         }.buttonStyle(SmallWhiteButton())
