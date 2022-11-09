@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		721EF532291AE62D00950DE4 /* ListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EF531291AE62D00950DE4 /* ListingViewModel.swift */; };
+		721EF534291AF18900950DE4 /* TransactionPendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EF533291AF18900950DE4 /* TransactionPendingView.swift */; };
 		72391E8D2906136700C980E1 /* BlockMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391E8C2906136700C980E1 /* BlockMeApp.swift */; };
 		72391E8F2906136700C980E1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391E8E2906136700C980E1 /* AppView.swift */; };
 		72391E912906136900C980E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72391E902906136900C980E1 /* Assets.xcassets */; };
@@ -38,6 +40,10 @@
 		72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F002909C7CF00C980E1 /* CreateAccountView.swift */; };
 		72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F04290C48CE00C980E1 /* UIComponents.swift */; };
 		72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391F06290C659300C980E1 /* PhotoPicker.swift */; };
+		724B0000291B28CA00448B0D /* TransactionWaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724BFFFF291B28CA00448B0D /* TransactionWaitingView.swift */; };
+		724B0002291B36FE00448B0D /* TransactionHasArrivedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B0001291B36FE00448B0D /* TransactionHasArrivedView.swift */; };
+		724B0004291B529000448B0D /* TransactionPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B0003291B529000448B0D /* TransactionPaymentView.swift */; };
+		724BFFFE291B05C400448B0D /* TransactionMeetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724BFFFD291B05C400448B0D /* TransactionMeetUpView.swift */; };
 		7273FD972913411600B57B55 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD962913411600B57B55 /* OrdersView.swift */; };
 		7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9829136BB400B57B55 /* EditProfileView.swift */; };
 		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
@@ -55,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		721EF531291AE62D00950DE4 /* ListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
+		721EF533291AF18900950DE4 /* TransactionPendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPendingView.swift; sourceTree = "<group>"; };
 		72391E892906136700C980E1 /* BlockMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72391E8C2906136700C980E1 /* BlockMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMeApp.swift; sourceTree = "<group>"; };
 		72391E8E2906136700C980E1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -78,6 +86,10 @@
 		72391F002909C7CF00C980E1 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		72391F04290C48CE00C980E1 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		72391F06290C659300C980E1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		724B0001291B36FE00448B0D /* TransactionHasArrivedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHasArrivedView.swift; sourceTree = "<group>"; };
+		724B0003291B529000448B0D /* TransactionPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPaymentView.swift; sourceTree = "<group>"; };
+		724BFFFD291B05C400448B0D /* TransactionMeetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMeetUpView.swift; sourceTree = "<group>"; };
+		724BFFFF291B28CA00448B0D /* TransactionWaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWaitingView.swift; sourceTree = "<group>"; };
 		7273FD962913411600B57B55 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		7273FD9829136BB400B57B55 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
@@ -114,6 +126,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		721EF535291B045000950DE4 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
+				721EF533291AF18900950DE4 /* TransactionPendingView.swift */,
+				724BFFFD291B05C400448B0D /* TransactionMeetUpView.swift */,
+				724BFFFF291B28CA00448B0D /* TransactionWaitingView.swift */,
+				724B0001291B36FE00448B0D /* TransactionHasArrivedView.swift */,
+				724B0003291B529000448B0D /* TransactionPaymentView.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
 		72391E802906136700C980E1 = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +182,7 @@
 		72391E9A2906137800C980E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				721EF535291B045000950DE4 /* Transaction */,
 				72391E8E2906136700C980E1 /* AppView.swift */,
 				72391EBC290736E900C980E1 /* UserDetailView.swift */,
 				72391EC52907565200C980E1 /* UsersView.swift */,
@@ -173,7 +199,6 @@
 				CB5509442915EE510073243D /* Font.swift */,
 				9F3843A229180FFF00A5ACB5 /* NewListingView.swift */,
 				9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */,
-				9F3843A82918DA2800A5ACB5 /* TransactionView.swift */,
 				CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */,
 			);
 			path = Views;
@@ -198,9 +223,9 @@
 				72391EFC2909B06700C980E1 /* AppViewModel.swift */,
 				72391F06290C659300C980E1 /* PhotoPicker.swift */,
 				7273FD9A291376B200B57B55 /* FormValidator.swift */,
-				CBCC712B291A1A0000C30C35 /* VenmoFormatter.swift */,
 				7273FD9C291457B000B57B55 /* StorageViewModel.swift */,
 				CBCC7136291ADBE400C30C35 /* VenmoFormatter.swift */,
+				721EF531291AE62D00950DE4 /* ListingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -316,11 +341,14 @@
 				72391EB9290730F100C980E1 /* UserRepository.swift in Sources */,
 				9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */,
 				72391EB129071F3600C980E1 /* User.swift in Sources */,
+				724B0000291B28CA00448B0D /* TransactionWaitingView.swift in Sources */,
 				72391EFD2909B06700C980E1 /* AppViewModel.swift in Sources */,
+				721EF532291AE62D00950DE4 /* ListingViewModel.swift in Sources */,
 				72391EC62907565200C980E1 /* UsersView.swift in Sources */,
 				CB550947291609550073243D /* SplashView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
 				7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */,
+				721EF534291AF18900950DE4 /* TransactionPendingView.swift in Sources */,
 				9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */,
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */,
@@ -330,11 +358,14 @@
 				72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */,
 				CBCC7139291ADCAC00C30C35 /* WelcomeView.swift in Sources */,
 				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
+				724B0004291B529000448B0D /* TransactionPaymentView.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
 				9FFC5CB92915964900BF992A /* ListingUser.swift in Sources */,
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				CBCC7137291ADBE400C30C35 /* VenmoFormatter.swift in Sources */,
 				CB5509452915EE510073243D /* Font.swift in Sources */,
+				724B0002291B36FE00448B0D /* TransactionHasArrivedView.swift in Sources */,
+				724BFFFE291B05C400448B0D /* TransactionMeetUpView.swift in Sources */,
 				7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */,
 				72391F012909C7CF00C980E1 /* CreateAccountView.swift in Sources */,
 				72391EB52907220F00C980E1 /* DiningLocation.swift in Sources */,

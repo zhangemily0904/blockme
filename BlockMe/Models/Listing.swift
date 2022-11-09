@@ -15,7 +15,7 @@ enum BuyerStatus: String, Codable {
 }
 
 enum SellerStatus: String, Codable {
-  case begunTransaction = "begunTransaction"
+  case acceptedTransaction = "acceptedTransaction"
   case arrivedAtLocation = "arrivedAtLocation"
   case paymentRecieved = "paymentReceived"
 }
