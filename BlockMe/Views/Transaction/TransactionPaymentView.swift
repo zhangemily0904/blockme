@@ -52,6 +52,11 @@ struct TransactionPaymentView: View {
         
         Button(action: {
           listing.sellerStatus = SellerStatus.paymentRecieved
+          
+          if listing.buyerStatus == BuyerStatus.completedPayment {
+            listing.completedTime = Date.now
+          }
+          
           if !listingRepository.update(listing: listing) {
             alertMsg = "Error accepting this order. Please try again."
             showErrorAlert = true
@@ -100,6 +105,11 @@ struct TransactionPaymentView: View {
         
         Button(action: {
           listing.buyerStatus = BuyerStatus.completedPayment
+          
+          if listing.sellerStatus == SellerStatus.paymentRecieved {
+            listing.completedTime = Date.now
+          }
+          
           if !listingRepository.update(listing: listing) {
             alertMsg = "Error accepting this order. Please try again."
             showErrorAlert = true

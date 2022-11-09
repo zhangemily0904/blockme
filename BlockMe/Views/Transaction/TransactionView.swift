@@ -33,18 +33,32 @@ struct TransactionView: View {
           if self.isSeller {
             TransactionHasArrivedView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, arrived: "buyer")
           } else {
-            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller")
+            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller", msgPostfix: "arrive")
           }
         }
         else if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == SellerStatus.arrivedAtLocation {
           if self.isSeller {
-            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer")
+            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer", msgPostfix: "arrive")
           } else {
             TransactionHasArrivedView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, arrived: "seller")
           }
         }
         else if listing.buyerStatus == BuyerStatus.arrivedAtLocation && listing.sellerStatus == SellerStatus.arrivedAtLocation {
           TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+        }
+        else if listing.buyerStatus == BuyerStatus.completedPayment && listing.sellerStatus != SellerStatus.paymentRecieved {
+          if self.isSeller {
+            TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+          } else {
+            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller", msgPostfix: "confirm")
+          }
+        }
+        else if listing.buyerStatus != BuyerStatus.completedPayment && listing.sellerStatus == SellerStatus.paymentRecieved {
+          if self.isSeller {
+            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer", msgPostfix: "confirm")
+          } else {
+            TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+          }
         }
       }
     }

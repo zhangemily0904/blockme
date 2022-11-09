@@ -1,5 +1,5 @@
 //
-//  TransactionWaitingView.swift
+//  TransactionConfirmationView.swift
 //  BlockMe
 //
 //  Created by Brian Chou on 11/8/22.
@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-// generic waiting room for transactions
-struct TransactionWaitingView: View {
+struct TransactionConfirmationView: View {
   @ObservedObject var listingRepository: ListingRepository
   @ObservedObject var listingViewModel: ListingViewModel
   var waitingFor: String
-  var msgPostfix: String
   @State var showErrorAlert = false
   @State private var alertMsg = ""
   
@@ -23,7 +21,7 @@ struct TransactionWaitingView: View {
           let image = (waitingFor == "seller") ? listingViewModel.sellerImage : listingViewModel.buyerImage
           let phoneNumber = (waitingFor == "seller") ?  String(listing.seller.phoneNumber) : String(listing.buyer?.phoneNumber ?? "(XXX) XXX - XXXX")
           
-          Text("Waiting for \(name) to \(msgPostfix)").font(.medLarge)
+          Text("Waiting for \(name) to arrive").font(.medLarge)
           if let image = image {
             Image(uiImage: image)
               .resizable()
