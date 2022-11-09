@@ -21,6 +21,7 @@ struct TransactionView: View {
     ZStack {
       Color("BlockMe Background").ignoresSafeArea()
       
+      // this view serves as the control flow for the the transaction process by observing the buyerStatus and sellerStatus of the listing
       if let listing = listingViewModel.listing {
         if listing.buyerStatus == BuyerStatus.requested && listing.sellerStatus == nil {
           TransactionPendingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
@@ -30,7 +31,7 @@ struct TransactionView: View {
         }
         else if listing.buyerStatus == BuyerStatus.arrivedAtLocation && listing.sellerStatus == SellerStatus.acceptedTransaction {
           if self.isSeller {
-            TransactionHasArrivedView()
+            TransactionHasArrivedView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, arrived: "buyer")
           } else {
             TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller")
           }
@@ -39,8 +40,11 @@ struct TransactionView: View {
           if self.isSeller {
             TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer")
           } else {
-            TransactionHasArrivedView()
+            TransactionHasArrivedView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, arrived: "seller")
           }
+        }
+        else if listing.buyerStatus == BuyerStatus.arrivedAtLocation && listing.sellerStatus == SellerStatus.arrivedAtLocation {
+          TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
         }
       }
     }

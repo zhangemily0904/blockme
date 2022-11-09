@@ -8,13 +8,57 @@
 import SwiftUI
 
 struct TransactionHasArrivedView: View {
+  @ObservedObject var listingRepository: ListingRepository
+  @ObservedObject var listingViewModel: ListingViewModel
+  var arrived: String
+  @State var showErrorAlert = false
+  @State private var alertMsg = ""
+  
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct TransactionHasArrivedView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionHasArrivedView()
+      VStack {
+        if var listing = self.listingViewModel.listing {
+          let name = (arrived == "seller") ? listing.seller.firstName : (listing.buyer?.firstName ?? "XXX")
+          let image = (arrived == "seller") ? listingViewModel.sellerImage : listingViewModel.buyerImage
+          let phoneNumber = (arrived == "seller") ?  String(listing.seller.phoneNumber) : String(listing.buyer?.phoneNumber ?? "(XXX) XXX - XXXX")
+          
+          Text("\(name) has arrived at \(listing.selectedLocation?.rawValue ?? "Location")").font(.medLarge)
+          if let image = image {
+            Image(uiImage: image)
+              .resizable()
+              .scaledToFit()
+              .clipShape(Circle())
+          }
+          Text(phoneNumber)
+          
+          Button(action: {
+            // if the person who has arrived is the buyer, then only the seller will see this screen so we update seller status
+            if arrived == "buyer" {
+              listing.sellerStatus = SellerStatus.arrivedAtLocation
+            } else {
+              listing.buyerStatus = BuyerStatus.arrivedAtLocation
+            }
+            
+            if !listingRepository.update(listing: listing) {
+              alertMsg = "Error accepting this order. Please try again."
+              showErrorAlert = true
+            }
+          }) {
+            Text("I Have Arrived")
+          }.buttonStyle(RedButton())
+          
+          Button(action: {
+            if !listingRepository.cancelTransactionForListing(listing: listing) {
+              alertMsg = "Error cancelling this order. Please try again."
+              showErrorAlert = true
+            }
+          }) {
+            Text("Cancel")
+          }.buttonStyle(SmallWhiteButton())
+        }
+      }.alert(alertMsg, isPresented: $showErrorAlert) {
+        Button("Ok", role: .cancel) {
+          showErrorAlert = false
+        }
+      }
     }
 }

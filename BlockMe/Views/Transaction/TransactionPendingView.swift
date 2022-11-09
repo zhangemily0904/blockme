@@ -74,7 +74,12 @@ struct TransactionPendingView: View {
         Text("Waiting for \(listing.seller.firstName) to accept order").font(.medLarge)
         Text("PLACEHOLDER: Image goes here").bold()
         
-        Button(action: {}) {
+        Button(action: {
+          if !listingRepository.cancelTransactionForListing(listing: listing) {
+            alertMsg = "Error cancelling this order. Please try again."
+            showErrorAlert = true
+          }
+        }) {
           Text("Cancel")
         }.buttonStyle(SmallWhiteButton())
       }
