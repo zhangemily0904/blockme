@@ -131,6 +131,9 @@ struct NewListingView: View {
   
       }
     }.onAppear {
+      guard locations.count < 1 else {
+        return
+      }
       for location in DiningLocation.allCases {
         locations.append((location, false))
       }
