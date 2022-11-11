@@ -55,7 +55,7 @@ struct NewListingView: View {
           }.frame(width: 296)
             .padding (.bottom, 25)
           HStack {
-            Text("Location").font(.medSmall).frame(width: 100, alignment: .leading).offset(y: -60)
+            Text("Location").font(.medSmall).frame(width: 100, alignment: .leading).offset(y: -68)
             VStack (alignment: .leading, spacing: 10) {
                 ForEach(0..<locations.count) { i in
                   HStack {
