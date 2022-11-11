@@ -56,6 +56,7 @@
 		9FFC5CB92915964900BF992A /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC5CB82915964900BF992A /* ListingUser.swift */; };
 		CB5509452915EE510073243D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5509442915EE510073243D /* Font.swift */; };
 		CB550947291609550073243D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550946291609550073243D /* SplashView.swift */; };
+		CB883CD3291DC1A5003A1D66 /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = CB883CD2291DC1A5003A1D66 /* CurrencyField */; };
 		CBCC7135291ADB5600C30C35 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = CBCC7134291ADB5600C30C35 /* iPhoneNumberField */; };
 		CBCC7137291ADBE400C30C35 /* VenmoFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC7136291ADBE400C30C35 /* VenmoFormatter.swift */; };
 		CBCC7139291ADCAC00C30C35 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */; };
@@ -113,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB883CD3291DC1A5003A1D66 /* CurrencyField in Frameworks */,
 				72391EC0290743BF00C980E1 /* FirebaseAppCheck in Frameworks */,
 				72391EAA2906168100C980E1 /* FirebaseDatabaseSwift in Frameworks */,
 				72391EC2290743BF00C980E1 /* FirebaseStorage in Frameworks */,
@@ -279,6 +281,7 @@
 				72391EC1290743BF00C980E1 /* FirebaseStorage */,
 				CBCC7134291ADB5600C30C35 /* iPhoneNumberField */,
 				CBCC713B291B661F00C30C35 /* WrappingHStack */,
+				CB883CD2291DC1A5003A1D66 /* CurrencyField */,
 			);
 			productName = BlockMe;
 			productReference = 72391E892906136700C980E1 /* BlockMe.app */;
@@ -313,6 +316,7 @@
 				72391EA22906168100C980E1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 				CBCC713A291B661E00C30C35 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				CB883CD1291DC1A5003A1D66 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
 			);
 			productRefGroup = 72391E8A2906136700C980E1 /* Products */;
 			projectDirPath = "";
@@ -598,6 +602,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CB883CD1291DC1A5003A1D66 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField";
@@ -661,6 +673,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 72391EA22906168100C980E1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		CB883CD2291DC1A5003A1D66 /* CurrencyField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB883CD1291DC1A5003A1D66 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
+			productName = CurrencyField;
 		};
 		CBCC7134291ADB5600C30C35 /* iPhoneNumberField */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -43,7 +43,7 @@ struct ListingDetailsView: View {
           }
         }.frame(width: 239 - viewWidth / 6, alignment: .leading) //overall frame is 332, frame width for price is 63, and frame width for image is viewWidth / 6
           .padding(.leading, 10)
-        Text(String(format: "$%.2f", listing.price)).font(.medMed).frame(width: 63, alignment: .trailing)
+        Text(String(format: "$%.2f", listing.price)).font(.medMed).frame(width: 70, alignment: .trailing)
       }
       let i = listing.availableLocations.count - 1
       WrappingHStack(0...i, id:\.self) {
