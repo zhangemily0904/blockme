@@ -34,26 +34,47 @@ struct PurchaseListingView: View {
         VStack(alignment: .center, spacing: 0) {
           
           if let listing = listing {
-            if let profileImage = profileImage {
-              Image(uiImage: profileImage)
-                .resizable()
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
-            }
-            Text("Seller: \(listing.seller.firstName)")
-            Text("Price: \(String(listing.price))")
-            Text("Expiration Date: \(getFormattedDate(date: listing.expirationTime))")
-            
-            // dropdown
-            VStack(alignment: .leading, spacing: 20){
-              HStack {
-                Text("Locations")
-                  .fontWeight(.bold)
-                Image(systemName: "chevron.down")
-              }.onTapGesture{
-                self.expand.toggle()
+            HStack {
+              if let profileImage = profileImage {
+                Image(uiImage: profileImage)
+                  .resizable()
+                  .frame(width: 100, height: 100, alignment: .leading)
+                  .clipShape(Circle())
               }
-              if expand {
+              VStack {
+                Text("\(listing.seller.firstName)").font(.medMed)
+              }.frame(width: 145, height: 100, alignment: .leading).padding(.leading, 20)
+            }.padding(.top, 30)
+            .frame (width: 347)
+            
+            let timeRemaining = ListingDetailsView.dateComponentFormatter.string(from: MarketPlaceView().currentTime, to: listing.expirationTime)!
+            HStack {
+              HStack {
+                Image("dollar")
+                  .resizable()
+                  .frame(width: 40, height: 40)
+                  .padding(.trailing, 5)
+                Text(String(format: "$%.2f", listing.price)).font(.regSmall)
+              }.frame(width: 115, height: 70)
+                .background(Color("BlockMe Background").clipShape(RoundedRectangle(cornerRadius:15)))
+              
+              HStack {
+                Image("wall-clock")
+                  .resizable()
+                  .frame(width: 40, height: 40)
+                  .padding(.trailing, 5)
+                Text("Expires in \(timeRemaining)").font(.regSmall)
+              }.frame(width: 145, height: 70)
+                .background(Color("BlockMe Background").clipShape(RoundedRectangle(cornerRadius:15)))
+                
+            }.padding(.bottom, 20)
+             .padding(.top, 20)
+             .frame(width: 270)
+            
+              
+            VStack {
+              Text("Where do you want to eat?").font(.medSmall).padding(.bottom, 1)
+              VStack(alignment: .leading, spacing: 7){
                 ForEach(0..<listing.availableLocations.count) { i in
                   HStack {
                     Button(action: {
@@ -61,24 +82,20 @@ struct PurchaseListingView: View {
                     }) {
                       HStack{
                         if selectedLocation == listing.availableLocations[i] {
-                          Image(systemName: "checkmark.circle.fill")
+                          Image(systemName: "circle.fill")
+                            .foregroundColor(.green)
+                        } else {
+                          Image(systemName: "circle")
                             .foregroundColor(.green)
                         }
-                        Text(listing.availableLocations[i].rawValue)
+                        Text(listing.availableLocations[i].rawValue).font(.regMed)
                           .foregroundColor(.black)
                       }
                     }
-                  }
+                  }.offset(x:-25)
                 }
               }
-            }
-            .frame(width: 289)
-            .padding()
-            .background(
-              RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .stroke(.black)
-            )
-          
+            }.frame(width: 270, alignment: .leading)
           }
           
           Button(action: {
@@ -108,23 +125,20 @@ struct PurchaseListingView: View {
             }
             show = false
           }) {
-            Text("buy")
-              .bold()
-              .frame(width: 200, height: 40)
-              .foregroundColor(Color.white)
-              .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color("BlockMe Red"))
-              )
-          }
+            Text("Buy").font(.medSmall)
+          }.buttonStyle(SmallRedButton())
+            .padding(.top, 40)
+            .padding(.bottom, 15)
 
           Button("Cancel", role: .cancel) {
             show = false
             appViewModel.tabsDisabled.toggle()
             self.restoreFormToDefaults()
           }.buttonStyle(SmallWhiteButton())
+            .font(.medSmall)
         }
-        
-        .frame(width: 347, height: 585)
+        .padding(.bottom, 30)
+        .frame(width: 347)
         .background(Color.white)
         .cornerRadius(16)
       }
