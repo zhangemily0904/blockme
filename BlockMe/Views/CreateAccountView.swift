@@ -31,8 +31,6 @@ struct CreateAccountView: View {
             .textFieldStyle(InputField())
           SecureField("Password", text: $password)
             .textFieldStyle(InputField())
-          TextField("Venmo Handle", value: $venmoHandle, formatter: VenmoFormatter())
-            .textFieldStyle(InputField())
           iPhoneNumberField("Phone Number", text: $phoneNumber)
             .flagHidden(false)
             .flagSelectable(true)
@@ -42,6 +40,8 @@ struct CreateAccountView: View {
               RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(Color.black, lineWidth: 2)
             }
+          TextField("Venmo Handle", value: $venmoHandle, formatter: VenmoFormatter())
+            .textFieldStyle(InputField())
           
           NavigationLink(destination: ChooseProfileImageView(email: email, password: password, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, venmoHandle: "@\(venmoHandle)")) {
             Text("Continue").font(.medSmall)
