@@ -8,9 +8,9 @@
 import Foundation
 
 enum DiningLocation: String, CaseIterable, Codable {
-  case UC = "University Center"
+  case LaPrimaGates = "La Prima (Gates)"
+  case LaPrimaWean = "La Prima (Wean)"
   case Resnik = "Resnik"
   case Tepper = "Tepper"
-  case LaPrimaWean = "La Prima (Wean)"
-  case LaPrimaGates = "La Prima (Gates)"
+  case UC = "University Center"
 }

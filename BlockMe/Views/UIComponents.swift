@@ -21,10 +21,10 @@ struct RedButton: ButtonStyle {
 struct SmallWhiteButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .frame(width: 200, height: 40)
+      .frame(width: 270, height: 45)
       .background(
         RoundedRectangle(cornerRadius: 16, style: .continuous)
-          .stroke(.black)
+          .stroke(Color.black, lineWidth: 2)
       )
   }
 }
@@ -32,7 +32,7 @@ struct SmallWhiteButton: ButtonStyle {
 struct SmallRedButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .frame(width: 200, height: 40)
+      .frame(width: 270, height: 45)
       .foregroundColor(Color.white)
       .background(
         RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color("BlockMe Red"))

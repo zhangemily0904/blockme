@@ -32,28 +32,31 @@ struct NewListingView: View {
         
         // semi-transparent background and popup window
         Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
-
         VStack(alignment: .center, spacing: 0) {
-          Text(title)
-            .font(Font.system(size: 23, weight: .semibold))
+          Text(title).font(.medMed).frame(width: 296).padding(.top, 30)
           DatePicker("Expiration Time", selection: $expirationTime, displayedComponents: .hourAndMinute)
             .padding()
             .autocapitalization(.none)
             .disableAutocorrection(true)
-          TextField("Price", value: $price, formatter: formatter)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
-            .autocapitalization(.none)
-            .disableAutocorrection(true)
-          VStack(alignment: .leading, spacing: 20){
-              HStack {
-                Text("Locations")
-                  .fontWeight(.bold)
-                Image(systemName: "chevron.down")
-              }.onTapGesture{
-                self.expand.toggle()
-              }
-              if expand {
+            .font(.medSmall)
+            .frame(width: 296)
+            .padding (.bottom, 15)
+          HStack {
+            Text("Price").font(.medSmall).frame(width: 166, alignment: .leading)
+            TextField("Amount", value: $price, format: .currency(code: "USD"))
+              .padding(5)
+              .padding(.leading, 10)
+              .frame(width: 90, alignment: .trailing)
+              .autocapitalization(.none)
+              .disableAutocorrection(true)
+              .background(
+                RoundedRectangle(cornerRadius: 5, style: .continuous).fill(Color("IOS Grey"))
+              )
+          }.frame(width: 296)
+            .padding (.bottom, 25)
+          HStack {
+            Text("Location").font(.medSmall).frame(width: 100, alignment: .leading).offset(y: -68)
+            VStack (alignment: .leading, spacing: 10) {
                 ForEach(0..<locations.count) { i in
                   HStack {
                     Button(action: {
@@ -67,20 +70,14 @@ struct NewListingView: View {
                           Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                         }
-                        Text(locations[i].0.rawValue)
+                        Text(locations[i].0.rawValue).font(.regMed)
                           .foregroundColor(.black)
                       }
                     }
                   }
                 }
-              }
             }
-            .frame(width: 289)
-            .padding()
-            .background(
-              RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .stroke(.black)
-            )
+          }
 
           Button(action:{
             guard let seller = appViewModel.userViewModel?.user else {
@@ -115,17 +112,20 @@ struct NewListingView: View {
             
             show = false
           }){
-            Text("Sell")
+            Text("Sell").font(.medSmall)
           }.buttonStyle(SmallRedButton())
+            .padding(.top, 40)
+            .padding(.bottom, 15)
       
           Button("Cancel", role: .cancel) {
             show = false
             appViewModel.tabsDisabled.toggle()
             self.restoreFormToDefaults()
           }.buttonStyle(SmallWhiteButton())
+            .font(.medSmall)
         }
-        
-        .frame(width: 347, height: 585)
+        .padding(.bottom, 30)
+        .frame(width: 347)
         .background(Color.white)
         .cornerRadius(16)
   
