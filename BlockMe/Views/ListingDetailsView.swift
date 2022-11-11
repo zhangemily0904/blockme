@@ -71,7 +71,7 @@ struct ListingDetailsView: View {
       }
   }
   
-  private static let dateComponentFormatter: DateComponentsFormatter = {
+  static let dateComponentFormatter: DateComponentsFormatter = {
           var formatter = DateComponentsFormatter()
           formatter.allowedUnits = [.day, .hour, .minute]
           formatter.unitsStyle = .brief
