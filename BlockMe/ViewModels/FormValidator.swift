@@ -19,6 +19,26 @@ class FormValidator {
     return emailValidationPredicate.evaluate(with: email)
   }
   
+  static func isNewListingValid(expirationTime: Date, price: Float, availableLocations: [DiningLocation]) -> (Bool, String) {
+    var isValid = true
+    var errorMsg = ""
+    
+    if price < 0 {
+      isValid = false
+      errorMsg = "Price must be a positive number."
+    }
+    else if expirationTime <= Date.now {
+      isValid = false
+      errorMsg = "Expiration time must be in the future."
+    }
+    else if availableLocations.count < 1 {
+      isValid = false
+      errorMsg = "Must provide at least 1 available location."
+    }
+    
+    return (isValid, errorMsg)
+  }
+  
   static func validateFields(email: String, number: String) -> Bool {
     return isValidEmailAddr(email: email) && isValidPhoneNumber(number: number)
   }
