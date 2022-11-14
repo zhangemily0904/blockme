@@ -48,18 +48,41 @@ struct TransactionPendingView: View {
   var sellerContent: some View {
     VStack {
       if var listing = listingViewModel.listing {
-        Text("\(listing.buyer?.firstName ?? "XXX") wants to buy your block").font(.medLarge)
+        
+        HStack {
+          ZStack(alignment: .leading) {
+            Rectangle.pending
+            Rectangle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: drawingWidth ? 48 : 0, alignment: .leading)
+              .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
+          }
+          .frame(width: 48, height: 13)
+          .onAppear {
+            drawingWidth.toggle()
+          }.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending
+        }
+        .padding(.bottom, 30)
+        
+        Text("\(listing.buyer?.firstName ?? "XXX") wants to buy your block").font(.medMedLarge)
         if let buyerImage = listingViewModel.buyerImage {
           Image(uiImage: buyerImage)
             .resizable()
-            .scaledToFit()
+            .frame(width: 200, height: 200)
             .clipShape(Circle())
+            .padding(.bottom, 20)
+            .padding(.top, 20)
         }
         
         HStack {
           Text("$\(listing.price)")
           Text(listing.selectedLocation?.rawValue ?? "Error: No location found")
-        }
+        }.padding(.bottom, 30)
         
         Button(action: {
           listing.sellerStatus = SellerStatus.acceptedTransaction
@@ -68,17 +91,18 @@ struct TransactionPendingView: View {
             showErrorAlert = true
           }
         }) {
-          Text("Accept")
+          Text("Accept").font(.medSmall)
         }.buttonStyle(RedButton())
+          .padding(.bottom, 20)
         
         Button(action: {
           alertMsg = "Are you sure you want to decline this order?"
           showAlert = true
         }) {
-          Text("Decline")
-        }.buttonStyle(SmallWhiteButton())
+          Text("Decline").font(.medSmall)
+        }.buttonStyle(WhiteButton())
       }
-    }
+    }.frame(width: 352)
   }
   
   var buyerContent: some View {
@@ -90,27 +114,29 @@ struct TransactionPendingView: View {
             Rectangle.pending
             Rectangle()
               .fill(Color("BlockMe Red"))
-              .frame(width: drawingWidth ? 55 : 0, alignment: .leading)
+              .frame(width: drawingWidth ? 48 : 0, alignment: .leading)
               .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
           }
-          .frame(width: 56, height: 13)
+          .frame(width: 48, height: 13)
           .onAppear {
             drawingWidth.toggle()
-          }.padding(.trailing, 6)
-          Rectangle.pending.padding(.trailing, 6)
-          Rectangle.pending.padding(.trailing, 6)
-          Rectangle.pending.padding(.trailing, 6)
+          }.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
           Rectangle.pending
-        }.padding(.bottom, 20)
+        }
+        .padding(.bottom, 30)
         
-        Text("Waiting for \(listing.seller.firstName) to accept order").font(.medLarge).padding(.bottom, 50)
+        Text("Waiting for \(listing.seller.firstName) to accept order").font(.medMedLarge).padding(.bottom, 50)
         Image("waiting").resizable().scaledToFit().padding(.bottom, 58)
         
         Button(action: {
           showAlert = true
           alertMsg = "Are you sure you want to cancel this order?"
         }) {
-          Text("Cancel")
+          Text("Cancel").font(.medSmall)
         }.buttonStyle(WhiteButton())
       }
     }.frame(width: 352)

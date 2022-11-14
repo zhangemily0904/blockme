@@ -1,14 +1,14 @@
 //
-//  TransactionWaitingView.swift
+//  TransactionConfirmingView.swift
 //  BlockMe
 //
-//  Created by Brian Chou on 11/8/22.
+//  Created by Wen Shan Jiang on 11/13/22.
 //
 
 import SwiftUI
 
 // generic waiting room for transactions
-struct TransactionWaitingView: View {
+struct TransactionConfirmingView: View {
   @ObservedObject var listingRepository: ListingRepository
   @ObservedObject var listingViewModel: ListingViewModel
   var waitingFor: String
@@ -28,6 +28,8 @@ struct TransactionWaitingView: View {
           HStack {
             Rectangle.completed.padding(.trailing, 2)
             Rectangle.completed.padding(.trailing, 2)
+            Rectangle.completed.padding(.trailing, 2)
+            Rectangle.completed.padding(.trailing, 2)
             ZStack(alignment: .leading) {
               Rectangle.pending
               Rectangle()
@@ -39,13 +41,11 @@ struct TransactionWaitingView: View {
             .onAppear {
               drawingWidth.toggle()
             }.padding(.trailing, 2)
-            Rectangle.pending.padding(.trailing, 2)
-            Rectangle.pending.padding(.trailing, 2)
             Rectangle.pending
           }
            .padding(.bottom, 30)
           
-          Text("Waiting for \(name) to \(msgPostfix)").font(.medMedLarge)
+          Text("Waiting for \(name) to \(msgPostfix) payment").font(.medMedLarge)
           if let image = image {
             Image(uiImage: image)
               .resizable()

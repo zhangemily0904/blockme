@@ -50,12 +50,12 @@ struct TransactionView: View {
           if self.isSeller {
             TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
           } else {
-            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller", msgPostfix: "confirm")
+            TransactionConfirmingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller", msgPostfix: "confirm")
           }
         }
         else if listing.buyerStatus != BuyerStatus.completedPayment && listing.sellerStatus == SellerStatus.paymentRecieved {
           if self.isSeller {
-            TransactionWaitingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer", msgPostfix: "confirm")
+            TransactionConfirmingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer", msgPostfix: "confirm")
           } else {
             TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
           }

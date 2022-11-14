@@ -60,6 +60,7 @@
 		CBCC7137291ADBE400C30C35 /* VenmoFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC7136291ADBE400C30C35 /* VenmoFormatter.swift */; };
 		CBCC7139291ADCAC00C30C35 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */; };
 		CBCC713C291B661F00C30C35 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = CBCC713B291B661F00C30C35 /* WrappingHStack */; };
+		CBFC52A82921F54200C7A60D /* TransactionConfirmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFC52A72921F54200C7A60D /* TransactionConfirmingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		CB550946291609550073243D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		CBCC7136291ADBE400C30C35 /* VenmoFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenmoFormatter.swift; sourceTree = "<group>"; };
 		CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		CBFC52A72921F54200C7A60D /* TransactionConfirmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionConfirmingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				724BFFFF291B28CA00448B0D /* TransactionWaitingView.swift */,
 				724B0001291B36FE00448B0D /* TransactionHasArrivedView.swift */,
 				724B0003291B529000448B0D /* TransactionPaymentView.swift */,
+				CBFC52A72921F54200C7A60D /* TransactionConfirmingView.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				72391EFB2909A8CB00C980E1 /* LoginView.swift in Sources */,
 				72391F05290C48CE00C980E1 /* UIComponents.swift in Sources */,
 				CBCC7139291ADCAC00C30C35 /* WelcomeView.swift in Sources */,
+				CBFC52A82921F54200C7A60D /* TransactionConfirmingView.swift in Sources */,
 				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
 				724B0004291B529000448B0D /* TransactionPaymentView.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,

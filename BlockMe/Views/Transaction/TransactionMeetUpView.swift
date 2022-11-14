@@ -14,6 +14,7 @@ struct TransactionMeetUpView: View {
   @State var showErrorAlert = false // alert for errors
   @State var showAlert = false // alert for confirming cancel / decline order
   @State private var alertMsg = ""
+  @State private var drawingWidth = false
   
   var body: some View {
     self.content
@@ -25,14 +26,41 @@ struct TransactionMeetUpView: View {
         let name = self.isSeller ? (listing.buyer?.firstName ?? "XXX") : listing.seller.firstName
         let image = self.isSeller ? listingViewModel.buyerImage : listingViewModel.sellerImage
         let phoneNumber = self.isSeller ? String(listing.buyer?.phoneNumber ?? "(XXX) XXX - XXXX") : String(listing.seller.phoneNumber)
-        Text("Meet \(name) at \(listing.selectedLocation?.rawValue ?? "Location")").font(.medLarge)
+        
+        HStack {
+          Rectangle.completed.padding(.trailing, 2)
+          ZStack(alignment: .leading) {
+            Rectangle.pending
+            Rectangle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: drawingWidth ? 48 : 0, alignment: .leading)
+              .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
+          }
+          .frame(width: 48, height: 13)
+          .onAppear {
+            drawingWidth.toggle()
+          }.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending
+        }
+         .padding(.bottom, 30)
+        
+        Text("Meet \(name) at \(listing.selectedLocation?.rawValue ?? "Location")").font(.medMedLarge)
         if let buyerImage = image {
           Image(uiImage: buyerImage)
             .resizable()
-            .scaledToFit()
+            .frame(width: 200, height: 200)
             .clipShape(Circle())
+            .padding(.bottom, 20)
+            .padding(.top, 20)
         }
-        Text(phoneNumber)
+        
+        HStack {
+          Image("telephone").resizable().frame(width: 30, height: 30)
+          Text(phoneNumber).font(.regMed)
+        } .padding(.bottom, 30)
         
         Button(action: {
           if self.isSeller {
@@ -46,17 +74,19 @@ struct TransactionMeetUpView: View {
             showErrorAlert = true
           }
         }) {
-          Text("I Have Arrived")
+          Text("I Have Arrived").font(.medSmall)
         }.buttonStyle(RedButton())
+          .padding(.bottom, 20)
         
         Button(action: {
           showAlert = true
           alertMsg = "Are you sure you want to cancel this order?"
         }) {
-          Text("Cancel")
-        }.buttonStyle(SmallWhiteButton())
+          Text("Cancel").font(.medSmall)
+        }.buttonStyle(WhiteButton())
       }
-    }.alert(alertMsg, isPresented: $showErrorAlert) {
+    }.frame(width: 352)
+    .alert(alertMsg, isPresented: $showErrorAlert) {
       Button("Ok", role: .cancel) {
         showErrorAlert = false
       }
