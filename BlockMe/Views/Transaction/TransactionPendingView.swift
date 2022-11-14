@@ -84,16 +84,16 @@ struct TransactionPendingView: View {
   var buyerContent: some View {
     VStack {
       if let listing = listingViewModel.listing {
-        Text("Waiting for \(listing.seller.firstName) to accept order").font(.medLarge)
-        Text("PLACEHOLDER: Image goes here").bold()
+        Text("Waiting for \(listing.seller.firstName) to accept order").font(.medLarge).padding(.bottom, 50)
+        Image("waiting").resizable().scaledToFit().padding(.bottom, 58)
         
         Button(action: {
           showAlert = true
           alertMsg = "Are you sure you want to cancel this order?"
         }) {
           Text("Cancel")
-        }.buttonStyle(SmallWhiteButton())
+        }.buttonStyle(WhiteButton())
       }
-    }
+    }.frame(width: 352)
   }
 }
