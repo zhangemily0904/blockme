@@ -94,14 +94,10 @@ struct NewListingView: View {
               }
             }
             
-            guard availableLocations.count > 0 else {
-              error = "Must provide at least 1 available location."
-              showErrorAlert = true
-              return
-            }
+            let (isValidParameters, errorMsg) = FormValidator.isNewListingValid(expirationTime: expirationTime, price: price, availableLocations: availableLocations)
             
-            guard expirationTime > Date.now else {
-              error = "Expiration time must be in the future."
+            guard isValidParameters else {
+              error = errorMsg
               showErrorAlert = true
               return
             }
