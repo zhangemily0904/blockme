@@ -14,6 +14,7 @@ struct TransactionPaymentView: View {
   @State var showErrorAlert = false // alert for errors
   @State var showAlert = false // alert for confirming cancel / decline order
   @State private var alertMsg = ""
+  @State private var drawingWidth = false
   
     var body: some View {
       VStack {
@@ -41,27 +42,50 @@ struct TransactionPaymentView: View {
   var sellerContent: some View {
     VStack {
       if var listing = listingViewModel.listing {
-        Text("Complete Transaction").font(.medLarge)
+        
+        HStack {
+          Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+          ZStack(alignment: .leading) {
+            Rectangle.pending
+            Rectangle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: drawingWidth ? 48 : 0, alignment: .leading)
+              .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
+          }
+          .frame(width: 48, height: 13)
+          .onAppear {
+            drawingWidth.toggle()
+          }.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending
+        }
+         .padding(.bottom, 30)
+        
+        Text("Complete Transaction").font(.medMedLarge)
         
         VStack {
           HStack {
-            Text("Buyer Venmo:").frame(maxWidth: .infinity, alignment: .leading)
-            Text(listing.buyer?.venmoHandle ?? "").frame(maxWidth: .infinity, alignment: .trailing)
-          }
+            Text("Buyer Venmo:").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text(listing.buyer?.venmoHandle ?? "").font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
+          }.padding(.bottom, 5)
           HStack {
-            Text("Price per block:").frame(maxWidth: .infinity, alignment: .leading)
-            Text(String(format: "$%.2f", listing.price)).frame(maxWidth: .infinity, alignment: .trailing)
-          }
+            Text("Price per block:").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text(String(format: "$%.2f", listing.price)).font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
+          }.padding(.bottom, 5)
           HStack {
-            Text("Quantity:").frame(maxWidth: .infinity, alignment: .leading)
-            Text("1x").frame(maxWidth: .infinity, alignment: .trailing)
-          }
+            Text("Quantity:").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text("1x").font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
+          }.padding(.bottom, 5)
           Divider().frame(height: 15)
           HStack {
-            Text("Total").frame(maxWidth: .infinity, alignment: .leading)
-            Text(String(format: "$%.2f", listing.price)).frame(maxWidth: .infinity, alignment: .trailing)
+            Text("Total").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text(String(format: "$%.2f", listing.price)).font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
           }
-        }.frame(width: 300) // TODO: make responsive? @wenshan
+        }.frame(width: 352)
+          .padding(.bottom, 30)
+          .padding(.top, 30)
         
         
         Button(action: {
@@ -76,15 +100,16 @@ struct TransactionPaymentView: View {
             showErrorAlert = true
           }
         }) {
-          Text("Confirm Payment Received")
+          Text("Confirm Payment Received").font(.medSmall)
         }.buttonStyle(RedButton())
+          .padding(.bottom, 20)
         
         Button(action: {
           showAlert = true
           alertMsg = "Are you sure you want to cancel this order?"
         }) {
-          Text("Cancel")
-        }.buttonStyle(SmallWhiteButton())
+          Text("Cancel").font(.medSmall)
+        }.buttonStyle(WhiteButton())
       }
     }
   }
@@ -92,27 +117,51 @@ struct TransactionPaymentView: View {
   var buyerContent: some View {
     VStack {
       if var listing = listingViewModel.listing {
-        Text("Confirm and Pay").font(.medLarge)
+        
+        
+        HStack {
+          Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+          ZStack(alignment: .leading) {
+            Rectangle.pending
+            Rectangle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: drawingWidth ? 48 : 0, alignment: .leading)
+              .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
+          }
+          .frame(width: 48, height: 13)
+          .onAppear {
+            drawingWidth.toggle()
+          }.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending
+        }
+         .padding(.bottom, 30)
+        
+        Text("Confirm and Pay").font(.medMedLarge)
         
         VStack {
           HStack {
-            Text("Seller Venmo:").frame(maxWidth: .infinity, alignment: .leading)
-            Text(listing.seller.venmoHandle).frame(maxWidth: .infinity, alignment: .trailing)
-          }
+            Text("Seller Venmo:").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text(listing.seller.venmoHandle).font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
+          }.padding(.bottom, 5)
           HStack {
-            Text("Price per block:").frame(maxWidth: .infinity, alignment: .leading)
-            Text(String(format: "$%.2f", listing.price)).frame(maxWidth: .infinity, alignment: .trailing)
-          }
+            Text("Price per block:").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text(String(format: "$%.2f", listing.price)).font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
+          }.padding(.bottom, 5)
           HStack {
-            Text("Quantity:").frame(maxWidth: .infinity, alignment: .leading)
-            Text("1x").frame(maxWidth: .infinity, alignment: .trailing)
-          }
+            Text("Quantity:").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text("1x").font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
+          }.padding(.bottom, 5)
           Divider().frame(height: 15)
           HStack {
-            Text("Total").frame(maxWidth: .infinity, alignment: .leading)
-            Text(String(format: "$%.2f", listing.price)).frame(maxWidth: .infinity, alignment: .trailing)
+            Text("Total").font(.regLarge).frame(maxWidth: .infinity, alignment: .leading)
+            Text(String(format: "$%.2f", listing.price)).font(.regLarge).frame(maxWidth: .infinity, alignment: .trailing)
           }
-        }.frame(width: 300) // TODO: make responsive? @wenshan
+        }.frame(width: 352)
+          .padding(.bottom, 80)
+          .padding(.top, 40)
         
         
         Button(action: {
@@ -127,15 +176,16 @@ struct TransactionPaymentView: View {
             showErrorAlert = true
           }
         }) {
-          Text("I Have Paid")
+          Text("I Have Paid").font(.medSmall)
         }.buttonStyle(RedButton())
+          .padding(.bottom, 20)
         
         Button(action: {
           showAlert = true
           alertMsg = "Are you sure you want to cancel this order?"
         }) {
-          Text("Cancel")
-        }.buttonStyle(SmallWhiteButton())
+          Text("Cancel").font(.medSmall)
+        }.buttonStyle(WhiteButton())
       }
     }  }
 }

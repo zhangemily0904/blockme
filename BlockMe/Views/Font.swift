@@ -16,11 +16,12 @@ extension Font {
   static let semiSmall = Font.custom(PingFangSC.semibold, size: 14)
   
   static let medLarge = Font.custom(PingFangSC.medium, size: 32)
+  static let medMedLarge = Font.custom(PingFangSC.medium, size: 28)
   static let medMed = Font.custom(PingFangSC.medium, size: 20)
   static let medSmall = Font.custom(PingFangSC.medium, size: 16)
   static let medTiny = Font.custom(PingFangSC.medium, size: 12)
   
-  static let regLarge = Font.custom(PingFangSC.regular, size: 20)
+  static let regLarge = Font.custom(PingFangSC.regular, size: 18)
   static let regMed = Font.custom(PingFangSC.regular, size: 16)
   static let regSmall = Font.custom(PingFangSC.regular, size: 14)
   static let regTiny = Font.custom(PingFangSC.regular, size: 12)

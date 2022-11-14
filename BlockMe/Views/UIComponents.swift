@@ -17,6 +17,17 @@ struct RedButton: ButtonStyle {
       )
   }
 }
+
+struct WhiteButton: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .frame(width: 352, height: 57)
+      .background(
+        RoundedRectangle(cornerRadius: 16, style: .continuous)
+          .stroke(Color.black, lineWidth: 2)
+      )
+  }
+}
   
 struct SmallWhiteButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
@@ -80,4 +91,9 @@ extension Circle {
   static let availableCircle = AnyView(Circle().fill(Color("Expiration Green")).frame(width: 8, height: 8))
   static let limitCircle = AnyView(Circle().fill(Color("Expiration Yellow")).frame(width: 8, height: 8))
   static let unavailableCircle = AnyView(Circle().fill(Color("Expiration Red")).frame(width: 8, height: 8))
+}
+
+extension Rectangle {
+  static let pending = AnyView(Rectangle().fill(Color(.systemGray5)).frame(width: 48, height: 13))
+  static let completed = AnyView(Rectangle().fill(Color("BlockMe Red")).frame(width: 48, height: 13))
 }

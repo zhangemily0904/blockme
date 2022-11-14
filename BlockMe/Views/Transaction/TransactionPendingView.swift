@@ -14,7 +14,7 @@ struct TransactionPendingView: View {
   @State var showErrorAlert = false // alert for errors
   @State var showAlert = false // alert for confirming cancel / decline order
   @State private var alertMsg = ""
-  
+  @State private var drawingWidth = false
   
   var body: some View {
     VStack {
@@ -48,18 +48,41 @@ struct TransactionPendingView: View {
   var sellerContent: some View {
     VStack {
       if var listing = listingViewModel.listing {
-        Text("\(listing.buyer?.firstName ?? "XXX") wants to buy your block").font(.medLarge)
+        
+        HStack {
+          ZStack(alignment: .leading) {
+            Rectangle.pending
+            Rectangle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: drawingWidth ? 48 : 0, alignment: .leading)
+              .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
+          }
+          .frame(width: 48, height: 13)
+          .onAppear {
+            drawingWidth.toggle()
+          }.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending
+        }
+        .padding(.bottom, 30)
+        
+        Text("\(listing.buyer?.firstName ?? "XXX") wants to buy your block").font(.medMedLarge)
         if let buyerImage = listingViewModel.buyerImage {
           Image(uiImage: buyerImage)
             .resizable()
-            .scaledToFit()
+            .frame(width: 200, height: 200)
             .clipShape(Circle())
+            .padding(.bottom, 20)
+            .padding(.top, 20)
         }
         
         HStack {
-          Text("$\(listing.price)")
+          Text(String(format: "$%.2f", listing.price))
           Text(listing.selectedLocation?.rawValue ?? "Error: No location found")
-        }
+        }.padding(.bottom, 30)
         
         Button(action: {
           listing.sellerStatus = SellerStatus.acceptedTransaction
@@ -68,32 +91,54 @@ struct TransactionPendingView: View {
             showErrorAlert = true
           }
         }) {
-          Text("Accept")
+          Text("Accept").font(.medSmall)
         }.buttonStyle(RedButton())
+          .padding(.bottom, 20)
         
         Button(action: {
           alertMsg = "Are you sure you want to decline this order?"
           showAlert = true
         }) {
-          Text("Decline")
-        }.buttonStyle(SmallWhiteButton())
+          Text("Decline").font(.medSmall)
+        }.buttonStyle(WhiteButton())
       }
-    }
+    }.frame(width: 352)
   }
   
   var buyerContent: some View {
     VStack {
       if let listing = listingViewModel.listing {
-        Text("Waiting for \(listing.seller.firstName) to accept order").font(.medLarge)
-        Text("PLACEHOLDER: Image goes here").bold()
+        
+        HStack {
+          ZStack(alignment: .leading) {
+            Rectangle.pending
+            Rectangle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: drawingWidth ? 48 : 0, alignment: .leading)
+              .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
+          }
+          .frame(width: 48, height: 13)
+          .onAppear {
+            drawingWidth.toggle()
+          }.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending.padding(.trailing, 2)
+          Rectangle.pending
+        }
+        .padding(.bottom, 30)
+        
+        Text("Waiting for \(listing.seller.firstName) to accept order").font(.medMedLarge).padding(.bottom, 50)
+        Image("waiting").resizable().scaledToFit().padding(.bottom, 58)
         
         Button(action: {
           showAlert = true
           alertMsg = "Are you sure you want to cancel this order?"
         }) {
-          Text("Cancel")
-        }.buttonStyle(SmallWhiteButton())
+          Text("Cancel").font(.medSmall)
+        }.buttonStyle(WhiteButton())
       }
-    }
+    }.frame(width: 352)
   }
 }
