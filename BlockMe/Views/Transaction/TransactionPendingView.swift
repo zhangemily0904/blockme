@@ -14,7 +14,7 @@ struct TransactionPendingView: View {
   @State var showErrorAlert = false // alert for errors
   @State var showAlert = false // alert for confirming cancel / decline order
   @State private var alertMsg = ""
-  
+  @State private var drawingWidth = false
   
   var body: some View {
     VStack {
@@ -84,6 +84,25 @@ struct TransactionPendingView: View {
   var buyerContent: some View {
     VStack {
       if let listing = listingViewModel.listing {
+        
+        HStack {
+          ZStack(alignment: .leading) {
+            Rectangle.pending
+            Rectangle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: drawingWidth ? 55 : 0, alignment: .leading)
+              .animation(.easeInOut(duration: 3).repeatForever(autoreverses: false), value: drawingWidth)
+          }
+          .frame(width: 56, height: 13)
+          .onAppear {
+            drawingWidth.toggle()
+          }.padding(.trailing, 6)
+          Rectangle.pending.padding(.trailing, 6)
+          Rectangle.pending.padding(.trailing, 6)
+          Rectangle.pending.padding(.trailing, 6)
+          Rectangle.pending
+        }.padding(.bottom, 20)
+        
         Text("Waiting for \(listing.seller.firstName) to accept order").font(.medLarge).padding(.bottom, 50)
         Image("waiting").resizable().scaledToFit().padding(.bottom, 58)
         

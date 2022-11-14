@@ -92,3 +92,7 @@ extension Circle {
   static let limitCircle = AnyView(Circle().fill(Color("Expiration Yellow")).frame(width: 8, height: 8))
   static let unavailableCircle = AnyView(Circle().fill(Color("Expiration Red")).frame(width: 8, height: 8))
 }
+
+extension Rectangle {
+  static let pending = AnyView(Rectangle().fill(Color(.systemGray5)).frame(width: 56, height: 13))
+}
