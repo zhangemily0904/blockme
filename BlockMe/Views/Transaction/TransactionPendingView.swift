@@ -80,7 +80,7 @@ struct TransactionPendingView: View {
         }
         
         HStack {
-          Text("$\(listing.price)")
+          Text(String(format: "$%.2f", listing.price))
           Text(listing.selectedLocation?.rawValue ?? "Error: No location found")
         }.padding(.bottom, 30)
         
