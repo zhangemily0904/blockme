@@ -18,10 +18,8 @@ struct MarketPlaceView: View {
   @State var showSortView = false
   @State var selectedListing: Listing? = nil
   @State var selectedListingProfile: UIImage? = nil
-
   let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
  
-
     var body: some View {
       ZStack {
         Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
@@ -37,8 +35,10 @@ struct MarketPlaceView: View {
             }){
               Text("Filter")
             }
-            .sheet(isPresented: $showFilterView) {
-              FilterView(show: $showFilterView)
+            .sheet(isPresented: $showFilterView, onDismiss: {
+              listingRepository.get()
+            }) {
+              FilterView(listingRepository: listingRepository, show: $showFilterView)
             }
             
             Button(action:{
@@ -49,9 +49,7 @@ struct MarketPlaceView: View {
           }
           
           GeometryReader { geometry in
-            let currentListings = listingRepository.listings.filter {
-              $0.buyer == nil && $0.expirationTime > currentTime 
-            }
+            let currentListings = listingRepository.currentListings
             VStack() {
               ForEach(currentListings) { listing in
                 Button(action:{

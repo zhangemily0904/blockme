@@ -10,22 +10,14 @@ import MultiSlider
 
 struct FilterView: View {
   typealias LocationSelection = (DiningLocation, Bool)
+  @ObservedObject var listingRepository: ListingRepository
   @Binding var show: Bool
   @State var expirationTime1: Date = Date.now
   @State var expirationTime2: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @State var priceRange: [CGFloat] = [0.0, 15.0]
-  @State var locations: [LocationSelection] = DiningLocation.allCases.map{($0, false)}
+  @State var locations: [LocationSelection] = DiningLocation.allCases.map{($0, true)}
   @Environment(\.dismiss) var dismiss
-  
-  func getEOD() -> Date {
-    var components = DateComponents()
-    components.hour = 23
-    components.minute = 59
-    return Calendar.current.date(from: components) ?? Date.now
-  }
-  
 
-  
     var body: some View {
       ZStack {
         
@@ -56,8 +48,6 @@ struct FilterView: View {
             }.frame(maxWidth: .infinity)
           }.frame(width: 296)
          
-          
-          
           VStack() {
             Text("Price").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading)
 
@@ -100,7 +90,13 @@ struct FilterView: View {
               }
             }
           }
-          Button(action:{}) {
+          Button(action:{
+            listingRepository.priceRange = priceRange
+            listingRepository.expirationTime1 = expirationTime1
+            listingRepository.expirationTime2 = expirationTime2
+            listingRepository.locations = locations.filter{$0.1}.map{$0.0}
+            dismiss()
+          }) {
             Text("Apply")
           }.buttonStyle(SmallRedButton())
             .font(.medSmall)
