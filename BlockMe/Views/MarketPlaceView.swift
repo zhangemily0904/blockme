@@ -36,8 +36,7 @@ struct MarketPlaceView: View {
               Text("Filter")
             }
             .sheet(isPresented: $showFilterView) {
-              FilterView(listingRepository: listingRepository, show: $showFilterView,
-                         priceRange: [0.0, CGFloat(listingRepository.findMaxPrice())])
+              FilterListingView(listingRepository: listingRepository, show: $showFilterView, priceRange: listingRepository.priceRange[1] == -1 ? [0.0, listingRepository.findMaxPrice()] : listingRepository.priceRange, expirationTimeMin: listingRepository.expirationTimeMin, expirationTimeMax: listingRepository.expirationTimeMax, locations: DiningLocation.allCases.map{listingRepository.locations.contains($0) ? ($0, true) : ($0, false)})
             }
             
             Button(action:{

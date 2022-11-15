@@ -11,8 +11,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class ListingRepository: ObservableObject {
-  typealias LocationSelection = (DiningLocation, Bool)
-
   private let path: String = "listings"
   private let store = Firestore.firestore()
   
@@ -21,13 +19,14 @@ class ListingRepository: ObservableObject {
   @Published var currentListings: [Listing] = []
   private var cancellables: Set<AnyCancellable> = []
   
-  @Published var priceRange: [Float] = [0.0, 0.0]
+  @Published var priceRange: [CGFloat] = [0.0, 20.0]
   @Published var expirationTimeMin: Date = Date.now
   @Published var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @Published var locations = DiningLocation.allCases
   
   init() {
     self.get()
+    print(self.listings)
   }
   
   func get() {
@@ -42,6 +41,7 @@ class ListingRepository: ObservableObject {
           try? document.data(as: Listing.self)
         } ?? []
         
+        print("listings \(self.listings)")
         self.currentListings = self.listings.filter {
           $0.buyer == nil && $0.expirationTime > Date.now
         }
@@ -116,13 +116,13 @@ class ListingRepository: ObservableObject {
     return self.update(listing: listing)
   }
   
-  func findMaxPrice() -> Float {
+  func findMaxPrice() -> CGFloat {
     var max: Float = -1.0
     for listing in self.currentListings {
       if listing.price > max {
         max = listing.price
       }
     }
-    return max
+    return CGFloat(max)
   }
 }

@@ -8,14 +8,14 @@
 import SwiftUI
 import MultiSlider
 
-struct FilterView: View {
+struct FilterListingView: View {
   typealias LocationSelection = (DiningLocation, Bool)
   @ObservedObject var listingRepository: ListingRepository
   @Binding var show: Bool
   @State var priceRange: [CGFloat]
-  @State var expirationTimeMin: Date = Date.now
-  @State var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
-  @State var locations: [LocationSelection] = DiningLocation.allCases.map{($0, true)}
+  @State var expirationTimeMin: Date
+  @State var expirationTimeMax: Date
+  @State var locations: [LocationSelection] 
   @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -56,7 +56,7 @@ struct FilterView: View {
 
             MultiValueSlider(
                 value: $priceRange,
-                maximumValue: priceRange[1],
+                maximumValue: CGFloat(listingRepository.findMaxPrice()),
                 snapStepSize: 1,
                 valueLabelPosition: .top,
                 orientation: .horizontal,
@@ -94,7 +94,7 @@ struct FilterView: View {
             }
           }.padding(.bottom, 15)
           Button(action:{
-            listingRepository.priceRange = [Float(priceRange[0]), Float(priceRange[1])]
+            listingRepository.priceRange = [priceRange[0], priceRange[1]]
             listingRepository.expirationTimeMin = expirationTimeMin
             listingRepository.expirationTimeMax = expirationTimeMax
             listingRepository.locations = locations.filter{$0.1}.map{$0.0}
