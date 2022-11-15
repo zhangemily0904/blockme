@@ -12,9 +12,9 @@ struct FilterView: View {
   typealias LocationSelection = (DiningLocation, Bool)
   @ObservedObject var listingRepository: ListingRepository
   @Binding var show: Bool
+  @State var priceRange: [CGFloat]
   @State var expirationTime1: Date = Date.now
   @State var expirationTime2: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
-  @State var priceRange: [CGFloat] = [0.0, 15.0]
   @State var locations: [LocationSelection] = DiningLocation.allCases.map{($0, true)}
   @Environment(\.dismiss) var dismiss
 
@@ -56,7 +56,7 @@ struct FilterView: View {
 
             MultiValueSlider(
                 value: $priceRange,
-                maximumValue: 15,
+                maximumValue: priceRange[1],
                 snapStepSize: 1,
                 valueLabelPosition: .top,
                 orientation: .horizontal,
@@ -94,7 +94,7 @@ struct FilterView: View {
             }
           }.padding(.bottom, 15)
           Button(action:{
-            listingRepository.priceRange = priceRange
+            listingRepository.priceRange = [Float(priceRange[0]), Float(priceRange[1])]
             listingRepository.expirationTime1 = expirationTime1
             listingRepository.expirationTime2 = expirationTime2
             listingRepository.locations = locations.filter{$0.1}.map{$0.0}
@@ -106,8 +106,8 @@ struct FilterView: View {
           
           Button(action:{
             expirationTime1 = Date.now
-            expirationTime2 = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
-            priceRange = [0.0, 15.0]
+            expirationTime2 = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now
+            priceRange = [0.0, CGFloat(listingRepository.findMaxPrice())]
             locations = DiningLocation.allCases.map{($0, true)}
           }) {
             Text("Reset")

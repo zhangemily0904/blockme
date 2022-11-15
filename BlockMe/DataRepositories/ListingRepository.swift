@@ -21,11 +21,10 @@ class ListingRepository: ObservableObject {
   @Published var currentListings: [Listing] = []
   private var cancellables: Set<AnyCancellable> = []
   
-  @Published var priceRange: [CGFloat] = [0.0, 15.0]
+  @Published var priceRange: [Float] = [0.0, 0.0]
   @Published var expirationTime1: Date = Date.now
   @Published var expirationTime2: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @Published var locations = DiningLocation.allCases
-
   
   init() {
     self.get()
@@ -42,14 +41,21 @@ class ListingRepository: ObservableObject {
         self.listings = querySnapshot?.documents.compactMap { document in
           try? document.data(as: Listing.self)
         } ?? []
-       
+        
         self.currentListings = self.listings.filter {
-          $0.buyer == nil && $0.expirationTime > Date.now &&
-          $0.expirationTime >= self.expirationTime1 && $0.expirationTime <= self.expirationTime2 &&
-          $0.price >= Float(self.priceRange[0]) && $0.price <= Float(self.priceRange[1]) &&
-          !$0.availableLocations.allSatisfy {!self.locations.contains($0)}
+          $0.buyer == nil && $0.expirationTime > Date.now
         }
+        
+        self.filteredListings = self.currentListings
       }
+  }
+  
+  func getFiltered() {
+    self.filteredListings = self.currentListings.filter{
+      $0.expirationTime >= self.expirationTime1 && $0.expirationTime <= self.expirationTime2 &&
+      $0.price >= Float(self.priceRange[0]) && $0.price <= Float(self.priceRange[1]) &&
+      !$0.availableLocations.allSatisfy {!self.locations.contains($0)}
+    }
   }
   
   func add(listing: Listing) {
@@ -108,5 +114,15 @@ class ListingRepository: ObservableObject {
     listing.sellerStatus = nil
     listing.completedTime = nil
     return self.update(listing: listing)
+  }
+  
+  func findMaxPrice() -> Float {
+    var max: Float = -1.0
+    for listing in self.currentListings {
+      if listing.price > max {
+        max = listing.price
+      }
+    }
+    return max
   }
 }

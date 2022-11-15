@@ -36,9 +36,10 @@ struct MarketPlaceView: View {
               Text("Filter")
             }
             .sheet(isPresented: $showFilterView, onDismiss: {
-              listingRepository.get()
+              listingRepository.getFiltered()
             }) {
-              FilterView(listingRepository: listingRepository, show: $showFilterView)
+              FilterView(listingRepository: listingRepository, show: $showFilterView,
+                         priceRange: [0.0, CGFloat(listingRepository.findMaxPrice())])
             }
             
             Button(action:{
@@ -49,7 +50,7 @@ struct MarketPlaceView: View {
           }
           
           GeometryReader { geometry in
-            let currentListings = listingRepository.currentListings
+            let currentListings = listingRepository.filteredListings
             VStack() {
               ForEach(currentListings) { listing in
                 Button(action:{
