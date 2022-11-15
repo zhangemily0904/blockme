@@ -23,9 +23,12 @@ struct FilterView: View {
         
         VStack() {
           Button(action: {dismiss()}){
-            Text("x") // TODO: replace with icon
+            Image("cancel")
+              .resizable()
+              .frame(width: 30, height: 30)
           }
-          Text("Filter").font(.medMed).frame(width: 296).padding(.top, 30)
+          .frame(width: 296, alignment: .trailing)
+          Text("Filter").font(.medMed).frame(width: 296)
           
           VStack() {
             Text("Expiration Time").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 15)
@@ -89,7 +92,7 @@ struct FilterView: View {
                 }
               }
             }
-          }
+          }.padding(.bottom, 15)
           Button(action:{
             listingRepository.priceRange = priceRange
             listingRepository.expirationTime1 = expirationTime1
