@@ -24,7 +24,8 @@ struct OrdersView: View {
               }
         
               ScrollView(showsIndicators: false) {
-                ForEach(currentListings) { listing in
+                ForEach(currentListings.sorted { $0.completedTime! > $1.completedTime! }) { listing in
+>>>>>>> dev
                  
                   OrderDetailsView(order: listing, viewWidth: geometry.size.width, seller: listing.seller.id==userId)
                 }
