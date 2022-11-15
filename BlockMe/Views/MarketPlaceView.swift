@@ -14,12 +14,12 @@ struct MarketPlaceView: View {
   @State var calendar = Calendar.current
   @State var showNewListingView = false
   @State var showPurchaseView = false
+  @State var showFilterView = false
+  @State var showSortView = false
   @State var selectedListing: Listing? = nil
   @State var selectedListingProfile: UIImage? = nil
-
   let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
  
-
     var body: some View {
       ZStack {
         Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
@@ -28,11 +28,26 @@ struct MarketPlaceView: View {
         }
         VStack {
           Text("Marketplace").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
-
-          GeometryReader { geometry in
-            let currentListings = listingRepository.listings.filter {
-              $0.buyer == nil && $0.expirationTime > currentTime
+          
+          HStack {
+            Button(action:{
+              showFilterView.toggle()
+            }){
+              Text("Filter")
             }
+            .sheet(isPresented: $showFilterView) {
+              FilterListingView(listingRepository: listingRepository, show: $showFilterView, priceRange: listingRepository.priceRange[1] == -1 ? [0.0, listingRepository.findMaxPrice()] : listingRepository.priceRange, expirationTimeMin: listingRepository.expirationTimeMin, expirationTimeMax: listingRepository.expirationTimeMax, locations: DiningLocation.allCases.map{listingRepository.locations.contains($0) ? ($0, true) : ($0, false)})
+            }
+            
+            Button(action:{
+              showSortView.toggle()
+            }){
+              Text("Sort")
+            }
+          }
+          
+          GeometryReader { geometry in
+            let currentListings = listingRepository.filteredListings
             VStack() {
               ForEach(currentListings) { listing in
                 Button(action:{
@@ -68,6 +83,8 @@ struct MarketPlaceView: View {
         }
         PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
         NewListingView(show: $showNewListingView, listingRepository: listingRepository)
+
       }
+      .frame(maxHeight: .infinity)
     }
 }

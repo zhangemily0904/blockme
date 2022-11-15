@@ -15,11 +15,18 @@ class ListingRepository: ObservableObject {
   private let store = Firestore.firestore()
   
   @Published var listings: [Listing] = []
+  @Published var filteredListings: [Listing] = []
   @Published var currentListings: [Listing] = []
   private var cancellables: Set<AnyCancellable> = []
   
+  @Published var priceRange: [CGFloat] = [0.0, -1.0]
+  @Published var expirationTimeMin: Date = Date.now
+  @Published var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
+  @Published var locations = DiningLocation.allCases
+  
   init() {
     self.get()
+    print(self.listings)
   }
   
   func get() {
@@ -34,10 +41,21 @@ class ListingRepository: ObservableObject {
           try? document.data(as: Listing.self)
         } ?? []
         
+        print("listings \(self.listings)")
         self.currentListings = self.listings.filter {
           $0.buyer == nil && $0.expirationTime > Date.now
         }
+        
+        self.filteredListings = self.currentListings
       }
+  }
+  
+  func getFiltered() {
+    self.filteredListings = self.currentListings.filter{
+      $0.expirationTime >= self.expirationTimeMin && $0.expirationTime <= self.expirationTimeMax &&
+      $0.price >= Float(self.priceRange[0]) && $0.price <= Float(self.priceRange[1]) &&
+      !$0.availableLocations.allSatisfy {!self.locations.contains($0)}
+    }
   }
   
   func add(listing: Listing) {
@@ -96,5 +114,9 @@ class ListingRepository: ObservableObject {
     listing.sellerStatus = nil
     listing.completedTime = nil
     return self.update(listing: listing)
+  }
+  
+  func findMaxPrice() -> CGFloat {
+    return CGFloat(self.currentListings.map{$0.price}.max() ?? 0)
   }
 }

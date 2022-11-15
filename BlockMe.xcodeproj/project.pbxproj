@@ -49,6 +49,8 @@
 		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
 		7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9C291457B000B57B55 /* StorageViewModel.swift */; };
 		9F0FD731291B76EE00B9175F /* OrderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FD730291B76EE00B9175F /* OrderDetailsView.swift */; };
+		9F0FD74D2923106600B9175F /* FilterListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FD74C2923106600B9175F /* FilterListingView.swift */; };
+		9F0FD75029234D4400B9175F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 9F0FD74F29234D4400B9175F /* MultiSlider */; };
 		9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A229180FFF00A5ACB5 /* NewListingView.swift */; };
 		9F3843A52918AA6A00A5ACB5 /* PurchaseListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */; };
 		9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A82918DA2800A5ACB5 /* TransactionView.swift */; };
@@ -98,6 +100,7 @@
 		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		7273FD9C291457B000B57B55 /* StorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
 		9F0FD730291B76EE00B9175F /* OrderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsView.swift; sourceTree = "<group>"; };
+		9F0FD74C2923106600B9175F /* FilterListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListingView.swift; sourceTree = "<group>"; };
 		9F3843A229180FFF00A5ACB5 /* NewListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingView.swift; sourceTree = "<group>"; };
 		9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListingView.swift; sourceTree = "<group>"; };
 		9F3843A82918DA2800A5ACB5 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72391EC0290743BF00C980E1 /* FirebaseAppCheck in Frameworks */,
+				9F0FD75029234D4400B9175F /* MultiSlider in Frameworks */,
 				72391EAA2906168100C980E1 /* FirebaseDatabaseSwift in Frameworks */,
 				72391EC2290743BF00C980E1 /* FirebaseStorage in Frameworks */,
 				CBCC7135291ADB5600C30C35 /* iPhoneNumberField in Frameworks */,
@@ -208,6 +212,7 @@
 				9F3843A229180FFF00A5ACB5 /* NewListingView.swift */,
 				9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */,
 				CBCC7138291ADCAC00C30C35 /* WelcomeView.swift */,
+				9F0FD74C2923106600B9175F /* FilterListingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				72391EC1290743BF00C980E1 /* FirebaseStorage */,
 				CBCC7134291ADB5600C30C35 /* iPhoneNumberField */,
 				CBCC713B291B661F00C30C35 /* WrappingHStack */,
+				9F0FD74F29234D4400B9175F /* MultiSlider */,
 			);
 			productName = BlockMe;
 			productReference = 72391E892906136700C980E1 /* BlockMe.app */;
@@ -316,6 +322,7 @@
 				72391EA22906168100C980E1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 				CBCC713A291B661E00C30C35 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				9F0FD74E29234D4400B9175F /* XCRemoteSwiftPackageReference "MultiSlider" */,
 			);
 			productRefGroup = 72391E8A2906136700C980E1 /* Products */;
 			projectDirPath = "";
@@ -369,6 +376,7 @@
 				CBCC7139291ADCAC00C30C35 /* WelcomeView.swift in Sources */,
 				CBFC52A82921F54200C7A60D /* TransactionConfirmingView.swift in Sources */,
 				72391F07290C659300C980E1 /* PhotoPicker.swift in Sources */,
+				9F0FD74D2923106600B9175F /* FilterListingView.swift in Sources */,
 				724B0004291B529000448B0D /* TransactionPaymentView.swift in Sources */,
 				72391ECA290760AF00C980E1 /* MarketPlaceView.swift in Sources */,
 				9FFC5CB92915964900BF992A /* ListingUser.swift in Sources */,
@@ -602,6 +610,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		9F0FD74E29234D4400B9175F /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/MultiSlider";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField";
@@ -665,6 +681,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 72391EA22906168100C980E1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		9F0FD74F29234D4400B9175F /* MultiSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F0FD74E29234D4400B9175F /* XCRemoteSwiftPackageReference "MultiSlider" */;
+			productName = MultiSlider;
 		};
 		CBCC7134291ADB5600C30C35 /* iPhoneNumberField */ = {
 			isa = XCSwiftPackageProductDependency;
