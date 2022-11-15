@@ -23,7 +23,7 @@ struct OrdersView: View {
                 ($0.seller.id == userId || $0.buyer?.id == userId) && $0.completedTime != nil
               }
         
-              VStack {
+              ScrollView(showsIndicators: false) {
                 ForEach(currentListings) { listing in
                  
                   OrderDetailsView(order: listing, viewWidth: geometry.size.width, seller: listing.seller.id==userId)

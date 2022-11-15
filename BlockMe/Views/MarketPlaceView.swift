@@ -48,7 +48,7 @@ struct MarketPlaceView: View {
           
           GeometryReader { geometry in
             let currentListings = listingRepository.filteredListings
-            VStack() {
+            ScrollView(showsIndicators: false) {
               ForEach(currentListings) { listing in
                 Button(action:{
                     guard appViewModel.currentUserId != listing.seller.id else {
