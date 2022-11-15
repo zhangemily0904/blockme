@@ -16,8 +16,7 @@ struct OrdersView: View {
       ZStack {
         Color("BlockMe Background").ignoresSafeArea()
         VStack {
-          Text("Orders").font(.title)
-          // TODO: need to center the listings
+          Text("Orders").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
           GeometryReader { geometry in
             if let userId = appViewModel.currentUserId{
               let currentListings = listingRepository.listings.filter {
@@ -29,7 +28,7 @@ struct OrdersView: View {
                  
                   OrderDetailsView(order: listing, viewWidth: geometry.size.width, seller: listing.seller.id==userId)
                 }
-              }
+              }.frame(width: geometry.size.width, alignment: .center)
             }
           }
         }
