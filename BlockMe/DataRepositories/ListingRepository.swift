@@ -22,8 +22,8 @@ class ListingRepository: ObservableObject {
   private var cancellables: Set<AnyCancellable> = []
   
   @Published var priceRange: [Float] = [0.0, 0.0]
-  @Published var expirationTime1: Date = Date.now
-  @Published var expirationTime2: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
+  @Published var expirationTimeMin: Date = Date.now
+  @Published var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @Published var locations = DiningLocation.allCases
   
   init() {
@@ -52,7 +52,7 @@ class ListingRepository: ObservableObject {
   
   func getFiltered() {
     self.filteredListings = self.currentListings.filter{
-      $0.expirationTime >= self.expirationTime1 && $0.expirationTime <= self.expirationTime2 &&
+      $0.expirationTime >= self.expirationTimeMin && $0.expirationTime <= self.expirationTimeMax &&
       $0.price >= Float(self.priceRange[0]) && $0.price <= Float(self.priceRange[1]) &&
       !$0.availableLocations.allSatisfy {!self.locations.contains($0)}
     }

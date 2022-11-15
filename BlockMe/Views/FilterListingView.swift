@@ -13,8 +13,8 @@ struct FilterView: View {
   @ObservedObject var listingRepository: ListingRepository
   @Binding var show: Bool
   @State var priceRange: [CGFloat]
-  @State var expirationTime1: Date = Date.now
-  @State var expirationTime2: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
+  @State var expirationTimeMin: Date = Date.now
+  @State var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @State var locations: [LocationSelection] = DiningLocation.allCases.map{($0, true)}
   @Environment(\.dismiss) var dismiss
 
@@ -33,7 +33,7 @@ struct FilterView: View {
           VStack() {
             Text("Expiration Time").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 15)
             HStack() {
-              DatePicker("", selection: $expirationTime1, displayedComponents: .hourAndMinute)
+              DatePicker("", selection: $expirationTimeMin, displayedComponents: .hourAndMinute)
                 .padding()
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
@@ -42,7 +42,7 @@ struct FilterView: View {
               
               Text("to").frame(width: 96, alignment: .center)
               
-              DatePicker("", selection: $expirationTime2, displayedComponents: .hourAndMinute)
+              DatePicker("", selection: $expirationTimeMax, displayedComponents: .hourAndMinute)
                 .padding()
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
@@ -95,9 +95,10 @@ struct FilterView: View {
           }.padding(.bottom, 15)
           Button(action:{
             listingRepository.priceRange = [Float(priceRange[0]), Float(priceRange[1])]
-            listingRepository.expirationTime1 = expirationTime1
-            listingRepository.expirationTime2 = expirationTime2
+            listingRepository.expirationTimeMin = expirationTimeMin
+            listingRepository.expirationTimeMax = expirationTimeMax
             listingRepository.locations = locations.filter{$0.1}.map{$0.0}
+            listingRepository.getFiltered()
             dismiss()
           }) {
             Text("Apply")
@@ -105,8 +106,8 @@ struct FilterView: View {
             .font(.medSmall)
           
           Button(action:{
-            expirationTime1 = Date.now
-            expirationTime2 = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now
+            expirationTimeMin = Date.now
+            expirationTimeMax = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now
             priceRange = [0.0, CGFloat(listingRepository.findMaxPrice())]
             locations = DiningLocation.allCases.map{($0, true)}
           }) {

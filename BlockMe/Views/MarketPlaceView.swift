@@ -35,9 +35,7 @@ struct MarketPlaceView: View {
             }){
               Text("Filter")
             }
-            .sheet(isPresented: $showFilterView, onDismiss: {
-              listingRepository.getFiltered()
-            }) {
+            .sheet(isPresented: $showFilterView) {
               FilterView(listingRepository: listingRepository, show: $showFilterView,
                          priceRange: [0.0, CGFloat(listingRepository.findMaxPrice())])
             }
