@@ -80,8 +80,21 @@ struct TransactionPendingView: View {
         }
         
         HStack {
-          Text(String(format: "$%.2f", listing.price))
-          Text(listing.selectedLocation?.rawValue ?? "Error: No location found")
+          HStack {
+            Image("dollar")
+              .resizable()
+              .frame(width: 40, height: 40)
+              .padding(.trailing, 5)
+            Text(String(format: "$%.2f", listing.price)).font(.regSmall)
+          }.frame(width: 115, height: 70)
+          
+          HStack {
+            Image("placeholder")
+              .resizable()
+              .frame(width: 40, height: 40)
+              .padding(.trailing, 5)
+            Text(listing.selectedLocation?.rawValue ?? "Error: No location found").font(.regSmall)
+          }
         }.padding(.bottom, 30)
         
         Button(action: {
