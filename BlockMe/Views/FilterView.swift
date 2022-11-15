@@ -104,7 +104,12 @@ struct FilterView: View {
           }.buttonStyle(SmallRedButton())
             .font(.medSmall)
           
-          Button(action:{}) {
+          Button(action:{
+            expirationTime1 = Date.now
+            expirationTime2 = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
+            priceRange = [0.0, 15.0]
+            locations = DiningLocation.allCases.map{($0, true)}
+          }) {
             Text("Reset")
           }.buttonStyle(SmallWhiteButton())
             .font(.medSmall)
