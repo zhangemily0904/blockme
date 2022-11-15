@@ -117,12 +117,6 @@ class ListingRepository: ObservableObject {
   }
   
   func findMaxPrice() -> CGFloat {
-    var max: Float = -1.0
-    for listing in self.currentListings {
-      if listing.price > max {
-        max = listing.price
-      }
-    }
-    return CGFloat(max)
+    return CGFloat(self.currentListings.reduce(self.currentListings[0]) { $1.price > $0.price ? $1 : $0 }.price)
   }
 }
