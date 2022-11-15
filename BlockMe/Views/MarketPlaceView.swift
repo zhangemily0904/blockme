@@ -14,6 +14,8 @@ struct MarketPlaceView: View {
   @State var calendar = Calendar.current
   @State var showNewListingView = false
   @State var showPurchaseView = false
+  @State var showFilterView = false
+  @State var showSortView = false
   @State var selectedListing: Listing? = nil
   @State var selectedListingProfile: UIImage? = nil
 
@@ -28,10 +30,27 @@ struct MarketPlaceView: View {
         }
         VStack {
           Text("Marketplace").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
-
+          
+          HStack {
+            Button(action:{
+              showFilterView.toggle()
+            }){
+              Text("Filter")
+            }
+            .sheet(isPresented: $showFilterView) {
+              FilterView(show: $showFilterView)
+            }
+            
+            Button(action:{
+              showSortView.toggle()
+            }){
+              Text("Sort")
+            }
+          }
+          
           GeometryReader { geometry in
             let currentListings = listingRepository.listings.filter {
-              $0.buyer == nil && $0.expirationTime > currentTime
+              $0.buyer == nil && $0.expirationTime > currentTime 
             }
             VStack() {
               ForEach(currentListings) { listing in
@@ -68,6 +87,8 @@ struct MarketPlaceView: View {
         }
         PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
         NewListingView(show: $showNewListingView, listingRepository: listingRepository)
+
       }
+      .frame(maxHeight: .infinity)
     }
 }
