@@ -6,19 +6,33 @@
 //
 
 import SwiftUI
+import MultiSlider
 
 struct FilterView: View {
   typealias LocationSelection = (DiningLocation, Bool)
   @Binding var show: Bool
   @State var expirationTime1: Date = Date.now
-  @State var expirationTime2: Date = Date.now
-  @State var price: Float = 0.0
+  @State var expirationTime2: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
+  @State var priceRange: [CGFloat] = [0.0, 15.0]
   @State var locations: [LocationSelection] = DiningLocation.allCases.map{($0, false)}
+  @Environment(\.dismiss) var dismiss
+  
+  func getEOD() -> Date {
+    var components = DateComponents()
+    components.hour = 23
+    components.minute = 59
+    return Calendar.current.date(from: components) ?? Date.now
+  }
+  
 
+  
     var body: some View {
       ZStack {
         
         VStack() {
+          Button(action: {dismiss()}){
+            Text("x") // TODO: replace with icon
+          }
           Text("Filter").font(.medMed).frame(width: 296).padding(.top, 30)
           
           VStack() {
@@ -46,13 +60,18 @@ struct FilterView: View {
           
           VStack() {
             Text("Price").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading)
-            Slider(value: $price, in: 0...15,  step: 0.5){
-            } minimumValueLabel: {
-              Text("0")
-            } maximumValueLabel: {
-              Text("15")
-            }
-            Text("\(String(format: "%.1f", price))")
+
+            MultiValueSlider(
+                value: $priceRange,
+                maximumValue: 15,
+                snapStepSize: 1,
+                valueLabelPosition: .top,
+                orientation: .horizontal,
+                outerTrackColor: .lightGray,
+                keepsDistanceBetweenThumbs: false
+            )
+                .frame(width: 320)
+                .scaledToFit()
             
           }.frame(width: 296)
             .padding(.bottom, 15)
