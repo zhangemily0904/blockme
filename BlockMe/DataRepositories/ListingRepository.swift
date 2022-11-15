@@ -19,7 +19,7 @@ class ListingRepository: ObservableObject {
   @Published var currentListings: [Listing] = []
   private var cancellables: Set<AnyCancellable> = []
   
-  @Published var priceRange: [CGFloat] = [0.0, 20.0]
+  @Published var priceRange: [CGFloat] = [0.0, -1.0]
   @Published var expirationTimeMin: Date = Date.now
   @Published var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @Published var locations = DiningLocation.allCases
@@ -117,6 +117,6 @@ class ListingRepository: ObservableObject {
   }
   
   func findMaxPrice() -> CGFloat {
-    return CGFloat(self.currentListings.reduce(self.currentListings[0]) { $1.price > $0.price ? $1 : $0 }.price)
+    return CGFloat(self.currentListings.map{$0.price}.max() ?? 0)
   }
 }
