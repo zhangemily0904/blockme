@@ -23,6 +23,7 @@ struct ListingDetailsView: View {
             .resizable()
             .frame(width: viewWidth / 6, height: viewWidth / 6, alignment: .leading) // dynamically scale size of profile image
             .clipShape(Circle())
+            .offset(x:10)
         }
         VStack(alignment: .leading) {
           Text(listing.seller.firstName).font(.medSmall)
@@ -42,7 +43,7 @@ struct ListingDetailsView: View {
             }
           }
         }.frame(width: 239 - viewWidth / 6, alignment: .leading) //overall frame is 332, frame width for price is 63, and frame width for image is viewWidth / 6
-          .padding(.leading, 10)
+          .padding(.leading, 20)
         Text(String(format: "$%.2f", listing.price)).font(.medMed).frame(width: 70, alignment: .trailing)
       }
       let i = listing.availableLocations.count - 1
@@ -63,7 +64,7 @@ struct ListingDetailsView: View {
     }.padding(15)
       .background(Color("BlockMe Yellow"))
       .foregroundColor(.black)
-      .frame(width: 332)
+      .frame(width: viewWidth-40)
       .onAppear {
         StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) { image in
           profileImage = image

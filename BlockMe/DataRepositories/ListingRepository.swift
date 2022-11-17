@@ -23,10 +23,10 @@ class ListingRepository: ObservableObject {
   @Published var expirationTimeMin: Date = Date.now
   @Published var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @Published var locations = DiningLocation.allCases
+  @Published var sortBy: SortBy? 
   
   init() {
     self.get()
-    print(self.listings)
   }
   
   func get() {
@@ -41,7 +41,6 @@ class ListingRepository: ObservableObject {
           try? document.data(as: Listing.self)
         } ?? []
         
-        print("listings \(self.listings)")
         self.currentListings = self.listings.filter {
           $0.buyer == nil && $0.expirationTime > Date.now
         }
@@ -55,6 +54,19 @@ class ListingRepository: ObservableObject {
       $0.expirationTime >= self.expirationTimeMin && $0.expirationTime <= self.expirationTimeMax &&
       $0.price >= Float(self.priceRange[0]) && $0.price <= Float(self.priceRange[1]) &&
       !$0.availableLocations.allSatisfy {!self.locations.contains($0)}
+    }
+    self.getSorted()
+  }
+  
+  func getSorted() {
+    if sortBy == .priceAsc {
+      self.filteredListings = self.filteredListings.sorted{$0.price < $1.price}
+    } else if sortBy == .priceDesc {
+      self.filteredListings = self.filteredListings.sorted{$0.price > $1.price}
+    } else if sortBy == .timeAsc {
+      self.filteredListings = self.filteredListings.sorted{$0.expirationTime < $1.expirationTime}
+    } else if sortBy == .timeDesc {
+      self.filteredListings = self.filteredListings.sorted{$0.expirationTime > $1.expirationTime}
     }
   }
   
