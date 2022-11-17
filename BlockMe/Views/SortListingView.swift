@@ -22,48 +22,35 @@ struct SortListingView: View {
         .frame(width: 296, alignment: .trailing)
         
         Text("Sort").font(.medMed).frame(width: 296)
-        
-        Button(action: {
-          listingRepository.sortBy = .priceAsc
-          listingRepository.getSorted()
-          dismiss()
-        }){
-          Text("Price asc")
-            .foregroundColor(Color.black)
+        VStack(alignment: .leading) {
+          ForEach(0..<SortBy.allCases.count) { i in
+            HStack {
+              Button(action: {
+                listingRepository.sortBy = SortBy.allCases[i]
+                listingRepository.getSorted()
+                dismiss()
+              }) {
+                HStack{
+                  if listingRepository.sortBy ==  SortBy.allCases[i] {
+                    Image(systemName: "checkmark")
+                      .foregroundColor(.green)
+                  }
+                  
+                  Text(SortBy.allCases[i].rawValue).font(.regMed)
+                    .foregroundColor(.black)
+                    .frame(alignment: .leading)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                
+              }
+              .offset(x:25)
+            }
+            Divider()
+            
+          }
         }
-        
-        Button(action: {
-          listingRepository.sortBy = .priceDesc
-          listingRepository.getSorted()
-          dismiss()
-        }){
-          Text("Price desc")
-            .foregroundColor(Color.black)
-        }
-        
-        Button(action: {
-          listingRepository.sortBy = .timeAsc
-          listingRepository.getSorted()
-          dismiss()
-        }){
-          Text("Expiration time asc")
-            .foregroundColor(Color.black)
-        }
-        
-        Button(action: {
-          listingRepository.sortBy = .timeDesc
-          listingRepository.getSorted()
-          dismiss()
-        }){
-          Text("Expiration time desc")
-            .foregroundColor(Color.black)
-        }
-        
-        Button(action: {
-        }){
-          Text("Rating")
-            .foregroundColor(Color.black)
-        }
+        .padding(.top, 15)
         
         
       }

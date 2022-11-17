@@ -21,13 +21,12 @@ enum SellerStatus: String, Codable {
   case paymentRecieved = "paymentReceived"
 }
 
-enum SortBy {
-  case priceAsc
-  case priceDesc
-  case timeAsc
-  case timeDesc
-  case rating
-  case none
+enum SortBy: String, CaseIterable, Codable  {
+  case priceAsc = "Price ascending"
+  case priceDesc = "Price descending"
+  case timeAsc = "Expiration time ascending"
+  case timeDesc = "Expiration time descending"
+  case rating = "Rating"
 }
 
 struct Listing: Identifiable, Codable {

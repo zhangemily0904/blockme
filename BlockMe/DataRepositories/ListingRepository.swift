@@ -23,7 +23,7 @@ class ListingRepository: ObservableObject {
   @Published var expirationTimeMin: Date = Date.now
   @Published var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @Published var locations = DiningLocation.allCases
-  @Published var sortBy: SortBy = .none
+  @Published var sortBy: SortBy? 
   
   init() {
     self.get()
