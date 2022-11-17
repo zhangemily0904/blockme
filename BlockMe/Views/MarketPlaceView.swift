@@ -22,56 +22,55 @@ struct MarketPlaceView: View {
   let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
  
     var body: some View {
-      ZStack {
-        Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
-          currentTime = Date.now
-          calendar = Calendar.current
-        }
-        VStack {
-          Text("Marketplace").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
-          
-          HStack {
-            Button(action:{
-              showFilterView.toggle()
-            }){
-              Text("Filter")
-            }
-            .sheet(isPresented: $showFilterView) {
-              FilterListingView(listingRepository: listingRepository, show: $showFilterView, priceRange: listingRepository.priceRange[1] == -1 ? [0.0, listingRepository.findMaxPrice()] : listingRepository.priceRange, expirationTimeMin: listingRepository.expirationTimeMin, expirationTimeMax: listingRepository.expirationTimeMax, locations: DiningLocation.allCases.map{listingRepository.locations.contains($0) ? ($0, true) : ($0, false)})
-                .presentationDetents([.fraction(0.90)])
-            }
-            
-            Button(action:{
-              showSortView.toggle()
-            }){
-              Text("Sort")
-            }
-            .sheet(isPresented: $showSortView) {
-              SortListingView(listingRepository: listingRepository)
-                .presentationDetents([.fraction(0.50)])
-            }
-            
+      GeometryReader { geometry in
+        ZStack {
+          Color("BlockMe Background").ignoresSafeArea().onReceive(timer) { time in
+            currentTime = Date.now
+            calendar = Calendar.current
           }
-          
-          GeometryReader { geometry in
-            let currentListings = listingRepository.filteredListings
-            ScrollView(showsIndicators: false) {
-              ForEach(currentListings) { listing in
+          ScrollView(showsIndicators: false) {
+            Text("Marketplace").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
+            
+            HStack {
+              Button(action:{
+                showFilterView.toggle()
+              }){
+                Text("Filter")
+              }
+              .sheet(isPresented: $showFilterView) {
+                FilterListingView(listingRepository: listingRepository, show: $showFilterView, priceRange: listingRepository.priceRange[1] == -1 ? [0.0, listingRepository.findMaxPrice()] : listingRepository.priceRange, expirationTimeMin: listingRepository.expirationTimeMin, expirationTimeMax: listingRepository.expirationTimeMax, locations: DiningLocation.allCases.map{listingRepository.locations.contains($0) ? ($0, true) : ($0, false)})
+                  .presentationDetents([.fraction(0.90)])
+              }
+              
+              Button(action:{
+                showSortView.toggle()
+              }){
+                Text("Sort")
+              }
+              .sheet(isPresented: $showSortView) {
+                SortListingView(listingRepository: listingRepository)
+                  .presentationDetents([.fraction(0.50)])
+              }
+              
+            }
+            
+            VStack {
+              ForEach(listingRepository.filteredListings) { listing in
                 Button(action:{
-                    guard appViewModel.currentUserId != listing.seller.id else {
-                      print("Can't purchase your own block.")
-                      return
-                    }
+                  guard appViewModel.currentUserId != listing.seller.id else {
+                    print("Can't purchase your own block.")
+                    return
+                  }
                   showPurchaseView.toggle()
                   selectedListing = listing
                   StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
                 }){
-                  ListingDetailsView(listing: listing, viewWidth: 432)
+                  ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
                 }
               }
-            }.frame(width: geometry.size.width, alignment: .center)
+            }
           }
-    
+          
           HStack {
             Spacer()
             ZStack {
@@ -83,14 +82,14 @@ struct MarketPlaceView: View {
                   Image("add-button")
                     .resizable()
                     .frame(width: 60, height: 60)
-                }.offset(x: -25, y: -30)
+                }.position(x: geometry.size.width - 70, y: geometry.size.height - 50)
               }
             }
           }
+          PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
+          NewListingView(show: $showNewListingView, listingRepository: listingRepository)
         }
-        PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
-        NewListingView(show: $showNewListingView, listingRepository: listingRepository)
+        .frame(maxHeight: .infinity)
       }
-      .frame(maxHeight: .infinity)
     }
 }

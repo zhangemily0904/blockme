@@ -34,20 +34,17 @@ struct SortListingView: View {
                   if listingRepository.sortBy ==  SortBy.allCases[i] {
                     Image(systemName: "checkmark")
                       .foregroundColor(.green)
-                  }
-                  
+                  } 
+              
                   Text(SortBy.allCases[i].rawValue).font(.regMed)
                     .foregroundColor(.black)
                     .frame(alignment: .leading)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-
-                
               }
               .offset(x:25)
             }
             Divider()
-            
           }
         }
         .padding(.top, 15)

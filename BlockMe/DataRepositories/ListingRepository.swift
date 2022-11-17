@@ -55,6 +55,7 @@ class ListingRepository: ObservableObject {
       $0.price >= Float(self.priceRange[0]) && $0.price <= Float(self.priceRange[1]) &&
       !$0.availableLocations.allSatisfy {!self.locations.contains($0)}
     }
+    self.getSorted()
   }
   
   func getSorted() {
