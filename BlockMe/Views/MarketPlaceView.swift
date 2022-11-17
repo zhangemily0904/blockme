@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import HalfASheet
 
 struct MarketPlaceView: View {
   @EnvironmentObject var appViewModel: AppViewModel
