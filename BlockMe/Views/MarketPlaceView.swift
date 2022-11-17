@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HalfASheet
 
 struct MarketPlaceView: View {
   @EnvironmentObject var appViewModel: AppViewModel
@@ -44,6 +45,11 @@ struct MarketPlaceView: View {
             }){
               Text("Sort")
             }
+            .sheet(isPresented: $showSortView) {
+              SortListingView(listingRepository: listingRepository)
+                .presentationDetents([.fraction(0.40)])
+            }
+            
           }
           
           GeometryReader { geometry in
@@ -83,7 +89,6 @@ struct MarketPlaceView: View {
         }
         PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
         NewListingView(show: $showNewListingView, listingRepository: listingRepository)
-
       }
       .frame(maxHeight: .infinity)
     }
