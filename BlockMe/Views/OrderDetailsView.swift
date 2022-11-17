@@ -51,7 +51,7 @@ struct OrderDetailsView: View {
       
     }.padding(15)
     .background(Color("BlockMe Yellow"))
-    .frame(width: 332, height: 121)
+    .frame(width: viewWidth-40)
     .foregroundColor(.black)
     .onAppear {
       if seller {
