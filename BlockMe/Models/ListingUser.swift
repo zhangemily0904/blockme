@@ -15,6 +15,7 @@ struct ListingUser: Identifiable, Codable {
   var venmoHandle: String
   var phoneNumber: String
   var profileImageURL: String
+  var rating: Int
   
   enum CodingKeys: String, CodingKey {
     case id
@@ -23,5 +24,6 @@ struct ListingUser: Identifiable, Codable {
     case venmoHandle
     case phoneNumber
     case profileImageURL
+    case rating
   }
 }

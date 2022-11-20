@@ -15,6 +15,7 @@ struct User: Identifiable, Codable {
   var venmoHandle: String
   var phoneNumber: String
   var profileImageURL: String
+  var ratings: [Int]
   
   enum CodingKeys: String, CodingKey {
     case id
@@ -23,5 +24,11 @@ struct User: Identifiable, Codable {
     case venmoHandle
     case phoneNumber
     case profileImageURL
+    case ratings
+  }
+  
+  func getAvgRating() -> Int {
+    // add denominator - 1 to sum of ratings to round int division up
+    return self.ratings.count > 0 ? ((self.ratings.reduce(0, +) + (self.ratings.count - 1)) / self.ratings.count) : 0
   }
 }
