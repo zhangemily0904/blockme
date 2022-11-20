@@ -18,6 +18,8 @@ struct MarketPlaceView: View {
   @State var showSortView = false
   @State var selectedListing: Listing? = nil
   @State var selectedListingProfile: UIImage? = nil
+  @State var showErrorAlert = false
+  @State private var alertMsg = ""
   let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
  
     var body: some View {
@@ -56,10 +58,19 @@ struct MarketPlaceView: View {
             VStack {
               ForEach(listingRepository.filteredListings) { listing in
                 Button(action:{
+                  // TODO: show edit listing view instead of this check
                   guard appViewModel.currentUserId != listing.seller.id else {
-                    print("Can't purchase your own block.")
+                    alertMsg = "You cannot buy your own block."
+                    showErrorAlert = true
                     return
                   }
+                  
+                  if appViewModel.currentUserId != nil && appViewModel.currentUserId != listing.seller.id && listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) != nil {
+                    alertMsg = "You cannot purchase a listing when you have an active listing."
+                    showErrorAlert = true
+                    return
+                  }
+                  
                   showPurchaseView.toggle()
                   selectedListing = listing
                   StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
@@ -83,12 +94,28 @@ struct MarketPlaceView: View {
                     .frame(width: 60, height: 60)
                 }.position(x: geometry.size.width - 70, y: geometry.size.height - 50)
               }
+              else {
+                Button(action: {
+                  alertMsg = "You can only have one active listing at a time."
+                  showErrorAlert = true
+                }) {
+                  Image("add-button-disabled")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                }
+                .position(x: geometry.size.width - 70, y: geometry.size.height - 50)
+              }
             }
           }
           PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
           NewListingView(show: $showNewListingView, listingRepository: listingRepository)
         }
         .frame(maxHeight: .infinity)
+        .alert(alertMsg, isPresented: $showErrorAlert) {
+          Button("Ok", role: .cancel) {
+            showErrorAlert = false
+          }
+        }
       }
     }
 }
