@@ -21,10 +21,14 @@ struct ReviewView: View {
       if var listing = listingViewModel.listing {
         let name = self.isSeller ? (listing.buyer?.firstName ?? "XXX") : listing.seller.firstName
         let image = self.isSeller ? listingViewModel.buyerImage : listingViewModel.sellerImage
-        let phoneNumber = self.isSeller ? String(listing.buyer?.phoneNumber ?? "(XXX) XXX - XXXX") : String(listing.seller.phoneNumber)
         
         HStack {
           Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+          Rectangle.completed.padding(.trailing, 2)
+
           ZStack(alignment: .leading) {
             Rectangle.pending
             Rectangle()
@@ -35,11 +39,7 @@ struct ReviewView: View {
           .frame(width: 48, height: 13)
           .onAppear {
             drawingWidth.toggle()
-          }.padding(.trailing, 2)
-          Rectangle.pending.padding(.trailing, 2)
-          Rectangle.pending.padding(.trailing, 2)
-          Rectangle.pending.padding(.trailing, 2)
-          Rectangle.pending
+          }
         }
          .padding(.bottom, 30)
         
@@ -49,9 +49,18 @@ struct ReviewView: View {
             .resizable()
             .frame(width: 200, height: 200)
             .clipShape(Circle())
-            .padding(.bottom, 20)
+            .padding(.bottom, -25)
             .padding(.top, 20)
         }
+        
+        Text(name)
+          .font(.medMed)
+          .padding()
+          .frame(width: (CGFloat(name.count) * 15) + 30, height: 40)
+          .foregroundColor(Color.white)
+          .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.black))
+          
+        StarRatingComponent(rating: $numStars).padding(.bottom, 50).padding(.top, 50)
         
         Button(action: {
           if self.isSeller {
