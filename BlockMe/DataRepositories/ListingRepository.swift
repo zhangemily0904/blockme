@@ -105,7 +105,7 @@ class ListingRepository: ObservableObject {
   // returns a listing that the logged in user is in the process of selling
   func getPendingListingForSeller(uid: String) -> Listing? {
     let l = self.listings.filter {
-      $0.seller.id == uid && $0.buyer != nil && $0.completedTime == nil
+      $0.seller.id == uid && $0.buyer != nil && $0.sellerStatus != SellerStatus.reviewed
     }
     return l.first
   }
@@ -114,7 +114,7 @@ class ListingRepository: ObservableObject {
   // assuming that cancelled transactions will set buyer to null (rollback)
   func getPendingListingForBuyer(uid: String) -> Listing? {
     let l = self.listings.filter {
-      $0.buyer?.id == uid && $0.completedTime == nil
+      $0.buyer?.id == uid && $0.buyerStatus != BuyerStatus.reviewed
     }
     return l.first
   }

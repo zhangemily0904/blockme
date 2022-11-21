@@ -112,7 +112,7 @@ struct PurchaseListingView: View {
                 return
               }
               
-              let buyer = ListingUser(id: user.id, firstName: user.firstName, lastName: user.lastName, venmoHandle: user.venmoHandle, phoneNumber: user.phoneNumber, profileImageURL: user.profileImageURL)
+              let buyer = ListingUser(id: user.id, firstName: user.firstName, lastName: user.lastName, venmoHandle: user.venmoHandle, phoneNumber: user.phoneNumber, profileImageURL: user.profileImageURL, rating: user.getAvgRating())
               listing.buyer = buyer
               listing.selectedLocation = selectedLocation
               listing.buyerStatus = BuyerStatus.requested

@@ -49,7 +49,7 @@ struct EditProfileView: View {
                   return
                 }
                 
-                let newUser = User(firstName: user.firstName, lastName: user.lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: user.profileImageURL)
+                let newUser = User(firstName: user.firstName, lastName: user.lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: user.profileImageURL, ratings: user.ratings)
                 guard userViewModel.update(user: newUser) else {
                   alertMsg = "There was an error updating your information. Please try again later."
                   showErrorAlert = true

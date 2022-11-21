@@ -46,19 +46,25 @@ struct TransactionView: View {
         else if listing.buyerStatus == BuyerStatus.arrivedAtLocation && listing.sellerStatus == SellerStatus.arrivedAtLocation {
           TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
         }
-        else if listing.buyerStatus == BuyerStatus.completedPayment && listing.sellerStatus != SellerStatus.paymentRecieved {
+        else if listing.buyerStatus == BuyerStatus.completedPayment && listing.sellerStatus == SellerStatus.arrivedAtLocation {
           if self.isSeller {
             TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
           } else {
             TransactionConfirmingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "seller", msgPostfix: "confirm")
           }
         }
-        else if listing.buyerStatus != BuyerStatus.completedPayment && listing.sellerStatus == SellerStatus.paymentRecieved {
+        else if listing.buyerStatus == BuyerStatus.arrivedAtLocation && listing.sellerStatus == SellerStatus.paymentRecieved {
           if self.isSeller {
             TransactionConfirmingView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, waitingFor: "buyer", msgPostfix: "confirm")
           } else {
             TransactionPaymentView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
           }
+        }
+        else if self.isSeller && listing.sellerStatus != SellerStatus.reviewed {
+          ReviewView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
+        }
+        else if !self.isSeller && listing.buyerStatus != BuyerStatus.reviewed {
+          ReviewView(listingRepository: self.listingRepository, listingViewModel: self.listingViewModel, isSeller: self.isSeller)
         }
       }
     }

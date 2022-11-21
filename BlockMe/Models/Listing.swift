@@ -13,12 +13,14 @@ enum BuyerStatus: String, Codable {
   case requested = "requested"
   case arrivedAtLocation = "arrivedAtLocation"
   case completedPayment = "completedPayment"
+  case reviewed = "reviewed"
 }
 
 enum SellerStatus: String, Codable {
   case acceptedTransaction = "acceptedTransaction"
   case arrivedAtLocation = "arrivedAtLocation"
   case paymentRecieved = "paymentReceived"
+  case reviewed = "reviewed"
 }
 
 enum SortBy: String, CaseIterable, Codable  {
