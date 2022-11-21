@@ -59,4 +59,33 @@ class UserViewModel: ObservableObject, Identifiable {
       return false
     }
   }
+  
+  static func addRating(userId: String, rating: Int) {
+    let store = Firestore.firestore()
+    store.collection("users").document(userId).getDocument { (document, error) in
+      if let error = error {
+        print("Error getting user info: \(error.localizedDescription)")
+        return
+      }
+      
+      guard let doc = document else {
+        print("failed to get document")
+        return
+      }
+      
+      var user = try? doc.data(as: User.self)
+      guard var user = user else {
+        print("failed to parse user info")
+        return
+      }
+      
+      user.ratings.append(rating)
+      
+      do {
+        try store.collection("users").document(userId).setData(from: user)
+      } catch {
+        print("Unable to add review for user: \(error.localizedDescription).")
+      }
+    }
+  }
 }

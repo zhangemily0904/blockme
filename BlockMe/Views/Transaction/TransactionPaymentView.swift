@@ -96,7 +96,7 @@ struct TransactionPaymentView: View {
           }
           
           if !listingRepository.update(listing: listing) {
-            alertMsg = "Error accepting this order. Please try again."
+            alertMsg = "Error updating this order. Please try again."
             showErrorAlert = true
           }
         }) {
@@ -172,7 +172,7 @@ struct TransactionPaymentView: View {
           }
           
           if !listingRepository.update(listing: listing) {
-            alertMsg = "Error accepting this order. Please try again."
+            alertMsg = "Error updating this order. Please try again."
             showErrorAlert = true
           }
         }) {

@@ -27,8 +27,7 @@ struct User: Identifiable, Codable {
     case ratings
   }
   
-  func getAvgRating() -> Int {
-    // add denominator - 1 to sum of ratings to round int division up
-    return self.ratings.count > 0 ? ((self.ratings.reduce(0, +) + (self.ratings.count - 1)) / self.ratings.count) : 0
+  func getAvgRating() -> Float {
+    return self.ratings.count > 0 ? (Float(self.ratings.reduce(0, +)) / Float(self.ratings.count)) : 0
   }
 }
