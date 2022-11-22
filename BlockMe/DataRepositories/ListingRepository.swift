@@ -80,15 +80,14 @@ class ListingRepository: ObservableObject {
     }
   }
   
-  func delete(listing: Listing) {
+  func delete(listing: Listing, completion: @escaping (String?) -> Void) {
     guard let id = listing.id else {
-      print("error retrieving listing id")
+      let errorMsg = "error retrieving listing id"
+      completion(errorMsg)
       return
     }
     store.collection(path).document(id).delete { error in
-      if let error = error {
-        print("Unable to remove listing: \(error.localizedDescription)")
-      }
+      completion(error == nil ? nil : error?.localizedDescription)
     }
   }
   

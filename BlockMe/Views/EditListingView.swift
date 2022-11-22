@@ -151,8 +151,14 @@ struct EditListingView: View {
     .alert(alertMsg, isPresented: $showAlert) {
       Button("Yes", role: .destructive) {
         showAlert = false
-        listingRepository.delete(listing: listing)
-        show = false
+        listingRepository.delete(listing: listing) { errorMsg in
+          if let msg = errorMsg {
+            error = msg
+            showErrorAlert = true
+          } else {
+            show = false
+          }
+        }
       }
       Button("No", role: .cancel) {
         showAlert = false
