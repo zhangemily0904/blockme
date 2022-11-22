@@ -19,8 +19,9 @@ struct EditListingView: View {
   @EnvironmentObject var appViewModel: AppViewModel
   @State var expand = false
   @State var showErrorAlert: Bool = false
+  @State var showAlert: Bool = false
   @State var error: String = ""
-
+  @State var alertMsg: String = ""
 
   var title: String = "Changed your mind? That’s okay"
   
@@ -84,8 +85,8 @@ struct EditListingView: View {
           }
           
           Button("Delete") {
-            show = false
-            listingRepository.delete(listing: listing)
+            alertMsg = "Are you sure you want to delete this listing?"
+            showAlert = true
           }.buttonStyle(SmallRedButton())
             .font(.medSmall)
             .padding(.top, 40)
@@ -145,6 +146,16 @@ struct EditListingView: View {
     .alert(error, isPresented: $showErrorAlert) {
       Button("Ok", role: .cancel) {
         showErrorAlert = false
+      }
+    }
+    .alert(alertMsg, isPresented: $showAlert) {
+      Button("Yes", role: .destructive) {
+        showAlert = false
+        listingRepository.delete(listing: listing)
+        show = false
+      }
+      Button("No", role: .cancel) {
+        showAlert = false
       }
     }
   }
