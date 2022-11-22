@@ -80,6 +80,18 @@ class ListingRepository: ObservableObject {
     }
   }
   
+  func delete(listing: Listing) {
+    guard let id = listing.id else {
+      print("error retrieving listing id")
+      return
+    }
+    store.collection(path).document(id).delete { error in
+      if let error = error {
+        print("Unable to remove listing: \(error.localizedDescription)")
+      }
+    }
+  }
+  
   func update(listing: Listing) -> Bool {
     do {
       guard let id = listing.id else{
