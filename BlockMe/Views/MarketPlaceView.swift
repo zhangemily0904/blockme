@@ -13,6 +13,7 @@ struct MarketPlaceView: View {
   @State var currentTime = Date.now
   @State var calendar = Calendar.current
   @State var showNewListingView = false
+  @State var showEditListingView = false
   @State var showPurchaseView = false
   @State var showFilterView = false
   @State var showSortView = false
@@ -21,7 +22,7 @@ struct MarketPlaceView: View {
   @State var showErrorAlert = false
   @State private var alertMsg = ""
   let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
- 
+  
     var body: some View {
       GeometryReader { geometry in
         ZStack {
@@ -59,9 +60,9 @@ struct MarketPlaceView: View {
               ForEach(listingRepository.filteredListings) { listing in
                 Button(action:{
                   // TODO: show edit listing view instead of this check
-                  guard appViewModel.currentUserId != listing.seller.id else {
-                    alertMsg = "You cannot buy your own block."
-                    showErrorAlert = true
+                  if appViewModel.currentUserId == listing.seller.id {
+                    selectedListing = listing
+                    showEditListingView.toggle()
                     return
                   }
                   
@@ -72,10 +73,11 @@ struct MarketPlaceView: View {
                   }
                   
                   showPurchaseView.toggle()
+                  showEditListingView = false
                   selectedListing = listing
                   StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
                 }){
-                  ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+                    ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
                 }
               }
             }
@@ -109,6 +111,10 @@ struct MarketPlaceView: View {
           }
           PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
           NewListingView(show: $showNewListingView, listingRepository: listingRepository)
+          if let listing = selectedListing {
+            EditListingView(show: $showEditListingView, listing: listing, listingRepository: listingRepository)
+          }
+          
         }
         .frame(maxHeight: .infinity)
         .alert(alertMsg, isPresented: $showErrorAlert) {

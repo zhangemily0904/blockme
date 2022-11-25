@@ -80,6 +80,17 @@ class ListingRepository: ObservableObject {
     }
   }
   
+  func delete(listing: Listing, completion: @escaping (String?) -> Void) {
+    guard let id = listing.id else {
+      let errorMsg = "error retrieving listing id"
+      completion(errorMsg)
+      return
+    }
+    store.collection(path).document(id).delete { error in
+      completion(error == nil ? nil : error?.localizedDescription)
+    }
+  }
+  
   func update(listing: Listing) -> Bool {
     do {
       guard let id = listing.id else{
