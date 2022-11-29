@@ -37,7 +37,17 @@ struct EditListingView: View {
       Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
       if show {
         VStack(alignment: .center, spacing: 0) {
-          Text(title).font(.medMed).frame(width: 296).padding(.top, 30)
+          Button(action: {
+            show = false
+          }){
+            Image("cancel")
+              .resizable()
+              .frame(width: 30, height: 30)
+          }
+          .frame(width: 296, alignment: .trailing)
+          .padding(.top, 30)
+          
+          Text(title).font(.medMed).frame(width: 296)
      
           DatePicker("Expiration Time", selection: $expirationTime, displayedComponents: .hourAndMinute)
             .padding()

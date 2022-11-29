@@ -16,7 +16,7 @@ struct FilterListingView: View {
   @State var expirationTimeMin: Date
   @State var expirationTimeMax: Date
   @State var locations: [LocationSelection]
-  @State var rating = 0.0
+  @State var rating: Double
   @State private var isEditing = false
 
   @Environment(\.dismiss) var dismiss
