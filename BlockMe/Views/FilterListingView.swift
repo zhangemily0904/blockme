@@ -15,7 +15,10 @@ struct FilterListingView: View {
   @State var priceRange: [CGFloat]
   @State var expirationTimeMin: Date
   @State var expirationTimeMax: Date
-  @State var locations: [LocationSelection] 
+  @State var locations: [LocationSelection]
+  @State var rating = 1.0
+  @State private var isEditing = false
+
   @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -93,11 +96,30 @@ struct FilterListingView: View {
               }
             }
           }.padding(.bottom, 15)
+         
+          VStack {
+            Slider(
+              value: $rating,
+              in: 1...5,
+              step: 1
+            ) {
+              Text("Rating")
+            } minimumValueLabel: {
+              Text("1")
+            } maximumValueLabel: {
+              Text("5")
+            } onEditingChanged: { editing in
+              isEditing = editing
+            }
+          }
+          
+          
           Button(action:{
             listingRepository.priceRange = [priceRange[0], priceRange[1]]
             listingRepository.expirationTimeMin = expirationTimeMin
             listingRepository.expirationTimeMax = expirationTimeMax
             listingRepository.locations = locations.filter{$0.1}.map{$0.0}
+            listingRepository.rating = rating
             listingRepository.getFiltered()
             dismiss()
           }) {
