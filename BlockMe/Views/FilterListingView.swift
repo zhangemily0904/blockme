@@ -16,7 +16,7 @@ struct FilterListingView: View {
   @State var expirationTimeMin: Date
   @State var expirationTimeMax: Date
   @State var locations: [LocationSelection]
-  @State var rating = 1.0
+  @State var rating = 0.0
   @State private var isEditing = false
 
   @Environment(\.dismiss) var dismiss
@@ -70,49 +70,61 @@ struct FilterListingView: View {
                 .scaledToFit()
             
           }.frame(width: 296)
-            .padding(.bottom, 15)
-                      
-          HStack {
-            Text("Location").font(.medSmall).frame(width: 100, alignment: .leading).offset(y: -68)
-            VStack (alignment: .leading, spacing: 10) {
-              ForEach(0..<locations.count) { i in
-                HStack {
-                  Button(action: {
-                    locations[i].1 = locations[i].1 ? false : true
-                  }) {
-                    HStack{
-                      if locations[i].1 {
-                        Image(systemName: "checkmark.circle.fill")
-                          .foregroundColor(.green)
-                      } else {
-                        Image(systemName: "checkmark.circle")
-                          .foregroundColor(.green)
+            .padding(.bottom, 10)
+          
+          VStack {
+            HStack {
+              Text("Location").font(.medSmall).frame(maxWidth: 100, alignment: .leading).offset(y: -68)
+              VStack (alignment: .leading, spacing: 10) {
+                ForEach(0..<locations.count) { i in
+                  HStack {
+                    Button(action: {
+                      locations[i].1 = locations[i].1 ? false : true
+                    }) {
+                      HStack{
+                        if locations[i].1 {
+                          Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                        } else {
+                          Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                        }
+                        Text(locations[i].0.rawValue).font(.regMed)
+                          .foregroundColor(.black)
                       }
-                      Text(locations[i].0.rawValue).font(.regMed)
-                        .foregroundColor(.black)
                     }
                   }
                 }
               }
-            }
-          }.padding(.bottom, 15)
-         
+            }.padding(.bottom, 10)
+          }.frame(width: 296)
+          
           VStack {
+            Text("Rating").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 10)
+
             Slider(
               value: $rating,
-              in: 1...5,
+              in: 0...5,
               step: 1
-            ) {
-              Text("Rating")
-            } minimumValueLabel: {
-              Text("1")
-            } maximumValueLabel: {
-              Text("5")
-            } onEditingChanged: { editing in
-              isEditing = editing
-            }
-          }
-          
+            )
+            .alignmentGuide(VerticalAlignment.center) { $0[VerticalAlignment.center]}
+            .padding(.top)
+            .overlay(GeometryReader { gp in
+                Text("\(rating,specifier: "%.f")")
+                  .foregroundColor(.black)
+                  .font(.system(size:13))
+                  .alignmentGuide(HorizontalAlignment.leading) {
+                      $0[HorizontalAlignment.leading] - (gp.size.width - $0.width) * rating / 5
+                  }
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .offset(y: -8)
+                    
+            }, alignment: .top)
+            .frame(width: 305)
+            .scaledToFit()
+            
+          }.frame(width: 296)
+            .padding(.bottom, 10)
           
           Button(action:{
             listingRepository.priceRange = [priceRange[0], priceRange[1]]
@@ -132,6 +144,7 @@ struct FilterListingView: View {
             expirationTimeMax = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now
             priceRange = [0.0, CGFloat(listingRepository.findMaxPrice())]
             locations = DiningLocation.allCases.map{($0, true)}
+            rating = 0.0
           }) {
             Text("Reset")
           }.buttonStyle(SmallWhiteButton())

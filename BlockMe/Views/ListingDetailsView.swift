@@ -26,7 +26,10 @@ struct ListingDetailsView: View {
             .offset(x:10)
         }
         VStack(alignment: .leading) {
-          Text(listing.seller.firstName).font(.medSmall)
+          HStack{
+            Text(listing.seller.firstName).font(.medSmall)
+            Text("\(listing.seller.rating,specifier: "%.2f")").font(.medSmall)
+          }
           HStack {
             let timeRemaining = ListingDetailsView.dateComponentFormatter.string(from: MarketPlaceView().currentTime, to: listing.expirationTime)!
             let min = MarketPlaceView().calendar.dateComponents([.minute], from: MarketPlaceView().currentTime, to: listing.expirationTime).minute!

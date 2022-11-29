@@ -68,7 +68,9 @@ class ListingRepository: ObservableObject {
       self.filteredListings = self.filteredListings.sorted{$0.expirationTime < $1.expirationTime}
     } else if sortBy == .timeDesc {
       self.filteredListings = self.filteredListings.sorted{$0.expirationTime > $1.expirationTime}
-    } 
+    } else if sortBy == .rating {
+      self.filteredListings = self.filteredListings.sorted{$0.seller.rating > $1.seller.rating}
+    }
   }
   
   func add(listing: Listing) {
