@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PasswordResetView: View {
+  @Environment(\.presentationMode) private var presentationMode // used so we can use update button to backward navigate
   @EnvironmentObject var appViewModel: AppViewModel
   @State private var email: String = ""
   @State private var showErrorAlert = false
@@ -34,12 +35,14 @@ struct PasswordResetView: View {
             showErrorAlert = true
             return
           }
-//          appViewModel.signIn(email: email, password: password) { error in
-//            if let error = error {
-//              alertMsg = error.localizedDescription
-//              showErrorAlert = true
-//            }
-//          }
+          appViewModel.resetPassword(for: email) { errorMsg in
+            if let errorMsg = errorMsg {
+              alertMsg = errorMsg
+              showErrorAlert = true
+            } else {
+              presentationMode.wrappedValue.dismiss()
+            }
+          }
         }) {
           Text("Send Recovery Email").font(.medSmall)
         }.buttonStyle(RedButton()).padding(.top, 70)

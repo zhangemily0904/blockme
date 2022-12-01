@@ -31,7 +31,6 @@ struct LoginView: View {
           SecureField("Password", text: $password)
             .textFieldStyle(InputField())
           
-          // TODO: password recovery
           NavigationLink(destination: PasswordResetView()) {
             Text("Forgot Password?").font(.regSmall).frame(width: 352, alignment: .trailing)
           }
