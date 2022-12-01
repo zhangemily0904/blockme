@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditProfileView: View {
   @Environment(\.presentationMode) private var presentationMode // used so we can use update button to backward navigate
+  @ObservedObject var listingRepository = ListingRepository()
   @EnvironmentObject var appViewModel: AppViewModel
   @State private var showErrorAlert = false
   @State private var venmoHandle = ""
@@ -54,6 +55,10 @@ struct EditProfileView: View {
                   alertMsg = "There was an error updating your information. Please try again later."
                   showErrorAlert = true
                   return
+                }
+                
+                DispatchQueue.main.async {
+                  _ = listingRepository.updateCurrentListingWithNewUserInfo(uid: userViewModel.id, venmoHandle: venmoHandle, phoneNumber: phoneNumber)
                 }
                 presentationMode.wrappedValue.dismiss()
               }) {
