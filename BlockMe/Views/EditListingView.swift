@@ -23,7 +23,7 @@ struct EditListingView: View {
   @State var error: String = ""
   @State var alertMsg: String = ""
 
-  var title: String = "Changed your mind? That’s okay"
+  var title: String = "Changed your mind? That is okay"
   
   let formatter: NumberFormatter = {
       let formatter = NumberFormatter()
@@ -48,7 +48,7 @@ struct EditListingView: View {
           .padding(.top, 30)
           
           Text(title).font(.medMed).frame(width: 296)
-     
+
           DatePicker("Expiration Time", selection: $expirationTime, displayedComponents: .hourAndMinute)
             .padding()
             .autocapitalization(.none)
@@ -80,10 +80,10 @@ struct EditListingView: View {
                       HStack{
                         if locations[i].1 {
                           Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("BlockMe Red"))
                         } else {
                           Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("BlockMe Red"))
                         }
                         Text(locations[i].0.rawValue).font(.regMed)
                           .foregroundColor(.black)

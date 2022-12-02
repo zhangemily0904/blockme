@@ -28,6 +28,9 @@ struct ListingDetailsView: View {
         VStack(alignment: .leading) {
           HStack{
             Text(listing.seller.firstName).font(.medSmall)
+            Image(systemName: "star.fill")
+              .resizable()
+              .frame(width:15,height:15)
             Text("\(listing.seller.rating,specifier: "%.2f")").font(.medSmall)
           }
           HStack {

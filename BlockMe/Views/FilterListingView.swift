@@ -84,10 +84,10 @@ struct FilterListingView: View {
                       HStack{
                         if locations[i].1 {
                           Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(.green)
+                            .foregroundColor( Color("BlockMe Red"))
                         } else {
                           Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("BlockMe Red"))
                         }
                         Text(locations[i].0.rawValue).font(.regMed)
                           .foregroundColor(.black)
@@ -101,27 +101,53 @@ struct FilterListingView: View {
           
           VStack {
             Text("Rating").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 10)
-
-            Slider(
-              value: $rating,
-              in: 0...5,
-              step: 1
-            )
-            .alignmentGuide(VerticalAlignment.center) { $0[VerticalAlignment.center]}
-            .padding(.top)
-            .overlay(GeometryReader { gp in
-                Text("\(rating,specifier: "%.f")")
-                  .foregroundColor(.black)
-                  .font(.system(size:13))
-                  .alignmentGuide(HorizontalAlignment.leading) {
-                      $0[HorizontalAlignment.leading] - (gp.size.width - $0.width) * rating / 5
-                  }
-                  .frame(maxWidth: .infinity, alignment: .leading)
-                  .offset(y: -8)
+            
+            VStack {
+              VStack(alignment: .leading, spacing: 7){
+                HStack {
+                  ForEach(0..<6) { i in
+                  
+                    Button(action: {
+                      rating = Double(i)
+                    }) {
+                      HStack{
+                        Text("\(i)")
+                        Image(systemName: "star.fill")
+                          .resizable()
+                          .frame(width:15,height:15)
+                      }
+                      .frame(width: 46, height: 25)
+                     
+                    }
+                    .background(rating == Double(i) ? Color("BlockMe Red") : Color(UIColor.lightGray))
+                    .foregroundColor(.white)
+                    .cornerRadius(16)
                     
-            }, alignment: .top)
-            .frame(width: 305)
-            .scaledToFit()
+                  }.offset(x:-25)
+                }
+              }
+            }.frame(width: 270, alignment: .leading)
+            
+//            Slider(
+//              value: $rating,
+//              in: 0...5,
+//              step: 1,
+//            )
+//            .alignmentGuide(VerticalAlignment.center) { $0[VerticalAlignment.center]}
+//            .padding(.top)
+//            .overlay(GeometryReader { gp in
+//                Text("\(rating,specifier: "%.f")")
+//                  .foregroundColor(.black)
+//                  .font(.system(size:13))
+//                  .alignmentGuide(HorizontalAlignment.leading) {
+//                      $0[HorizontalAlignment.leading] - (gp.size.width - $0.width) * rating / 5
+//                  }
+//                  .frame(maxWidth: .infinity, alignment: .leading)
+//                  .offset(y: -8)
+//
+//            }, alignment: .top)
+//            .frame(width: 305)
+//            .scaledToFit()
             
           }.frame(width: 296)
             .padding(.bottom, 10)
