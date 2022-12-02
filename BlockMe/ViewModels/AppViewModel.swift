@@ -73,7 +73,7 @@ class AppViewModel: ObservableObject {
           }
           
           // create user in users collection
-          let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: path, ratings: [5])
+          let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: path, ratings: [])
           self.addUser(user) { error in
             guard error == nil else {
               completion(error!.localizedDescription)

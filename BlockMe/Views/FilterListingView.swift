@@ -128,27 +128,6 @@ struct FilterListingView: View {
               }
             }.frame(width: 270, alignment: .leading)
             
-//            Slider(
-//              value: $rating,
-//              in: 0...5,
-//              step: 1,
-//            )
-//            .alignmentGuide(VerticalAlignment.center) { $0[VerticalAlignment.center]}
-//            .padding(.top)
-//            .overlay(GeometryReader { gp in
-//                Text("\(rating,specifier: "%.f")")
-//                  .foregroundColor(.black)
-//                  .font(.system(size:13))
-//                  .alignmentGuide(HorizontalAlignment.leading) {
-//                      $0[HorizontalAlignment.leading] - (gp.size.width - $0.width) * rating / 5
-//                  }
-//                  .frame(maxWidth: .infinity, alignment: .leading)
-//                  .offset(y: -8)
-//
-//            }, alignment: .top)
-//            .frame(width: 305)
-//            .scaledToFit()
-            
           }.frame(width: 296)
             .padding(.bottom, 10)
           
