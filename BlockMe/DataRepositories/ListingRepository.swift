@@ -23,6 +23,7 @@ class ListingRepository: ObservableObject {
   @Published var expirationTimeMin: Date = Date.now
   @Published var expirationTimeMax: Date = (Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now)
   @Published var locations = DiningLocation.allCases
+  @Published var rating = 0.0
   @Published var sortBy: SortBy? 
   
   init() {
@@ -53,7 +54,7 @@ class ListingRepository: ObservableObject {
     self.filteredListings = self.currentListings.filter{
       $0.expirationTime >= self.expirationTimeMin && $0.expirationTime <= self.expirationTimeMax &&
       $0.price >= Float(self.priceRange[0]) && $0.price <= Float(self.priceRange[1]) &&
-      !$0.availableLocations.allSatisfy {!self.locations.contains($0)}
+      !$0.availableLocations.allSatisfy {!self.locations.contains($0)} && $0.seller.rating >= Float(rating)
     }
     self.getSorted()
   }
@@ -67,6 +68,8 @@ class ListingRepository: ObservableObject {
       self.filteredListings = self.filteredListings.sorted{$0.expirationTime < $1.expirationTime}
     } else if sortBy == .timeDesc {
       self.filteredListings = self.filteredListings.sorted{$0.expirationTime > $1.expirationTime}
+    } else if sortBy == .rating {
+      self.filteredListings = self.filteredListings.sorted{$0.seller.rating > $1.seller.rating}
     }
   }
   

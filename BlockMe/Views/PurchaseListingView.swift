@@ -83,10 +83,10 @@ struct PurchaseListingView: View {
                       HStack{
                         if selectedLocation == listing.availableLocations[i] {
                           Image(systemName: "circle.fill")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("BlockMe Red"))
                         } else {
                           Image(systemName: "circle")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("BlockMe Red"))
                         }
                         Text(listing.availableLocations[i].rawValue).font(.regMed)
                           .foregroundColor(.black)
