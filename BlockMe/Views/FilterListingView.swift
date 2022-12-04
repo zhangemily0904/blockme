@@ -15,7 +15,10 @@ struct FilterListingView: View {
   @State var priceRange: [CGFloat]
   @State var expirationTimeMin: Date
   @State var expirationTimeMax: Date
-  @State var locations: [LocationSelection] 
+  @State var locations: [LocationSelection]
+  @State var rating: Double
+  @State private var isEditing = false
+
   @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -67,37 +70,73 @@ struct FilterListingView: View {
                 .scaledToFit()
             
           }.frame(width: 296)
-            .padding(.bottom, 15)
-                      
-          HStack {
-            Text("Location").font(.medSmall).frame(width: 100, alignment: .leading).offset(y: -68)
-            VStack (alignment: .leading, spacing: 10) {
-              ForEach(0..<locations.count) { i in
-                HStack {
-                  Button(action: {
-                    locations[i].1 = locations[i].1 ? false : true
-                  }) {
-                    HStack{
-                      if locations[i].1 {
-                        Image(systemName: "checkmark.circle.fill")
-                          .foregroundColor(.green)
-                      } else {
-                        Image(systemName: "checkmark.circle")
-                          .foregroundColor(.green)
+            .padding(.bottom, 10)
+          
+          VStack {
+            HStack {
+              Text("Location").font(.medSmall).frame(maxWidth: 100, alignment: .leading).offset(y: -68)
+              VStack (alignment: .leading, spacing: 10) {
+                ForEach(0..<locations.count) { i in
+                  HStack {
+                    Button(action: {
+                      locations[i].1 = locations[i].1 ? false : true
+                    }) {
+                      HStack{
+                        if locations[i].1 {
+                          Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor( Color("BlockMe Red"))
+                        } else {
+                          Image(systemName: "checkmark.circle")
+                            .foregroundColor(Color("BlockMe Red"))
+                        }
+                        Text(locations[i].0.rawValue).font(.regMed)
+                          .foregroundColor(.black)
                       }
-                      Text(locations[i].0.rawValue).font(.regMed)
-                        .foregroundColor(.black)
                     }
                   }
                 }
               }
-            }
-          }.padding(.bottom, 15)
+            }.padding(.bottom, 10)
+          }.frame(width: 296)
+          
+          VStack {
+            Text("Rating").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 10)
+            
+            VStack {
+              VStack(alignment: .leading, spacing: 7){
+                HStack {
+                  ForEach(0..<6) { i in
+                  
+                    Button(action: {
+                      rating = Double(i)
+                    }) {
+                      HStack{
+                        Text("\(i)")
+                        Image(systemName: "star.fill")
+                          .resizable()
+                          .frame(width:15,height:15)
+                      }
+                      .frame(width: 46, height: 25)
+                     
+                    }
+                    .background(rating == Double(i) ? Color("BlockMe Red") : Color(UIColor.lightGray))
+                    .foregroundColor(.white)
+                    .cornerRadius(16)
+                    
+                  }.offset(x:-25)
+                }
+              }
+            }.frame(width: 270, alignment: .leading)
+            
+          }.frame(width: 296)
+            .padding(.bottom, 10)
+          
           Button(action:{
             listingRepository.priceRange = [priceRange[0], priceRange[1]]
             listingRepository.expirationTimeMin = expirationTimeMin
             listingRepository.expirationTimeMax = expirationTimeMax
             listingRepository.locations = locations.filter{$0.1}.map{$0.0}
+            listingRepository.rating = rating
             listingRepository.getFiltered()
             dismiss()
           }) {
@@ -110,6 +149,7 @@ struct FilterListingView: View {
             expirationTimeMax = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date()) ?? Date.now
             priceRange = [0.0, CGFloat(listingRepository.findMaxPrice())]
             locations = DiningLocation.allCases.map{($0, true)}
+            rating = 0.0
           }) {
             Text("Reset")
           }.buttonStyle(SmallWhiteButton())

@@ -48,8 +48,6 @@ struct SortListingView: View {
           }
         }
         .padding(.top, 15)
-        
-        
       }
     }
   }
