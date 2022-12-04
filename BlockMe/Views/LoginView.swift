@@ -31,9 +31,10 @@ struct LoginView: View {
           SecureField("Password", text: $password)
             .textFieldStyle(InputField())
           
-          // TODO: password recovery
-          Text("Forgot Password?").font(.regSmall).frame(width: 352, alignment: .trailing)
-          
+          NavigationLink(destination: PasswordResetView()) {
+            Text("Forgot Password?").font(.regSmall).frame(width: 352, alignment: .trailing)
+          }
+          .foregroundColor(Color.black)
          
           Button(action: {
             guard !email.isEmpty && !password.isEmpty else {
