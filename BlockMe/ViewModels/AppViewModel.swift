@@ -72,8 +72,8 @@ class AppViewModel: ObservableObject {
             return
           }
           
-          // create user in users collection
-          let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: path, ratings: [])
+          // create user in users collection with an initial rating of 5 stars
+          let user = User(id: userId, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImageURL: path, ratings: [5])
           self.addUser(user) { error in
             guard error == nil else {
               completion(error!.localizedDescription)
@@ -84,6 +84,12 @@ class AppViewModel: ObservableObject {
           }
         }
       }
+    }
+  }
+  
+  func resetPassword(for email: String, completion: @escaping (String?) -> Void) {
+    auth.sendPasswordReset(withEmail: email) { error in
+      completion(error?.localizedDescription)
     }
   }
   
