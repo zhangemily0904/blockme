@@ -142,6 +142,19 @@ class ListingRepository: ObservableObject {
     return self.update(listing: listing)
   }
   
+  func updateCurrentListingWithNewUserInfo(uid: String, venmoHandle: String, phoneNumber: String) -> Bool {
+    let listing = self.getCurrentListingForSeller(uid: uid)
+    
+    guard var listing = listing else {
+      print("user doesn't have a current listing")
+      return false
+    }
+    
+    listing.seller.venmoHandle = venmoHandle
+    listing.seller.phoneNumber = phoneNumber
+    return self.update(listing: listing)
+  }
+  
   func findMaxPrice() -> CGFloat {
     return CGFloat(self.currentListings.map{$0.price}.max() ?? 0)
   }
