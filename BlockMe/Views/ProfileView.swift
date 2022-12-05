@@ -11,6 +11,7 @@ import FirebaseStorage
 
 struct ProfileView: View {
   @EnvironmentObject var appViewModel: AppViewModel
+  @State var showEditProfileView = false
   
   var body: some View {
     ZStack {
@@ -34,27 +35,34 @@ struct ProfileView: View {
               .offset(y: -60)
           }
           HStack {
-            VStack {
-              NavigationLink("Manage Account", destination: EditProfileView())
-              Text("Update your information").font(.medTiny).foregroundColor(.gray).offset(x: 5)
-            }.frame(width: 300, alignment: .leading)
-              .padding(.leading, 15)
-            Image("next")
-              .resizable()
-              .frame(width: 20, height: 20, alignment: .trailing)
-              .padding(.trailing, 15)
-          }
-            .frame(width: 353, height: 75)
+            Button(action:{
+              showEditProfileView.toggle()
+            }){
+              VStack {
+                Text("Manage Account")
+                Text("Update your information").font(.medTiny).foregroundColor(.gray).offset(x: 5)
+              }.frame(width: 300, alignment: .leading)
+                .padding(.leading, 12)
+              Image("next")
+                .resizable()
+                .frame(width: 20, height: 20, alignment: .trailing)
+                .padding(.trailing, 15)
+            }
+            .sheet(isPresented: $showEditProfileView) {
+              EditProfileView()
+                .presentationDetents([.fraction(0.50)])
+            }
+          }.frame(width: 353, height: 75)
             .background(Color("BlockMe Yellow").clipShape(RoundedRectangle(cornerRadius:15)))
             .font(.medSmall)
             .foregroundColor(.black)
             .offset(y: -20)
         }
+
         
         HStack {
           Button(action: {
-//            appViewModel.signOut()
-            print("click")
+            appViewModel.signOut()
           }) {
             Text("Sign Out").font(.medSmall).frame(width: 295, alignment: .leading)
               .padding(.leading, 70)
