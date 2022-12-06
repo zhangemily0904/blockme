@@ -6,32 +6,26 @@
 //
 
 import SwiftUI
+import PagerTabStripView
 
 struct OrdersView: View {
-  @EnvironmentObject var appViewModel: AppViewModel
-  @ObservedObject var listingRepository: ListingRepository = ListingRepository()
-  var seller = false
+   @State var selection = 0
   
     var body: some View {
-      GeometryReader { geometry in
-        ZStack {
-          Color("BlockMe Background").ignoresSafeArea()
-          ScrollView(showsIndicators: false) {
-            Text("Orders").font(.medLarge).padding(.top, 20).padding(.bottom, 5)
-            
-            if let userId = appViewModel.currentUserId{
-              let currentListings = listingRepository.listings.filter {
-                ($0.seller.id == userId || $0.buyer?.id == userId) && $0.completedTime != nil
-              }
-              
-              VStack {
-                ForEach(currentListings.sorted { $0.completedTime! > $1.completedTime! }) { listing in
-                  OrderDetailsView(order: listing, viewWidth: geometry.size.width, seller: listing.seller.id==userId)
+      ZStack {
+        Color("BlockMe Background").ignoresSafeArea()
+        PagerTabStripView(selection: $selection) {
+              PurchasedOrdersView()
+                .pagerTabItem {
+                  OrderNavBarItem(title:"Purchased")
                 }
-              }.frame(width: geometry.size.width, alignment: .center)
-            }
-          }
+              SoldOrdersView()
+                .pagerTabItem {
+                  OrderNavBarItem(title:"Sold")
+                }
         }
+        .pagerTabStripViewStyle(.barButton(indicatorBarColor: .blue, tabItemSpacing: 0, tabItemHeight: 50))
+          
       }
     }
 }
