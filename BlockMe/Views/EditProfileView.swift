@@ -11,33 +11,37 @@ struct EditProfileView: View {
   @Environment(\.presentationMode) private var presentationMode // used so we can use update button to backward navigate
   @ObservedObject var listingRepository = ListingRepository()
   @EnvironmentObject var appViewModel: AppViewModel
+  @Environment(\.dismiss) var dismiss
   @State private var showErrorAlert = false
   @State private var venmoHandle = ""
   @State private var phoneNumber = ""
   @State private var alertMsg = ""
   
-    var body: some View {
-      ZStack {
-        Color("BlockMe Background").ignoresSafeArea()
+  var body: some View {
+    ZStack {
+      VStack() {
+        Button(action: {dismiss()}){
+          Image("cancel")
+            .resizable()
+            .frame(width: 30, height: 30)
+        }
+        .frame(width: 352, alignment: .trailing)
         
         VStack {
-          Group {
-            Text("Update Your Information").font(.title)
-          }.frame(maxHeight: .infinity, alignment: .top)
+          Text("Update Your Information").font(.medMed).frame(width: 352)
+            .padding(.bottom, 30)
           
           if let userViewModel = appViewModel.userViewModel {
-            Text("Venmo Handle")
-            TextField(userViewModel.user?.venmoHandle ?? "Venmo Handle", text: $venmoHandle)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-              .padding()
-              .autocapitalization(.none)
-              .disableAutocorrection(true)
-            Text("Phone Number")
-            TextField(userViewModel.user?.phoneNumber ?? "Phone Number", text: $phoneNumber)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-              .padding()
-              .autocapitalization(.none)
-              .disableAutocorrection(true)
+            VStack {
+              Text("Venmo Handle").font(.medSmall).frame(width: 352, alignment: .leading)
+              TextField(userViewModel.user?.venmoHandle ?? "Venmo Handle", text: $venmoHandle)
+                .textFieldStyle(InputField())
+                .padding(.bottom, 20)
+              Text("Phone Number").font(.medSmall).frame(width: 352, alignment: .leading)
+              TextField(userViewModel.user?.phoneNumber ?? "Phone Number", text: $phoneNumber)
+                .textFieldStyle(InputField())
+                .padding(.bottom, 40)
+            }.frame(width: 352, alignment: .leading)
             
             Group{
               Button(action: {
@@ -62,11 +66,10 @@ struct EditProfileView: View {
                 }
                 presentationMode.wrappedValue.dismiss()
               }) {
-                Text("Update")
+                Text("Update").font(.medSmall)
               }.buttonStyle(RedButton())
-            }.frame(maxHeight: .infinity, alignment: .bottom)
+            }
           }
-
         }
         .onAppear {
           guard let userViewModel = appViewModel.userViewModel else {
@@ -85,4 +88,5 @@ struct EditProfileView: View {
       }
       
     }
+  }
 }
