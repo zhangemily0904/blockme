@@ -30,8 +30,8 @@ struct FilterListingView: View {
               .resizable()
               .frame(width: 30, height: 30)
           }
-          .frame(width: 296, alignment: .trailing)
-          Text("Filter").font(.medMed).frame(width: 296)
+          .frame(width: 352, alignment: .trailing)
+          Text("Filter").font(.medMed).frame(width: 352)
           
           VStack() {
             Text("Expiration Time").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 15)
@@ -52,7 +52,7 @@ struct FilterListingView: View {
                 .font(.medSmall)
                 .frame(width: 100, alignment: .trailing)
             }.frame(maxWidth: .infinity)
-          }.frame(width: 296)
+          }.frame(width: 352)
          
           VStack() {
             Text("Price").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading)
@@ -66,15 +66,15 @@ struct FilterListingView: View {
                 outerTrackColor: .lightGray,
                 keepsDistanceBetweenThumbs: false
             )
-                .frame(width: 320)
+                .frame(width: 352)
                 .scaledToFit()
             
-          }.frame(width: 296)
+          }.frame(width: 352)
             .padding(.bottom, 10)
           
           VStack {
             HStack {
-              Text("Location").font(.medSmall).frame(maxWidth: 100, alignment: .leading).offset(y: -68)
+              Text("Location").font(.medSmall).frame(maxWidth: 100, alignment: .leading).offset(y: -68).offset(x: -45)
               VStack (alignment: .leading, spacing: 10) {
                 ForEach(0..<locations.count) { i in
                   HStack {
@@ -97,10 +97,10 @@ struct FilterListingView: View {
                 }
               }
             }.padding(.bottom, 10)
-          }.frame(width: 296)
+          }.frame(width: 352)
           
           VStack {
-            Text("Rating").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 10)
+            Text("Rating (at least)").font(.medSmall).frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 10)
             
             VStack {
               VStack(alignment: .leading, spacing: 7){
@@ -116,19 +116,19 @@ struct FilterListingView: View {
                           .resizable()
                           .frame(width:15,height:15)
                       }
-                      .frame(width: 46, height: 25)
+                      .frame(width: 52, height: 30)
                      
                     }
                     .background(rating == Double(i) ? Color("BlockMe Red") : Color(UIColor.lightGray))
                     .foregroundColor(.white)
                     .cornerRadius(16)
                     
-                  }.offset(x:-25)
+                  }.offset(x:-40)
                 }
               }
             }.frame(width: 270, alignment: .leading)
             
-          }.frame(width: 296)
+          }.frame(width: 352)
             .padding(.bottom, 10)
           
           Button(action:{
@@ -141,8 +141,9 @@ struct FilterListingView: View {
             dismiss()
           }) {
             Text("Apply")
-          }.buttonStyle(SmallRedButton())
+          }.buttonStyle(RedButton())
             .font(.medSmall)
+            .padding(.top, 10)
           
           Button(action:{
             expirationTimeMin = Date.now
@@ -152,7 +153,7 @@ struct FilterListingView: View {
             rating = 0.0
           }) {
             Text("Reset")
-          }.buttonStyle(SmallWhiteButton())
+          }.buttonStyle(WhiteButton())
             .font(.medSmall)
         }
         
