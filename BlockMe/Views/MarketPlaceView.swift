@@ -110,10 +110,7 @@ struct MarketPlaceView: View {
           }
           PurchaseListingView(show: $showPurchaseView, listing: $selectedListing, profileImage: $selectedListingProfile, listingRepository: listingRepository)
           NewListingView(show: $showNewListingView, listingRepository: listingRepository)
-          if let listing = selectedListing {
-            EditListingView(show: $showEditListingView, listing: listing, listingRepository: listingRepository)
-          }
-          
+          EditListingView(show: $showEditListingView, selectedListing: $selectedListing, listingRepository: listingRepository)
         }
         .frame(maxHeight: .infinity)
         .alert(alertMsg, isPresented: $showErrorAlert) {
