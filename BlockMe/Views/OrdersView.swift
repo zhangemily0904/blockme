@@ -24,7 +24,7 @@ struct OrdersView: View {
                   OrderNavBarItem(title:"Sold")
                 }
         }
-        .pagerTabStripViewStyle(.barButton(indicatorBarColor: .blue, tabItemSpacing: 0, tabItemHeight: 50))
+        .pagerTabStripViewStyle(.barButton(indicatorBarColor: Color("BlockMe Red"), tabItemSpacing: 0, tabItemHeight: 50))
           
       }
     }

@@ -31,7 +31,7 @@ struct OrderNavBarItem: View, PagerTabViewDelegate {
     func setState(state: PagerTabViewState) {
         switch state {
         case .selected:
-          self.theme.textColor = .blue
+          self.theme.textColor = Color("BlockMe Red")
         default:
           self.theme.textColor = .gray
         }
