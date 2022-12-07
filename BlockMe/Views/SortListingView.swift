@@ -19,9 +19,9 @@ struct SortListingView: View {
             .resizable()
             .frame(width: 30, height: 30)
         }
-        .frame(width: 296, alignment: .trailing)
+        .frame(width: 352, alignment: .trailing)
         
-        Text("Sort").font(.medMed).frame(width: 296)
+        Text("Sort").font(.medMed).frame(width: 352)
         VStack(alignment: .leading) {
           ForEach(0..<SortBy.allCases.count) { i in
             HStack {
@@ -31,25 +31,22 @@ struct SortListingView: View {
                 dismiss()
               }) {
                 HStack{
+                  Text(SortBy.allCases[i].rawValue).font(.regMed)
+                    .foregroundColor(.black)
+                    .frame(maxWidth: 300, alignment: .leading)
                   if listingRepository.sortBy ==  SortBy.allCases[i] {
                     Image(systemName: "checkmark")
                       .foregroundColor(.green)
-                  } 
-              
-                  Text(SortBy.allCases[i].rawValue).font(.regMed)
-                    .foregroundColor(.black)
-                    .frame(alignment: .leading)
+                      .frame(maxWidth: 52, alignment: .trailing)
+                  }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
               }
-              .offset(x:25)
             }
             Divider()
           }
         }
+        .frame(width: 352)
         .padding(.top, 15)
-        
-        
       }
     }
   }

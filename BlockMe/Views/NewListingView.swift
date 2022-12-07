@@ -65,10 +65,10 @@ struct NewListingView: View {
                       HStack{
                         if locations[i].1 {
                           Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("BlockMe Red"))
                         } else {
                           Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("BlockMe Red"))
                         }
                         Text(locations[i].0.rawValue).font(.regMed)
                           .foregroundColor(.black)
