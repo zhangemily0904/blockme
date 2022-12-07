@@ -97,13 +97,6 @@ struct EditListingView: View {
             }
             
             Button(action:{
-              guard let seller = appViewModel.userViewModel?.user else {
-                error = "error getting user information"
-                showErrorAlert = true
-                return
-              }
-              let listingSeller = ListingUser(id: seller.id, firstName: seller.firstName, lastName: seller.lastName, venmoHandle: seller.venmoHandle, phoneNumber: seller.phoneNumber, profileImageURL: seller.profileImageURL, rating: seller.getAvgRating())
-              
               var availableLocations: [DiningLocation] = []
               for location in locations{
                 if location.1 {
