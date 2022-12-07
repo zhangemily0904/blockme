@@ -55,6 +55,10 @@
 		9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A229180FFF00A5ACB5 /* NewListingView.swift */; };
 		9F3843A52918AA6A00A5ACB5 /* PurchaseListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */; };
 		9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A82918DA2800A5ACB5 /* TransactionView.swift */; };
+		9F3D22B2293F08E100EB384E /* PagerTabStripView in Frameworks */ = {isa = PBXBuildFile; productRef = 9F3D22B1293F08E100EB384E /* PagerTabStripView */; };
+		9F3D22B4293F090300EB384E /* PurchasedOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D22B3293F090300EB384E /* PurchasedOrdersView.swift */; };
+		9F3D22B6293F0BFF00EB384E /* SoldOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D22B5293F0BFF00EB384E /* SoldOrdersView.swift */; };
+		9F3D22B8293F0E2B00EB384E /* OrderNavBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D22B7293F0E2B00EB384E /* OrderNavBarItem.swift */; };
 		9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */; };
 		9FA0AB36292C7A8E00976D25 /* EditListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0AB35292C7A8E00976D25 /* EditListingView.swift */; };
 		9FFC5CB92915964900BF992A /* ListingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC5CB82915964900BF992A /* ListingUser.swift */; };
@@ -107,6 +111,9 @@
 		9F3843A229180FFF00A5ACB5 /* NewListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingView.swift; sourceTree = "<group>"; };
 		9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListingView.swift; sourceTree = "<group>"; };
 		9F3843A82918DA2800A5ACB5 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		9F3D22B3293F090300EB384E /* PurchasedOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedOrdersView.swift; sourceTree = "<group>"; };
+		9F3D22B5293F0BFF00EB384E /* SoldOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldOrdersView.swift; sourceTree = "<group>"; };
+		9F3D22B7293F0E2B00EB384E /* OrderNavBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNavBarItem.swift; sourceTree = "<group>"; };
 		9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfileImageView.swift; sourceTree = "<group>"; };
 		9FA0AB35292C7A8E00976D25 /* EditListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListingView.swift; sourceTree = "<group>"; };
 		9FFC5CB82915964900BF992A /* ListingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingUser.swift; sourceTree = "<group>"; };
@@ -127,6 +134,7 @@
 				72391EAA2906168100C980E1 /* FirebaseDatabaseSwift in Frameworks */,
 				72391EC2290743BF00C980E1 /* FirebaseStorage in Frameworks */,
 				CBCC7135291ADB5600C30C35 /* iPhoneNumberField in Frameworks */,
+				9F3D22B2293F08E100EB384E /* PagerTabStripView in Frameworks */,
 				72391EA42906168100C980E1 /* FirebaseAnalytics in Frameworks */,
 				CBCC713C291B661F00C30C35 /* WrappingHStack in Frameworks */,
 				72391EA62906168100C980E1 /* FirebaseAuth in Frameworks */,
@@ -208,6 +216,9 @@
 				72391F002909C7CF00C980E1 /* CreateAccountView.swift */,
 				9F83D927290B225D004424A4 /* ChooseProfileImageView.swift */,
 				7273FD962913411600B57B55 /* OrdersView.swift */,
+				9F3D22B3293F090300EB384E /* PurchasedOrdersView.swift */,
+				9F3D22B5293F0BFF00EB384E /* SoldOrdersView.swift */,
+				9F3D22B7293F0E2B00EB384E /* OrderNavBarItem.swift */,
 				9F0FD730291B76EE00B9175F /* OrderDetailsView.swift */,
 				7273FD9829136BB400B57B55 /* EditProfileView.swift */,
 				CB550946291609550073243D /* SplashView.swift */,
@@ -294,6 +305,7 @@
 				CBCC7134291ADB5600C30C35 /* iPhoneNumberField */,
 				CBCC713B291B661F00C30C35 /* WrappingHStack */,
 				9F0FD74F29234D4400B9175F /* MultiSlider */,
+				9F3D22B1293F08E100EB384E /* PagerTabStripView */,
 			);
 			productName = BlockMe;
 			productReference = 72391E892906136700C980E1 /* BlockMe.app */;
@@ -329,6 +341,7 @@
 				CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 				CBCC713A291B661E00C30C35 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 				9F0FD74E29234D4400B9175F /* XCRemoteSwiftPackageReference "MultiSlider" */,
+				9F3D22B0293F08E100EB384E /* XCRemoteSwiftPackageReference "PagerTabStripView" */,
 			);
 			productRefGroup = 72391E8A2906136700C980E1 /* Products */;
 			projectDirPath = "";
@@ -368,10 +381,12 @@
 				9FA0AB36292C7A8E00976D25 /* EditListingView.swift in Sources */,
 				721EF532291AE62D00950DE4 /* ListingViewModel.swift in Sources */,
 				CB550947291609550073243D /* SplashView.swift in Sources */,
+				9F3D22B6293F0BFF00EB384E /* SoldOrdersView.swift in Sources */,
 				72391EC42907504F00C980E1 /* ListingRepository.swift in Sources */,
 				7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */,
 				721EF534291AF18900950DE4 /* TransactionPendingView.swift in Sources */,
 				9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */,
+				9F3D22B8293F0E2B00EB384E /* OrderNavBarItem.swift in Sources */,
 				72AD21BE292B0AFA0082D1B5 /* StarRatingComponent.swift in Sources */,
 				72391EFF2909C3C300C980E1 /* ProfileView.swift in Sources */,
 				9F83D928290B225D004424A4 /* ChooseProfileImageView.swift in Sources */,
@@ -392,6 +407,7 @@
 				CB5509452915EE510073243D /* Font.swift in Sources */,
 				72AD21C2293FCA940082D1B5 /* LoadingSpinner.swift in Sources */,
 				724B0002291B36FE00448B0D /* TransactionHasArrivedView.swift in Sources */,
+				9F3D22B4293F090300EB384E /* PurchasedOrdersView.swift in Sources */,
 				72AD21BC292AF1EC0082D1B5 /* ReviewView.swift in Sources */,
 				724BFFFE291B05C400448B0D /* TransactionMeetUpView.swift in Sources */,
 				7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */,
@@ -626,6 +642,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9F3D22B0293F08E100EB384E /* XCRemoteSwiftPackageReference "PagerTabStripView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/PagerTabStripView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		CBCC7133291ADB5600C30C35 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField";
@@ -694,6 +718,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9F0FD74E29234D4400B9175F /* XCRemoteSwiftPackageReference "MultiSlider" */;
 			productName = MultiSlider;
+		};
+		9F3D22B1293F08E100EB384E /* PagerTabStripView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F3D22B0293F08E100EB384E /* XCRemoteSwiftPackageReference "PagerTabStripView" */;
+			productName = PagerTabStripView;
 		};
 		CBCC7134291ADB5600C30C35 /* iPhoneNumberField */ = {
 			isa = XCSwiftPackageProductDependency;
