@@ -35,7 +35,7 @@ struct OrderDetailsView: View {
             Text("Sold to \(buyer.firstName)").font(.medSmall)
           }
         } else {
-          Text("Bought from \(order.seller.firstName)").font(.medSmall)
+          Text("Purchased from \(order.seller.firstName)").font(.medSmall)
         }
 
         if let completedTime = order.completedTime {
