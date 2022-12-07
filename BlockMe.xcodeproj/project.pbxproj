@@ -47,6 +47,7 @@
 		72AD21BC292AF1EC0082D1B5 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD21BB292AF1EC0082D1B5 /* ReviewView.swift */; };
 		72AD21BE292B0AFA0082D1B5 /* StarRatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD21BD292B0AFA0082D1B5 /* StarRatingComponent.swift */; };
 		72AD21C02939556F0082D1B5 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD21BF2939556F0082D1B5 /* PasswordResetView.swift */; };
+		72AD21C2293FCA940082D1B5 /* LoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD21C1293FCA940082D1B5 /* LoadingSpinner.swift */; };
 		9F0FD731291B76EE00B9175F /* OrderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FD730291B76EE00B9175F /* OrderDetailsView.swift */; };
 		9F0FD74D2923106600B9175F /* FilterListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FD74C2923106600B9175F /* FilterListingView.swift */; };
 		9F0FD75029234D4400B9175F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 9F0FD74F29234D4400B9175F /* MultiSlider */; };
@@ -99,6 +100,7 @@
 		72AD21BB292AF1EC0082D1B5 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		72AD21BD292B0AFA0082D1B5 /* StarRatingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingComponent.swift; sourceTree = "<group>"; };
 		72AD21BF2939556F0082D1B5 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		72AD21C1293FCA940082D1B5 /* LoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinner.swift; sourceTree = "<group>"; };
 		9F0FD730291B76EE00B9175F /* OrderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsView.swift; sourceTree = "<group>"; };
 		9F0FD74C2923106600B9175F /* FilterListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListingView.swift; sourceTree = "<group>"; };
 		9F0FD75129245FE500B9175F /* SortListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortListingView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				9F0FD75129245FE500B9175F /* SortListingView.swift */,
 				9FA0AB35292C7A8E00976D25 /* EditListingView.swift */,
 				72AD21BF2939556F0082D1B5 /* PasswordResetView.swift */,
+				72AD21C1293FCA940082D1B5 /* LoadingSpinner.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				72391ECE290765F300C980E1 /* UserViewModel.swift in Sources */,
 				CBCC7137291ADBE400C30C35 /* VenmoFormatter.swift in Sources */,
 				CB5509452915EE510073243D /* Font.swift in Sources */,
+				72AD21C2293FCA940082D1B5 /* LoadingSpinner.swift in Sources */,
 				724B0002291B36FE00448B0D /* TransactionHasArrivedView.swift in Sources */,
 				72AD21BC292AF1EC0082D1B5 /* ReviewView.swift in Sources */,
 				724BFFFE291B05C400448B0D /* TransactionMeetUpView.swift in Sources */,
