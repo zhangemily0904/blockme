@@ -8,19 +8,43 @@
 import SwiftUI
 
 struct AppView: View {
+  @EnvironmentObject var appViewModel: AppViewModel
+  @ObservedObject var listingRepository: ListingRepository = ListingRepository()
+  
     var body: some View {
-      TabView {
-        UsersView()
-          .tabItem {
-            Image(systemName: "person.2")
-            Text("Users")
+      NavigationView {
+        if appViewModel.signedIn {
+          if let listing = listingRepository.getPendingListingForBuyer(uid: appViewModel.currentUserId!) {
+            TransactionView(listingId: listing.id!, isSeller: false)
           }
-        
-        MarketPlaceView()
-          .tabItem {
-            Image(systemName: "house")
-            Text("Marketplace")
+          else if let listing = listingRepository.getPendingListingForSeller(uid: appViewModel.currentUserId!){
+            TransactionView(listingId: listing.id!, isSeller: true)
           }
+          else {
+            TabView {
+              MarketPlaceView()
+                .tabItem {
+                  Image(systemName: "house")
+                  Text("Marketplace")
+                }
+              
+              OrdersView()
+                .tabItem {
+                  Image(systemName: "bag.fill")
+                  Text("Orders")
+                }
+              
+              ProfileView()
+                .tabItem {
+                  Image(systemName: "person")
+                  Text("Profile")
+                }
+            }
+  //          .disabled(appViewModel.tabsDisabled)
+          }
+        } else {
+          SplashView()
+        }
       }
     }
 }

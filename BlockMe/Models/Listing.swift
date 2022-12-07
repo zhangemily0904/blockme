@@ -8,16 +8,27 @@
 import Foundation
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+
 enum BuyerStatus: String, Codable {
   case requested = "requested"
   case arrivedAtLocation = "arrivedAtLocation"
   case completedPayment = "completedPayment"
+  case reviewed = "reviewed"
 }
 
 enum SellerStatus: String, Codable {
-  case begunTransaction = "begunTransaction"
+  case acceptedTransaction = "acceptedTransaction"
   case arrivedAtLocation = "arrivedAtLocation"
   case paymentRecieved = "paymentReceived"
+  case reviewed = "reviewed"
+}
+
+enum SortBy: String, CaseIterable, Codable  {
+  case priceAsc = "Price ascending"
+  case priceDesc = "Price descending"
+  case timeAsc = "Expiration time ascending"
+  case timeDesc = "Expiration time descending"
+  case rating = "Rating"
 }
 
 struct Listing: Identifiable, Codable {
@@ -28,6 +39,7 @@ struct Listing: Identifiable, Codable {
   var expirationTime: Date
   var completedTime: Date?  
   var availableLocations: [DiningLocation]
+  var selectedLocation: DiningLocation?
   var buyerStatus: BuyerStatus?
   var sellerStatus: SellerStatus?
   
@@ -39,6 +51,7 @@ struct Listing: Identifiable, Codable {
     case expirationTime
     case completedTime
     case availableLocations
+    case selectedLocation
     case buyerStatus
     case sellerStatus
   }

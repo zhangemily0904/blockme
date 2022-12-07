@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseFirestoreSwift
 import FirebaseStorage
+import WrappingHStack
 
 struct ListingDetailsView: View {
   var listing: Listing
@@ -15,35 +16,73 @@ struct ListingDetailsView: View {
   @State var profileImage: UIImage? = nil
   
   var body: some View {
-    HStack {
-      if let profileImage = profileImage {
-        Image(uiImage: profileImage)
-          .resizable()
-          .frame(width: viewWidth / 5, height: viewWidth / 5) // dynamically scale size of profile image
-          .clipShape(Circle())
+    VStack() {
+      HStack() {
+        if let profileImage = profileImage {
+          Image(uiImage: profileImage)
+            .resizable()
+            .frame(width: viewWidth / 6, height: viewWidth / 6, alignment: .leading) // dynamically scale size of profile image
+            .clipShape(Circle())
+            .offset(x:10)
+        }
+        VStack(alignment: .leading) {
+          HStack{
+            Text(listing.seller.firstName).font(.medSmall)
+            Image(systemName: "star.fill")
+              .resizable()
+              .frame(width:15,height:15)
+            Text("\(listing.seller.rating,specifier: "%.2f")").font(.medSmall)
+          }
+          HStack {
+            let timeRemaining = ListingDetailsView.dateComponentFormatter.string(from: MarketPlaceView().currentTime, to: listing.expirationTime)!
+            let min = MarketPlaceView().calendar.dateComponents([.minute], from: MarketPlaceView().currentTime, to: listing.expirationTime).minute!
+            switch min {
+            case let x where x > 60:
+              Circle.availableCircle
+              Text("Expires in \(timeRemaining)").font(.regSmall).foregroundColor(Color("Expiration Green"))
+            case let x where x > 30:
+              Circle.limitCircle
+              Text("Expires in \(timeRemaining)").font(.regSmall).foregroundColor(Color("Expiration Yellow"))
+            default:
+              Circle.unavailableCircle
+              Text("Expires in \(timeRemaining)").font(.regSmall).foregroundColor(Color("Expiration Red"))
+            }
+          }
+        }.frame(width: 239 - viewWidth / 6, alignment: .leading) //overall frame is 332, frame width for price is 63, and frame width for image is viewWidth / 6
+          .padding(.leading, 20)
+        Text(String(format: "$%.2f", listing.price)).font(.medMed).frame(width: 70, alignment: .trailing)
       }
-      VStack(alignment: .leading) {
-        Text(listing.seller.firstName).bold()
-        Text(String(format: "$%.2f", listing.price))
-        Text("Expires at \(listing.expirationTime)")
+      let i = listing.availableLocations.count - 1
+      WrappingHStack(0...i, id:\.self) {
+          switch listing.availableLocations[$0].rawValue {
+          case "University Center":
+            Capsule.UC
+          case "Resnik":
+            Capsule.Resnik
+          case "Tepper":
+            Capsule.Tepper
+          case "La Prima (Wean)":
+            Capsule.LaPrimaWean
+          default:
+            Capsule.LaPrimaGates
+          }
+        }
+    }.padding(15)
+      .background(Color("BlockMe Yellow"))
+      .foregroundColor(.black)
+      .frame(width: viewWidth-40)
+      .onAppear {
+        StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) { image in
+          profileImage = image
+        }
       }
-    }.onAppear {
-      retrieveProfileImage()
-    }
   }
   
-  func retrieveProfileImage() {
-    let storageRef = Storage.storage().reference()
-    let fileRef = storageRef.child(listing.seller.profileImageURL)
-    
-    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-      if error == nil && data != nil {
-        profileImage = UIImage(data: data!)
-        return
-      }
-      
-      print("Error fetching image of path \(listing.seller.profileImageURL)")
-    }
-  }
+  static let dateComponentFormatter: DateComponentsFormatter = {
+          var formatter = DateComponentsFormatter()
+          formatter.allowedUnits = [.day, .hour, .minute]
+          formatter.unitsStyle = .brief
+          return formatter
+      }()
 }
 
