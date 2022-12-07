@@ -20,6 +20,7 @@ struct ChooseProfileImageView: View {
   @State private var showErrorAlert = false
   @State private var error: String = ""
   @State private var pickerResult: [UIImage] = []
+  @State private var loading: Bool = false
   
     var body: some View {
       ZStack {
@@ -46,24 +47,28 @@ struct ChooseProfileImageView: View {
           }
           
           Spacer()
-          
+      
           Button(action: {
             guard let image = self.pickerResult.first else {
               error = "No profile image selected."
               showErrorAlert = true
               return
             }
-            
-            appViewModel.signUp(email: email, password: password, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImage: image) { errorMsg in
-              if let errorMsg = errorMsg {
-                error = errorMsg
-                showErrorAlert = true
+            loading = true
+            DispatchQueue.main.async {
+              appViewModel.signUp(email: email, password: password, firstName: firstName, lastName: lastName, venmoHandle: venmoHandle, phoneNumber: phoneNumber, profileImage: image) { errorMsg in
+                if let errorMsg = errorMsg {
+                  error = errorMsg
+                  showErrorAlert = true
+                  loading = false
+                }
               }
             }
           }) {
             Text("Create Account").font(.medSmall)
           }
           .buttonStyle(RedButton())
+          .disabled(loading)
           
           Spacer()
         }
@@ -77,7 +82,11 @@ struct ChooseProfileImageView: View {
             showErrorAlert = false
           }
         }
+        
+        if loading {
+          Color.gray.opacity(0.5).ignoresSafeArea()
+          LoadingSpinner()
+        }
       }
-      
     }
 }
