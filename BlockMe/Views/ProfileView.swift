@@ -51,7 +51,7 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $showEditProfileView) {
               EditProfileView()
-                .presentationDetents([.fraction(0.70)])
+                .presentationDetents([.fraction(0.75)])
             }
           }.frame(width: 353, height: 75)
             .background(Color("BlockMe Yellow").clipShape(RoundedRectangle(cornerRadius:15)))
