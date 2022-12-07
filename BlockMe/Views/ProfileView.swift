@@ -12,6 +12,7 @@ import FirebaseStorage
 struct ProfileView: View {
   @EnvironmentObject var appViewModel: AppViewModel
   @State var showEditProfileView = false
+  @State var showSignoutConfirmationView = false
   
   var body: some View {
     ZStack {
@@ -62,7 +63,7 @@ struct ProfileView: View {
         
         HStack {
           Button(action: {
-            appViewModel.signOut()
+            showSignoutConfirmationView.toggle()
           }) {
             Text("Sign Out").font(.medSmall).frame(width: 295, alignment: .leading)
               .padding(.leading, 70)
@@ -70,6 +71,10 @@ struct ProfileView: View {
               .resizable()
               .frame(width: 20, height: 20, alignment: .trailing)
               .padding(.trailing, 70)
+          }
+          .sheet(isPresented: $showSignoutConfirmationView) {
+            SignoutConfirmationView()
+              .presentationDetents([.fraction(0.40)])
           }
           
         }
