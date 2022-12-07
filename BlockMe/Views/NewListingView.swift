@@ -126,7 +126,16 @@ struct NewListingView: View {
         .cornerRadius(16)
   
       }
-    }.onAppear {
+    }.onChange(of: show) { _ in
+      expirationTime = Date.now
+      price = 0.0
+      locations = locations.map { (loc, _) in
+        (loc, false)
+      }
+    }
+    .onAppear {
+      expirationTime = Date.now
+      price = 0.0
       guard locations.count < 1 else {
         return
       }
