@@ -47,9 +47,7 @@ struct ChooseProfileImageView: View {
           }
           
           Spacer()
-          if loading {
-            Text("REGISTERING...").bold()
-          }
+      
           Button(action: {
             guard let image = self.pickerResult.first else {
               error = "No profile image selected."
@@ -84,7 +82,11 @@ struct ChooseProfileImageView: View {
             showErrorAlert = false
           }
         }
+        
+        if loading {
+          Color.gray.opacity(0.5).ignoresSafeArea()
+          LoadingSpinner()
+        }
       }
-      
     }
 }

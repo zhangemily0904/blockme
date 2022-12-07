@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct LoadingSpinner: View {
-  var body: some View {
-//    ZStack {
-//      SpinnerCircle()
-//    }.frame(width: 200, height: 200)
-    Text("temp")
-  }
-}
-
-struct SpinnerCircle: View {
-  var start: CGFloat
-  var end: CGFloat
-  var rotation: Angle
-  var color: Color
+  @State private var shouldAnimate = false
   
   var body: some View {
-    Circle()
-      .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round))
-      .trim(from: start, to: end)
-      .fill(color)
-      .rotationEffect(rotation)
+      HStack {
+          Circle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: 20, height: 20)
+              .scaleEffect(shouldAnimate ? 1.0 : 0.5, anchor: .center)
+              .animation(Animation.easeInOut(duration: 0.5).repeatForever(), value: shouldAnimate)
+          Circle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: 20, height: 20)
+              .scaleEffect(shouldAnimate ? 1.0 : 0.5, anchor: .center)
+              .animation(Animation.easeInOut(duration: 0.5).repeatForever().delay(0.3), value: shouldAnimate)
+          Circle()
+              .fill(Color("BlockMe Red"))
+              .frame(width: 20, height: 20)
+              .scaleEffect(shouldAnimate ? 1.0 : 0.5, anchor: .center)
+              .animation(Animation.easeInOut(duration: 0.5).repeatForever().delay(0.6), value: shouldAnimate)
+      }
+      .onAppear {
+          self.shouldAnimate = true
+      }
   }
 }
