@@ -55,6 +55,7 @@
 		9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A229180FFF00A5ACB5 /* NewListingView.swift */; };
 		9F3843A52918AA6A00A5ACB5 /* PurchaseListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */; };
 		9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A82918DA2800A5ACB5 /* TransactionView.swift */; };
+		9F3B356C29417E8D00C43677 /* BlockMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B356B29417E8D00C43677 /* BlockMeTests.swift */; };
 		9F3D22B2293F08E100EB384E /* PagerTabStripView in Frameworks */ = {isa = PBXBuildFile; productRef = 9F3D22B1293F08E100EB384E /* PagerTabStripView */; };
 		9F3D22B4293F090300EB384E /* PurchasedOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D22B3293F090300EB384E /* PurchasedOrdersView.swift */; };
 		9F3D22B6293F0BFF00EB384E /* SoldOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D22B5293F0BFF00EB384E /* SoldOrdersView.swift */; };
@@ -71,6 +72,16 @@
 		CBCC713C291B661F00C30C35 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = CBCC713B291B661F00C30C35 /* WrappingHStack */; };
 		CBFC52A82921F54200C7A60D /* TransactionConfirmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFC52A72921F54200C7A60D /* TransactionConfirmingView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9F3B356D29417E8D00C43677 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72391E812906136700C980E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72391E882906136700C980E1;
+			remoteInfo = BlockMe;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		721EF531291AE62D00950DE4 /* ListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
@@ -112,6 +123,8 @@
 		9F3843A229180FFF00A5ACB5 /* NewListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingView.swift; sourceTree = "<group>"; };
 		9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListingView.swift; sourceTree = "<group>"; };
 		9F3843A82918DA2800A5ACB5 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		9F3B356929417E8D00C43677 /* BlockMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlockMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F3B356B29417E8D00C43677 /* BlockMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMeTests.swift; sourceTree = "<group>"; };
 		9F3D22B3293F090300EB384E /* PurchasedOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedOrdersView.swift; sourceTree = "<group>"; };
 		9F3D22B5293F0BFF00EB384E /* SoldOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldOrdersView.swift; sourceTree = "<group>"; };
 		9F3D22B7293F0E2B00EB384E /* OrderNavBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNavBarItem.swift; sourceTree = "<group>"; };
@@ -147,6 +160,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9F3B356629417E8D00C43677 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -170,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				72391E8B2906136700C980E1 /* BlockMe */,
+				9F3B356A29417E8D00C43677 /* BlockMeTests */,
 				72391E8A2906136700C980E1 /* Products */,
 				72391EBE290743BF00C980E1 /* Frameworks */,
 			);
@@ -179,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				72391E892906136700C980E1 /* BlockMe.app */,
+				9F3B356929417E8D00C43677 /* BlockMeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -279,6 +301,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9F3B356A29417E8D00C43677 /* BlockMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				9F3B356B29417E8D00C43677 /* BlockMeTests.swift */,
+			);
+			path = BlockMeTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +344,24 @@
 			productReference = 72391E892906136700C980E1 /* BlockMe.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9F3B356829417E8D00C43677 /* BlockMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F3B357129417E8D00C43677 /* Build configuration list for PBXNativeTarget "BlockMeTests" */;
+			buildPhases = (
+				9F3B356529417E8D00C43677 /* Sources */,
+				9F3B356629417E8D00C43677 /* Frameworks */,
+				9F3B356729417E8D00C43677 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F3B356E29417E8D00C43677 /* PBXTargetDependency */,
+			);
+			name = BlockMeTests;
+			productName = BlockMeTests;
+			productReference = 9F3B356929417E8D00C43677 /* BlockMeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -321,11 +369,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					72391E882906136700C980E1 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					9F3B356829417E8D00C43677 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 72391E882906136700C980E1;
 					};
 				};
 			};
@@ -351,6 +403,7 @@
 			projectRoot = "";
 			targets = (
 				72391E882906136700C980E1 /* BlockMe */,
+				9F3B356829417E8D00C43677 /* BlockMeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -363,6 +416,13 @@
 				72391E942906136900C980E1 /* Preview Assets.xcassets in Resources */,
 				72391E9E290615CC00C980E1 /* GoogleService-Info.plist in Resources */,
 				72391E912906136900C980E1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F3B356729417E8D00C43677 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +483,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9F3B356529417E8D00C43677 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F3B356C29417E8D00C43677 /* BlockMeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9F3B356E29417E8D00C43677 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72391E882906136700C980E1 /* BlockMe */;
+			targetProxy = 9F3B356D29417E8D00C43677 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		72391E952906136900C980E1 /* Debug */ = {
@@ -598,6 +674,50 @@
 			};
 			name = Release;
 		};
+		9F3B356F29417E8D00C43677 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VK2G6592JB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ziluzhan.BlockMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlockMe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlockMe";
+			};
+			name = Debug;
+		};
+		9F3B357029417E8D00C43677 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VK2G6592JB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ziluzhan.BlockMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlockMe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlockMe";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -615,6 +735,15 @@
 			buildConfigurations = (
 				72391E982906136900C980E1 /* Debug */,
 				72391E992906136900C980E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F3B357129417E8D00C43677 /* Build configuration list for PBXNativeTarget "BlockMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F3B356F29417E8D00C43677 /* Debug */,
+				9F3B357029417E8D00C43677 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
