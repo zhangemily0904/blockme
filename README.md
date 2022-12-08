@@ -16,6 +16,7 @@ BlockMe implements several contrainsts on how to use the marketplace.
 1. A user can only have one active listing at a time. 
 2. A user cannot buy a block if they have an active listing.
 3. A user cannot buy their own listing.
+4. Expiration time for new listings must be before 12:00am of the current day.
 
 ## Unit Tests
 BlockMe currently does not have any unit tests written for its backend. The backend is comprised of all firebase related logic. While trying to write unit tests, our team ran into a problem that we couldn't solve within the time contraints. While trying to compile and run the unit tests, xcode complains about Firebase not being configured although we have configured firebase properly in the app delegate. Upon further research, we found the following stackoverflow articles: [Firebase Configuration Error](https://stackoverflow.com/questions/60753233/the-default-firebaseapp-instance-must-be-configured-before-the-defaultfirebaseap), [Including Modules in Unit Tests](https://stackoverflow.com/questions/58125428/missing-required-module-xyz-on-unit-tests-when-using-swift-package-manager).
