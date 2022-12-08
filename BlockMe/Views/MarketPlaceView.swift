@@ -37,8 +37,14 @@ struct MarketPlaceView: View {
               Button(action:{
                 showFilterView.toggle()
               }){
-                Text("Filter")
+                HStack {
+                  Image("filter")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+                  Text("Filter").font(.regSmall)
+                }
               }
+              .buttonStyle(TinyBlackButton())
               .sheet(isPresented: $showFilterView) {
                 FilterListingView(listingRepository: listingRepository, show: $showFilterView, priceRange: listingRepository.priceRange[1] == -1 ? [0.0, listingRepository.findMaxPrice()] : listingRepository.priceRange, expirationTimeMin: listingRepository.expirationTimeMin, expirationTimeMax: listingRepository.expirationTimeMax, locations: DiningLocation.allCases.map{listingRepository.locations.contains($0) ? ($0, true) : ($0, false)}, rating: listingRepository.rating)
               }
@@ -46,14 +52,19 @@ struct MarketPlaceView: View {
               Button(action:{
                 showSortView.toggle()
               }){
-                Text("Sort")
+                HStack {
+                  Image("sort")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+                  Text("Sort").font(.regSmall)
+                }
               }
+              .buttonStyle(TinyBlackButton())
               .sheet(isPresented: $showSortView) {
                 SortListingView(listingRepository: listingRepository)
                   .presentationDetents([.fraction(0.50)])
               }
-              
-            }
+            }.frame(width: 332, alignment: .trailing)
             
             VStack {
               ForEach(listingRepository.filteredListings) { listing in

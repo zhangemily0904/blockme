@@ -51,6 +51,17 @@ struct SmallRedButton: ButtonStyle {
   }
 }
 
+struct TinyBlackButton: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .frame(width: 80, height: 26)
+      .foregroundColor(Color.white)
+      .background(
+        RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color.black)
+      )
+  }
+}
+
 struct InputField: TextFieldStyle {
   func _body(configuration: TextField<Self._Label>) -> some View {
     configuration
