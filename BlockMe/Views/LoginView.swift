@@ -62,6 +62,9 @@ struct LoginView: View {
             showErrorAlert = false
           }
         }
+        .onTapGesture {
+          self.hideKeyboard()
+        }
       }
     }
 }

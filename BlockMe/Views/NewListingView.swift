@@ -148,6 +148,9 @@ struct NewListingView: View {
         showErrorAlert = false
       }
     }
+    .onTapGesture {
+      self.hideKeyboard()
+    }
   }
   
   private func restoreFormToDefaults() {

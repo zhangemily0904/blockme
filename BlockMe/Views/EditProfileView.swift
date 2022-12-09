@@ -79,12 +79,10 @@ struct EditProfileView: View {
         Button("Ok", role: .cancel) {
           showErrorAlert = false
         }
-        
       }
-      
-     
-
-    
+      .onTapGesture {
+        self.hideKeyboard()
+      }
     }
   }
 }
