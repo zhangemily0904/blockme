@@ -65,11 +65,30 @@ struct MarketPlaceView: View {
                   .presentationDetents([.fraction(0.50)])
               }
             }.frame(width: 332, alignment: .trailing)
-            
+                                                                           
             VStack {
-              ForEach(listingRepository.filteredListings) { listing in
+              // empty marketplace - notify users that there's no listing
+              if listingRepository.currentListings.isEmpty {
+                Image("no-result").resizable().scaledToFit().padding(.bottom, -20)
+                  .padding(.top, 20)
+                Text("THE MARKETPLACE IS CURRENTLY EMPTY").font(.medSmall).multilineTextAlignment(.center).frame(width: 332).padding(.bottom, 3)
+                Text("Check back again later or tap the button below to create a listing").font(.regSmall).foregroundColor(Color(UIColor.darkGray)).multilineTextAlignment(.center).frame(width: 302)
+              }
+              
+              // no listing match filter
+              else if listingRepository.filteredListings.isEmpty {
+                Image("not-found").resizable().scaledToFit()
+                  .padding(.top, 15).padding(.bottom, -60)
+                Text("YOUR FILTERS PRODUCED NO LISTINGS").font(.medSmall).multilineTextAlignment(.center).frame(width: 302).padding(.bottom, 3)
+                Text("Try adjusting or resetting your filters to display listings").font(.regSmall).foregroundColor(Color(UIColor.darkGray)).multilineTextAlignment(.center).frame(width: 302)
+              }
+              
+              // check if user has an active anf filtered listing
+              // yes --> show 'your listing', and then show 'other's listing' if its present
+              else if appViewModel.currentUserId != nil && listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) != nil && listingRepository.getFilteredListingForSeller(uid: appViewModel.currentUserId!) != nil {
+                Text("Your Listing").font(.medSmall).frame(width: 332, alignment: .leading);
+                let listing = listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!)!
                 Button(action:{
-                  // TODO: show edit listing view instead of this check
                   if appViewModel.currentUserId == listing.seller.id {
                     selectedListing = listing
                     showEditListingView.toggle()
@@ -87,8 +106,64 @@ struct MarketPlaceView: View {
                   selectedListing = listing
                   StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
                 }){
-                    ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+                  ListingDetailsView(listing: listing, viewWidth: geometry.size.width).padding(.bottom, 40)
                 }
+                if !listingRepository.getFilteredListingWithoutSeller(uid: appViewModel.currentUserId!).isEmpty {
+                  Text("Other's Listing").font(.medSmall).frame(width: 332, alignment: .leading);
+                  ForEach(listingRepository.getFilteredListingWithoutSeller(uid: appViewModel.currentUserId!)) { listing in
+                    Button(action:{
+                      if appViewModel.currentUserId == listing.seller.id {
+                        selectedListing = listing
+                        showEditListingView.toggle()
+                        return
+                      }
+                      
+                      if appViewModel.currentUserId != nil && appViewModel.currentUserId != listing.seller.id && listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) != nil {
+                        alertMsg = "You cannot purchase a listing when you have an active listing."
+                        showErrorAlert = true
+                        return
+                      }
+                      
+                      showPurchaseView.toggle()
+                      showEditListingView = false
+                      selectedListing = listing
+                      StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
+                    }){
+                      ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+                    }
+                  }
+                }
+              }
+              
+              // no --> show default listing view
+              else {
+                // lets add the title if the user has a listing up but doesn't match the filter 
+                if appViewModel.currentUserId != nil && listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) != nil {
+                  Text("Other's Listing").font(.medSmall).frame(width: 332, alignment: .leading);
+                }
+                ForEach(listingRepository.filteredListings) { listing in
+                  Button(action:{
+                    if appViewModel.currentUserId == listing.seller.id {
+                      selectedListing = listing
+                      showEditListingView.toggle()
+                      return
+                    }
+                    
+                    if appViewModel.currentUserId != nil && appViewModel.currentUserId != listing.seller.id && listingRepository.getCurrentListingForSeller(uid: appViewModel.currentUserId!) != nil {
+                      alertMsg = "You cannot purchase a listing when you have an active listing."
+                      showErrorAlert = true
+                      return
+                    }
+                    
+                    showPurchaseView.toggle()
+                    showEditListingView = false
+                    selectedListing = listing
+                    StorageViewModel.retrieveProfileImage(imagePath: listing.seller.profileImageURL) {image in selectedListingProfile = image}
+                  }){
+                    ListingDetailsView(listing: listing, viewWidth: geometry.size.width)
+                  }
+                }
+              }
               }
             }
           }
@@ -131,4 +206,3 @@ struct MarketPlaceView: View {
         }
       }
     }
-}
