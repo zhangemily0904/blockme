@@ -116,6 +116,22 @@ class ListingRepository: ObservableObject {
     return l.first
   }
   
+  // returns filtered listing for sellers
+  func getFilteredListingForSeller(uid: String) -> Listing? {
+    let l = self.filteredListings.filter {
+      $0.seller.id == uid && $0.expirationTime > Date.now && $0.buyer == nil
+    }
+    return l.first
+  }
+  
+  // returns all filtered listings post by other users if it exists
+  func getFilteredListingWithoutSeller(uid: String) -> [Listing] {
+    let l = self.filteredListings.filter {
+      $0.seller.id != uid && $0.expirationTime > Date.now && $0.buyer == nil
+    }
+    return l
+  }
+  
   // returns a listing that the logged in user is in the process of selling
   func getPendingListingForSeller(uid: String) -> Listing? {
     let l = self.listings.filter {
