@@ -20,9 +20,9 @@ struct LoginView: View {
         
         VStack {
           Group {
-            Image("welcome")
+            Image("welcome-banner")
               .resizable()
-              .frame(width: 201.0, height: 250.0)
+              .frame(width: 306.0, height: 204.0)
           }
           
           Text("Hello Again!").font(.medLarge)
