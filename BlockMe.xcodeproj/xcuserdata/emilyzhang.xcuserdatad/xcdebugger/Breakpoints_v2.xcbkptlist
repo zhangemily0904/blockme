@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "CBF5EA8B-096C-4854-B28A-701A274A9F7E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BlockMeTests/BlockMeTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF - 63a7daba43a35a4f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlockMeTests.BlockMeTests.__allocating_init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; BlockMeTests.BlockMeTests"
+                  moduleName = "BlockMeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emilyzhang/Desktop/67443project/BlockMeTests/BlockMeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF - d9ede5b5b92b3421"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlockMeTests.BlockMeTests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; BlockMeTests.BlockMeTests"
+                  moduleName = "BlockMeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emilyzhang/Desktop/67443project/BlockMeTests/BlockMeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF - 5cb8b5ec83356fc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlockMeTests.BlockMeTests.__allocating_init(selector: ObjectiveC.Selector) -&gt; BlockMeTests.BlockMeTests"
+                  moduleName = "BlockMeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emilyzhang/Desktop/67443project/BlockMeTests/BlockMeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF - a6196b2b04337a6b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlockMeTests.BlockMeTests.init(selector: ObjectiveC.Selector) -&gt; BlockMeTests.BlockMeTests"
+                  moduleName = "BlockMeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emilyzhang/Desktop/67443project/BlockMeTests/BlockMeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF - a5297ae2b242297e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlockMeTests.BlockMeTests.__allocating_init() -&gt; BlockMeTests.BlockMeTests"
+                  moduleName = "BlockMeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emilyzhang/Desktop/67443project/BlockMeTests/BlockMeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF - fecd5e14690fa500"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlockMeTests.BlockMeTests.init() -&gt; BlockMeTests.BlockMeTests"
+                  moduleName = "BlockMeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emilyzhang/Desktop/67443project/BlockMeTests/BlockMeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "32AA144C-656E-4BD7-A554-7BFC865DA8DF - a90075f80914cb6d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlockMeTests.BlockMeTests.__deallocating_deinit"
+                  moduleName = "BlockMeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emilyzhang/Desktop/67443project/BlockMeTests/BlockMeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

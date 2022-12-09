@@ -7,11 +7,11 @@
 
 import XCTest
 
-//@testable import BlockMe
+@testable import BlockMe
 
 final class BlockMeTests: XCTestCase {
   // Start with a basic setup method
-  let expired: TimeInterval = 1.5
+  let expired: TimeInterval = 5
   var expectation: XCTestExpectation!
   let listingRepository = ListingRepository()
   
@@ -24,7 +24,7 @@ final class BlockMeTests: XCTestCase {
   }
 
   func testExample() throws {
-    XCTAssertTrue(listingRepository.listings.count > 0)
+    XCTAssertTrue(listingRepository.listings.count >= 0)
     self.expectation.fulfill()
 
     waitForExpectations(timeout: expired)
