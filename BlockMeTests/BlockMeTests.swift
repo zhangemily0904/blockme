@@ -24,7 +24,7 @@ final class BlockMeTests: XCTestCase {
   }
 
   func testExample() throws {
-    XCTAssertTrue(listingRepository.listings.count >= 0)
+    XCTAssertTrue(listingRepository.listings.count > 0)
     self.expectation.fulfill()
 
     waitForExpectations(timeout: expired)
