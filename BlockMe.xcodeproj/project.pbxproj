@@ -42,6 +42,7 @@
 		7273FD9929136BB400B57B55 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9829136BB400B57B55 /* EditProfileView.swift */; };
 		7273FD9B291376B200B57B55 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9A291376B200B57B55 /* FormValidator.swift */; };
 		7273FD9D291457B000B57B55 /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7273FD9C291457B000B57B55 /* StorageViewModel.swift */; };
+		727C79822946A30E0059B5A1 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C79812946A30E0059B5A1 /* FormValidatorTests.swift */; };
 		72AD21BC292AF1EC0082D1B5 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD21BB292AF1EC0082D1B5 /* ReviewView.swift */; };
 		72AD21BE292B0AFA0082D1B5 /* StarRatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD21BD292B0AFA0082D1B5 /* StarRatingComponent.swift */; };
 		72AD21C02939556F0082D1B5 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AD21BF2939556F0082D1B5 /* PasswordResetView.swift */; };
@@ -122,6 +123,7 @@
 		7273FD9829136BB400B57B55 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7273FD9A291376B200B57B55 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		7273FD9C291457B000B57B55 /* StorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
+		727C79812946A30E0059B5A1 /* FormValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
 		72AD21BB292AF1EC0082D1B5 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		72AD21BD292B0AFA0082D1B5 /* StarRatingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingComponent.swift; sourceTree = "<group>"; };
 		72AD21BF2939556F0082D1B5 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				9F3B356B29417E8D00C43677 /* BlockMeTests.swift */,
+				727C79812946A30E0059B5A1 /* FormValidatorTests.swift */,
 			);
 			path = BlockMeTests;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727C79822946A30E0059B5A1 /* FormValidatorTests.swift in Sources */,
 				9F3B356C29417E8D00C43677 /* BlockMeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
