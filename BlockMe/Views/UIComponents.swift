@@ -108,3 +108,9 @@ extension Rectangle {
   static let pending = AnyView(Rectangle().fill(Color(.systemGray5)).frame(width: 48, height: 13))
   static let completed = AnyView(Rectangle().fill(Color("BlockMe Red")).frame(width: 48, height: 13))
 }
+
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}

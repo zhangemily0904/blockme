@@ -57,6 +57,8 @@ struct CreateAccountView: View {
             NavigationLink("Join us before? Login", destination: LoginView()).font(.regSmall).foregroundColor(Color.black)
           }.frame(maxHeight: .infinity, alignment: .bottom)
         }
+      }.onTapGesture {
+        self.hideKeyboard()
       }
     }
     

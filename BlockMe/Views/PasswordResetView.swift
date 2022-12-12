@@ -17,42 +17,45 @@ struct PasswordResetView: View {
   var body: some View {
     ZStack {
       Color("BlockMe Background").ignoresSafeArea()
-      
       VStack {
-        Group {
-          Image("welcome")
-            .resizable()
-            .frame(width: 201.0, height: 250.0)
-        }
-        
-        Text("Reset Your Password").font(.medLarge)
-        TextField("Email", text: $email)
-          .textFieldStyle(InputField())
-        
-        Button(action: {
-          guard !email.isEmpty else {
-            alertMsg = "Email cannot be empty."
-            showErrorAlert = true
-            return
+        VStack {
+          Group {
+            Image("forgot-pw")
+              .resizable()
+              .frame(width: 342.0, height: 205.0)
           }
-          appViewModel.resetPassword(for: email) { errorMsg in
-            if let errorMsg = errorMsg {
-              alertMsg = errorMsg
+          
+          Text("Reset Your Password").font(.medLarge)
+          TextField("Email", text: $email)
+            .textFieldStyle(InputField())
+          
+          Button(action: {
+            guard !email.isEmpty else {
+              alertMsg = "Email cannot be empty."
               showErrorAlert = true
-            } else {
-              presentationMode.wrappedValue.dismiss()
+              return
             }
+            appViewModel.resetPassword(for: email) { errorMsg in
+              if let errorMsg = errorMsg {
+                alertMsg = errorMsg
+                showErrorAlert = true
+              } else {
+                presentationMode.wrappedValue.dismiss()
+              }
+            }
+          }) {
+            Text("Send Recovery Email").font(.medSmall)
+          }.buttonStyle(RedButton()).padding(.top, 70).padding(.bottom, 200)
+        }
+        .alert(alertMsg, isPresented: $showErrorAlert) {
+          Button("Ok", role: .cancel) {
+            showErrorAlert = false
           }
-        }) {
-          Text("Send Recovery Email").font(.medSmall)
-        }.buttonStyle(RedButton()).padding(.top, 70)
-      }
-      .alert(alertMsg, isPresented: $showErrorAlert) {
-        Button("Ok", role: .cancel) {
-          showErrorAlert = false
         }
       }
-
+      .onTapGesture {
+        self.hideKeyboard()
+      }
     }
   }
 }
