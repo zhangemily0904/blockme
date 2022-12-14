@@ -13,7 +13,7 @@ struct SignoutConfirmationView: View {
 
     var body: some View {
       VStack{
-        Text("Are you sure?").font(.medMed).frame(width: 352, alignment: .leading)
+        Text("Are you sure?").font(.medMed).frame(width: 352)
           .padding(.bottom, 30)
         Button(action: {
           appViewModel.signOut()

@@ -16,7 +16,7 @@ struct WelcomeView: View {
         Group {
           Image("intro")
             .resizable()
-            .frame(width: 300.0, height: 247.0)
+            .frame(width: 350.0, height: 240.0)
         }
         Text("Hey! Welcome").font(.medLarge).padding(.top, 50).padding(.bottom, 10)
         Text("BlockMe is a free meal blocks marketplace, log in or register to get started!").font(.regMed).frame(width: 350.0).multilineTextAlignment(.center).padding(.bottom, 70)

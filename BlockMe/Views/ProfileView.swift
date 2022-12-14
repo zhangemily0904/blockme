@@ -74,7 +74,7 @@ struct ProfileView: View {
           }
           .sheet(isPresented: $showSignoutConfirmationView) {
             SignoutConfirmationView()
-              .presentationDetents([.fraction(0.40)])
+              .presentationDetents([.fraction(0.35)])
           }
           
         }

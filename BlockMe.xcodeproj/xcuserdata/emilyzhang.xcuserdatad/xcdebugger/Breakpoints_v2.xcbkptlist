@@ -139,7 +139,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "testAddListing()"
+            landmarkName = "testAddDeleteListing()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
