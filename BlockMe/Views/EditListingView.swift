@@ -112,7 +112,6 @@ struct EditListingView: View {
                 return
               }
               
-              // nil fields not showing up in firebase
               listing.price = price
               listing.availableLocations = availableLocations
               listing.expirationTime = expirationTime
