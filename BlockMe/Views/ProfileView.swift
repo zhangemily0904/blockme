@@ -32,8 +32,17 @@ struct ProfileView: View {
         }
         if let userViewModel = appViewModel.userViewModel {
           if let user = userViewModel.user {
-            Text("\(user.firstName) \(user.lastName)").font(.medMed)
+            VStack {
+              Text("\(user.firstName) \(user.lastName)").font(.medMed)
+              HStack {
+                Image(systemName: "star.fill")
+                  .resizable()
+                  .frame(width:15,height:15)
+                Text("\(user.getAvgRating(), specifier: "%.2f")")
+              }
+            }
               .offset(y: -60)
+            
           }
           HStack {
             Button(action:{
