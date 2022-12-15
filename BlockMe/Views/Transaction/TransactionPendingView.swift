@@ -32,7 +32,7 @@ struct TransactionPendingView: View {
     .alert(alertMsg, isPresented: $showAlert) {
       Button("Yes", role: .destructive) {
         showErrorAlert = false
-        if var listing = listingViewModel.listing {
+        if let listing = listingViewModel.listing {
           if !listingRepository.cancelTransactionForListing(listing: listing) {
             alertMsg = "Error cancelling this order. Please try again."
             showErrorAlert = true

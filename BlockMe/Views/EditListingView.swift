@@ -112,7 +112,6 @@ struct EditListingView: View {
                 return
               }
               
-              // nil fields not showing up in firebase
               listing.price = price
               listing.availableLocations = availableLocations
               listing.expirationTime = expirationTime
@@ -145,7 +144,7 @@ struct EditListingView: View {
       }
     }.onChange(of: show) { _ in
       locations = DiningLocation.allCases.map {($0, false)}
-      if var listing = selectedListing {
+      if let listing = selectedListing {
         expirationTime = listing.expirationTime
         price = listing.price
         locations = locations.map{listing.availableLocations.contains($0.0) ? ($0.0, true) : $0}

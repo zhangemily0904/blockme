@@ -102,7 +102,6 @@ struct NewListingView: View {
               return
             }
             
-            // nil fields not showing up in firebase
             let newListing = Listing(seller: listingSeller, buyer: nil, price: price, expirationTime: expirationTime, completedTime: nil, availableLocations: availableLocations, buyerStatus: nil, sellerStatus: nil)
             listingRepository.add(listing: newListing)
             

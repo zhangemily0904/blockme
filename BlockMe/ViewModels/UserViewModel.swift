@@ -73,7 +73,7 @@ class UserViewModel: ObservableObject, Identifiable {
         return
       }
       
-      var user = try? doc.data(as: User.self)
+      let user = try? doc.data(as: User.self)
       guard var user = user else {
         print("failed to parse user info")
         return
