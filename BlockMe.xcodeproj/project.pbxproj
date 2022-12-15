@@ -54,7 +54,6 @@
 		9F3843A329180FFF00A5ACB5 /* NewListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A229180FFF00A5ACB5 /* NewListingView.swift */; };
 		9F3843A52918AA6A00A5ACB5 /* PurchaseListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */; };
 		9F3843A92918DA2800A5ACB5 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3843A82918DA2800A5ACB5 /* TransactionView.swift */; };
-		9F3B356C29417E8D00C43677 /* ListingRepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B356B29417E8D00C43677 /* ListingRepoTests.swift */; };
 		9F3B35722942D04B00C43677 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72391E9D290615CC00C980E1 /* GoogleService-Info.plist */; };
 		9F3B35742942E42100C43677 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72391E9D290615CC00C980E1 /* GoogleService-Info.plist */; };
 		9F3B35762942E46100C43677 /* MarketPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72391EC9290760AF00C980E1 /* MarketPlaceView.swift */; };
@@ -66,6 +65,7 @@
 		9F3B36132942E9FC00C43677 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F3B36122942E9FC00C43677 /* FirebaseFirestoreSwift */; };
 		9F3B36152942EA0900C43677 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F3B36142942EA0900C43677 /* FirebaseDatabaseSwift */; };
 		9F3B36172942EA0F00C43677 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F3B36162942EA0F00C43677 /* FirebaseStorage */; };
+		9F3B3628294A94E600C43677 /* VenmoFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B3627294A94E600C43677 /* VenmoFormatterTests.swift */; };
 		9F3D22B2293F08E100EB384E /* PagerTabStripView in Frameworks */ = {isa = PBXBuildFile; productRef = 9F3D22B1293F08E100EB384E /* PagerTabStripView */; };
 		9F3D22B4293F090300EB384E /* PurchasedOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D22B3293F090300EB384E /* PurchasedOrdersView.swift */; };
 		9F3D22B6293F0BFF00EB384E /* SoldOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D22B5293F0BFF00EB384E /* SoldOrdersView.swift */; };
@@ -135,7 +135,7 @@
 		9F3843A42918AA6A00A5ACB5 /* PurchaseListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListingView.swift; sourceTree = "<group>"; };
 		9F3843A82918DA2800A5ACB5 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		9F3B356929417E8D00C43677 /* BlockMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlockMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F3B356B29417E8D00C43677 /* ListingRepoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingRepoTests.swift; sourceTree = "<group>"; };
+		9F3B3627294A94E600C43677 /* VenmoFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenmoFormatterTests.swift; sourceTree = "<group>"; };
 		9F3D22B3293F090300EB384E /* PurchasedOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedOrdersView.swift; sourceTree = "<group>"; };
 		9F3D22B5293F0BFF00EB384E /* SoldOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldOrdersView.swift; sourceTree = "<group>"; };
 		9F3D22B7293F0E2B00EB384E /* OrderNavBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNavBarItem.swift; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 		9F3B356A29417E8D00C43677 /* BlockMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				9F3B356B29417E8D00C43677 /* ListingRepoTests.swift */,
+				9F3B3627294A94E600C43677 /* VenmoFormatterTests.swift */,
 				727C79812946A30E0059B5A1 /* FormValidatorTests.swift */,
 			);
 			path = BlockMeTests;
@@ -519,7 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				727C79822946A30E0059B5A1 /* FormValidatorTests.swift in Sources */,
-				9F3B356C29417E8D00C43677 /* ListingRepoTests.swift in Sources */,
+				9F3B3628294A94E600C43677 /* VenmoFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

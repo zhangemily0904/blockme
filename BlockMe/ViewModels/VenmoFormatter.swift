@@ -12,7 +12,7 @@ class VenmoFormatter: Formatter {
   let pattern = "^[a-zA-Z0-9_-]*$"
 
   // venmo usernames should only contain letters, numbers, hyphen, and underscore. It must also be 5-30 characters long
-  private func isValidVenmo(_ value: String) -> Bool {
+  func isValidVenmo(_ value: String) -> Bool {
     return (value.range(of: pattern, options: .regularExpression) != nil) && value.count < 31
   }
 
