@@ -25,16 +25,16 @@ BlockMe implements several contrainsts on how to use the marketplace.
 3. Buyers can see a list of blocks available for purchase along with information about dining options, price, and expiration time
 4. Buyers can purchase a block
 5. Sellers can create a listing
-6. Sellers can accept or decline the purchase request for my block 
-7. Sellers can update their listings
-8. Sellers can delete their listings
+6. Sellers can accept or decline the purchase request for a block 
+7. Sellers can update their listing
+8. Sellers can delete their listing
 9. Users can cancel the transaction in the middle of the purchase/sell process
 10. Users can filter listings
 11. Users can sort listings
-12. Users can rate each other
+12. Users can rate each other after the transaction process and see each others rating
 
 ### B-Level
-1. Tabs inside the orders view to separate sold and bought orders 
+1. Users can see separate tabs for sold and bought orders inside the orders view 
 
 
 ## Unit Tests
