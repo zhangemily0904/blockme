@@ -18,6 +18,25 @@ BlockMe implements several contrainsts on how to use the marketplace.
 3. A user cannot buy their own listing.
 4. Expiration time for new listings must be before 12:00am of the current day.
 
+## Use Cases
+### A-Level
+1. Users can register and login (authentication)
+2. Users can see a navigation bar
+3. Buyers can see a list of blocks available for purchase along with information about dining options, price, and expiration time
+4. Buyers can purchase a block
+5. Sellers can create a listing
+6. Sellers can accept or decline the purchase request for my block 
+7. Sellers can update their listings
+8. Sellers can delete their listings
+9. Users can cancel the transaction in the middle of the purchase/sell process
+10. Users can filter listings
+11. Users can sort listings
+12. Users can rate each other
+
+### B-Level
+1. Tabs inside the orders view to separate sold and bought orders 
+
+
 ## Unit Tests
 BlockMe's backend is comprised mainly of firebase related classes. While writing out unit tests, our team ran into problems that prevented us from writing async related tests (aka Firebase calls). Screenshots of the error are included below. We tried to solve this problem for several days with multiple team members looking at the issue. We also talked to our TA and found out other teams were experiencing the same error. We concluded that it was better worth our time to polish our other deliverables rather than sinking more time into the unit tests. 
 ![Screen Shot 2022-12-14 at 8 07 14 PM](https://user-images.githubusercontent.com/72707689/207753995-68b39432-6650-4f78-9ec7-344150943338.png)
